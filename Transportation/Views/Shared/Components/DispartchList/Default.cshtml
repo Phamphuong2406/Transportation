@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Transportation.Infrastructure.Data.DispatchAssignment>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Mã ycvc</th>
+            <th scope="col">Mã xe</th>
+            <th scope="col">Ngày điều phối</th>
+            <th scope="col">Điểm nhận hàng</th>
+            <th scope="col">Điểm trả hàng</th>
+            <th scope="col">Ảnh xác nhận</th>
+            <th scope="col">Tình trạng</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var truck in Model)
+        {
+            <tr>
+                <td>@truck.RequestId</td>
+                <td>@truck.TruckId</td>
+                <td>@truck.AssignedDate</td>
+                <td>@truck.PickupLocation</td>
+                <td>@truck.DropoffLocation</td>
+                <td >
+                    @if (!string.IsNullOrEmpty(truck.DeliveryImage))
+                    {
+                        <img src="/media/ImgUpload/@truck.DeliveryImage" alt="Ảnh giao hàng" style="max-width: 150px; max-height: 150px;" />
+                    }
+                    else
+                    {
+                        <span>Chưa có ảnh</span>
+                    }
+                </td>
+                <td>
+                    @if (truck.Status == "Đã giao hàng")
+                    {
+                    <td style="color: green;">@truck.Status</td>
+                    }
+                    else
+                    {
+                    <td style="color: red;">@truck.Status</td>
+                    }
+                </td>
+              
+                
+            </tr>
+        }
+    </tbody>
+</table>

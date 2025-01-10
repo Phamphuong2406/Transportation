@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Transportation.Infrastructure.Data.Warehouse>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Tên kho</th>
+            <th>Địa chỉ</th>
+            <th>Sức chứa</th>
+            <th>Hoạt động</th>
+            <th>Giờ mở cửa</th>
+            <th>Giờ đóng cửa</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            int index = 1;
+            foreach (var warehouse in Model)
+            {
+                <tr>
+                    <td>@index</td>
+                    <td>@warehouse.Name</td>
+                    <td>@warehouse.Address</td>
+                    <td>@warehouse.Capacity</td>
+                    <td>@(warehouse.IsActive ? "Còn hoạt động" : "Hết hạn")</td>
+                    <td>@warehouse.OpeningTime</td>
+                    <td>@warehouse.ClosingTime</td>
+                </tr>
+                index++;
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="7" class="text-center">Không có dữ liệu</td>
+            </tr>
+        }
+    </tbody>
+</table>

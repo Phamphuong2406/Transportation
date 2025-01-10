@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Transportation.Infrastructure.Data.Truck>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Coordinator/Views/Shared/_LayoutCoordinator.cshtml";
+}
+ @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div>
+    <h5 class="card-title">đơn hàng vận chuyển</h5>
+
+    <!-- Table with stripped rows -->
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Mã xe </th>
+                <th scope="col">Tài xế</th>
+                <th scope="col">Tải trọng</th>
+                <th scope="col">Loại nhiên liệu</th>
+                <th scope="col">Điểm đỗ xe</th>
+                <th scope="col">Lộ trình thực tế</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@item.TruckId</th>
+                    <td>@item.Driver.FullName</td>
+                    <td>@item.Capacity</td>
+                    <td>@item.FuelType</td>
+                    <td>@item.ParkingLocation</td>
+                   
+                    <td>
+                        <a asp-area="Coordinator" asp-controller="Journey" class="btn btn-warning btn-sm" asp-action="RealTime" asp-route-Id="@item.TruckId">Xem đường</a>
+                    </td>
+
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
+

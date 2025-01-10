@@ -1,0 +1,90 @@
+﻿@model Transportation.Infrastructure.Data.DispatchAssignment
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Drivers/Views/Shared/_LayoutDriver.cshtml";
+    <style>
+        #map {
+            height: 700px;
+
+        }
+
+    </style>
+}
+ @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div>
+    <h5 class="card-title">Đường đi dự kiến</h5>
+
+    <!-- Bảng thông tin điều phối -->
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Điểm lấy hàng</th>
+                <th scope="col">Điểm trả hàng</th>
+                <th scope="col">Xuất phát</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.PickupLocation</td>
+                <td>@Model.DropoffLocation</td>
+                <td>
+                  
+                    <a asp-area="Drivers" asp-controller="HomeDriver" class="btn btn-warning btn-sm" asp-action="Realtime" >Bắt đâù</a>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Phần bản đồ -->
+<div id="map"></div>
+
+@section Scripts {
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@3.2.0/dist/leaflet-routing-machine.js"></script>
+    <script>
+        // Initialize map
+        var map = L.map('map').setView([@Model.Truck.ParkingLat, @Model.Truck.ParkingLng], 13); // Center map at the parking location
+
+        // Add tile layer
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Custom icons
+        var truckIcon = L.icon({
+            iconUrl: '@Url.Content("~/img/truck.png")',
+            iconSize: [70, 70]
+        });
+
+        // Add markers
+        var markerPickup = L.marker([@Model.PickupLat, @Model.PickupLng], { icon: truckIcon }).addTo(map).bindPopup("Điểm lấy hàng");
+        var markerDropoff = L.marker([@Model.DropoffLat, @Model.DropoffLng]).addTo(map).bindPopup("Điểm giao hàng");
+
+        // Fit map bounds dynamically
+        map.fitBounds([
+            [@Model.PickupLat, @Model.PickupLng],
+            [@Model.DropoffLat, @Model.DropoffLng]
+        ]);
+
+        // Add routing control
+        L.Routing.control({
+            waypoints: [
+                L.latLng(@Model.PickupLat, @Model.PickupLng), // Điểm lấy hàng
+                L.latLng(@Model.DropoffLat, @Model.DropoffLng) // Điểm giao hàng
+            ],
+            routeWhileDragging: true,
+            addWaypoints: false,
+            draggableWaypoints: false,
+            lineOptions: {
+                styles: [{ color: 'blue', weight: 4 }]
+            }
+        }).addTo(map);
+    </script>
+
+}

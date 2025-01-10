@@ -1,0 +1,120 @@
+﻿@model IEnumerable<Transportation.Infrastructure.Data.Truck>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+ @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<div>
+    <h5 class="card-title">Thông tin xe tải </h5>
+
+  <a href="~/Admin/Trucks/RegisterTruck">Thêm mới </a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Mã số xe</th>
+                <th scope="col">Biển số xe</th>
+                <th scope="col">Tên tài xế</th>
+                <th scope="col">Tải trọng(tấn)</th>
+                <th scope="col">Loại nhiên liệu</th>
+                <th scope="col">Định mức tiêu thụ(l/100km)</th>
+                <th scope="col">Điểm đỗ xe</th>
+                <th scope="col">lựa chọn</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@item.TruckId</th>
+                    <th>@item.ConsumptionRate</th>
+                    <td>@item.Driver.FullName</td>
+                    <td>@item.Capacity</td>
+                    <td>@item.FuelType</td>
+                    <td>@item.ConsumptionRate</td>
+                    <td>@item.ParkingLocation<td>
+                    <td>Xóa/sửa</td>
+
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal for adding new dispatcher -->
+<div class="modal fade" id="createDispatcherModal" tabindex="-1" aria-labelledby="createDispatcherModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createDispatcherModalLabel">Thêm nhân viên mới</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-action="RegisterDispatcher" asp-controller="Dispatchers" asp-area="Admin" method="post" id="createDispatcherForm">
+                <div class="modal-body">
+                    <div class="form-group mb-3">
+                        <label for="Capacity" class="form-label">Tải trọng</label>
+                        <input type="text" class="form-control" id="Capacity" name="Capacity" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="PhoneNumber" class="form-label">Số điện  thoại</label>
+                        <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="FullName" class="form-label">Họ và tên</label>
+                        <input type="text" class="form-control" id="FullName" name="FullName" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="PasswordHash" class="form-label">Mật khẩu</label>
+                        <input type="text" class="form-control" id="PasswordHash" name="PasswordHash" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="Username" class="form-label">
+                            Tên đăng nhập</lable>
+                            <input type="text" class="form-control" id="Username" name="Username" required>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="Department" class="form-label">Khu vực quản lý</label>
+                        <input type="text" class="form-control" id="Department" name="Department" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Optional: Add AJAX handling for form submission
+        document.getElementById('createDispatcherForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Nhân viên mới đã được thêm!');
+                        location.reload(); // Reload the page to reflect changes
+                    } else {
+                        alert('Có lỗi xảy ra, vui lòng thử lại.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Có lỗi xảy ra, vui lòng thử lại.');
+                });
+        });
+    </script>
+}
+
+

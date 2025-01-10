@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Transportation.Infrastructure.Data.RealTimeTracking>
+
+@{
+    ViewData["Title"] = "Realtime Tracking";
+    Layout = "~/Areas/Drivers/Views/Shared/_LayoutDriver.cshtml";
+}
+
+<h1>Vị trí hiện tại của xe tải</h1>
+
+<div id="map"></div>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+
+
+    <script>
+        // Lấy danh sách các điểm từ model
+        var locations = [
+            @foreach (var location in Model)
+            {
+                <text>{ lat: @Html.Raw(location.CurrentLat), lng: @Html.Raw(location.CurrentLng), timestamp: "@location.Timestamp.ToString("yyyy-MM-dd HH:mm:ss")" }, </text>
+            }
+        ];
+
+        if (locations.length > 0) {
+            // Khởi tạo bản đồ tại điểm đầu tiên
+            var map = L.map('map').setView([locations[0].lat, locations[0].lng], 13);
+
+            // Thêm lớp nền bản đồ
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+            var truckIcon = L.icon({
+                iconUrl: '@Url.Content("~/img/truck.png")',
+                iconSize: [70, 70]
+            });
+            // Vẽ đường đi (Polyline)
+            var latlngs = locations.map(function (loc) {
+                return [loc.lat, loc.lng];
+            });
+
+            // Thêm polyline vào bản đồ
+            var polyline = L.polyline(latlngs, { color: 'blue' }).addTo(map);
+
+            // Zoom để bao phủ toàn bộ polyline
+            map.fitBounds(polyline.getBounds());
+
+            // Marker tại điểm đầu và điểm cuối
+            var startMarker = L.marker([locations[0].lat, locations[0].lng]).addTo(map).bindPopup("Điểm đầu tiên: " + locations[0].timestamp);
+            var endMarker = L.marker([locations[locations.length - 1].lat, locations[locations.length - 1].lng], { icon: truckIcon }).addTo(map).bindPopup("Điểm hiện tại(cuối cùng): " + locations[locations.length - 1].timestamp);
+        } else {
+            document.getElementById('map').innerHTML = "<p>Không có dữ liệu vị trí để hiển thị.</p>";
+        }
+    </script>
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

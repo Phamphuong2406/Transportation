@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Transportation.Application.DTO.WarehouseDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-7">
+        <h5 class="card-title">Thông tin kho hàng</h5>
+
+        <a href="~/Warehouse/Create">Thêm mới</a>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">Tên kho</th>
+                    <th scope="col">Địa chỉ</th>
+                    <th scope="col">Tải trọng (tấn)</th>
+                    <th scope="col">Tình trạng</th>
+                    <th scope="col">Giờ mở cửa</th>
+                    <th scope="col">Giờ đóng cửa</th>
+                    <th scope="col">Lựa chọn</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@item.WarehouseId</th>
+                        <td>@item.Name</td>
+                        <td>@item.Address</td>
+                        <td>@item.Capacity</td>
+                        <td>@item.IsActive</td>
+                        <td>@item.OpeningTime</td>
+                        <td>@item.ClosingTime</td>
+                        <td>Xóa/Sửa</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-5">
+        <div id="map" style="height: 500px;"></div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+    // Khởi tạo bản đồ
+    var map = L.map('map').setView([21.027266, 105.855453], 11);
+
+    // Thêm lớp bản đồ OpenStreetMap
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Lấy danh sách kho từ Model và chuyển thành JSON
+    var warehouses = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model));
+    console.log(warehouses);
+
+    // Hiển thị các marker trên bản đồ
+    warehouses.forEach(function (warehouse) {
+        if (warehouse.Latitude && warehouse.Longitude) {
+            var marker = L.marker([warehouse.Latitude, warehouse.Longitude]).addTo(map);
+            marker.bindPopup(`<b>${warehouse.Name}</b><br>${warehouse.Address}<br>Tải trọng: ${warehouse.Capacity} tấn`);
+        }
+    });
+</script>

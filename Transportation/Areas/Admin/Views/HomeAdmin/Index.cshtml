@@ -1,0 +1,149 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+   <div class="col-6">
+       
+            <canvas width="800" height="400" id="ordersChart"></canvas>
+    
+       
+            <h6>Thống kê đơn hàng của xe tải</h6>
+       
+   </div>
+       
+   
+    <div class="col-6">
+        <h3>Pie Chart</h3>
+        <canvas id="revenueChart" width="800" height="400"></canvas>
+        <h6> Thống kê doanh thu của tháng</h6>
+    </div>
+
+</div>
+
+@section Scripts {
+
+    <script>
+        // Hàm tạo màu ngẫu nhiên
+        const generateColors = (count) => {
+            const colors = [];
+            for (let i = 0; i < count; i++) {
+                const r = Math.floor(Math.random() * 256);
+                const g = Math.floor(Math.random() * 256);
+                const b = Math.floor(Math.random() * 256);
+                colors.push(`rgba(${r}, ${g}, ${b}, 0.2)`); // Màu nền
+            }
+            return colors;
+        };
+
+        // Gửi yêu cầu đến API và xử lý dữ liệu
+        fetch('/Admin/HomeAdmin/Compareorders') // Thay đổi URL thành endpoint của bạn
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Lỗi khi tải dữ liệu từ server.');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Dữ liệu nhận được:', data);
+
+                // Xử lý dữ liệu từ API
+                const labels = data.map(item => `Xe tải ${item.truckid}`);
+                const totalOrders = data.map(item => item.totalProcessed);
+
+                // Sinh màu sắc cho từng cột
+                const backgroundColors = generateColors(data.length);
+                const borderColors = backgroundColors.map(color => color.replace('0.2', '1')); // Đậm nét hơn
+
+                // Tạo biểu đồ cột
+                const ctx = document.getElementById('ordersChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels, // Tên xe tải
+                        datasets: [{
+                            label: 'Số lượng đơn thành công',
+                            data: totalOrders, // Số lượng đơn hàng thành công
+                            backgroundColor: backgroundColors, // Màu nền động
+                            borderColor: borderColors,         // Màu viền động
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top'
+                            }
+                        },
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Xe tải'
+                                }
+                            },
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Số lượng đơn hàng'
+                                }
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Lỗi:', error);
+                alert('Không thể tải dữ liệu biểu đồ.');
+            });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Gọi API lấy dữ liệu
+            fetch('/Admin/HomeAdmin/CompareRevenue')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Dữ liệu nhận được:', data);
+                    // Xử lý dữ liệu từ API
+                    const Date = data.map(item => `Tháng ${item.date}`);
+                    const Cost = data.map(item => item.cost);
+                    // Dữ liệu biểu đồ
+                    const ctx = document.getElementById('revenueChart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'line', // Loại biểu đồ
+                        data: {
+                            labels: Date,
+                            datasets: [{
+                                label: 'Doanh thu (VNĐ)',
+                                data: Cost,
+                                borderColor: 'blue',
+                                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                borderWidth: 2
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    position: 'top'
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        });
+    </script>
+}
+
