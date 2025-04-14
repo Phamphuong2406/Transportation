@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Transportation.Domain.Entity;
 
 namespace Transportation.Infrastructure.Data;
 
-public partial class MyDbContext : DbContext
+public partial class MyDbContext : IdentityDbContext<IdentityUser>
 {
-    public MyDbContext()
+
+    public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
     {
     }
 
-    public MyDbContext(DbContextOptions<MyDbContext> options)
-        : base(options)
+   /* protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-    }
+        base.OnModelCreating(modelBuilder);
+    }*/
 
     public virtual DbSet<Customer> Customers { get; set; }
 
@@ -29,7 +33,11 @@ public partial class MyDbContext : DbContext
 
     public virtual DbSet<Role> Roles { get; set; }
 
+    public virtual DbSet<Shift> Shifts { get; set; }
+
     public virtual DbSet<ShippingRequest> ShippingRequests { get; set; }
+
+    public virtual DbSet<Trip> Trips { get; set; }
 
     public virtual DbSet<Truck> Trucks { get; set; }
 
@@ -37,11 +45,21 @@ public partial class MyDbContext : DbContext
 
     public virtual DbSet<Warehouse> Warehouses { get; set; }
 
+    public virtual DbSet<Users> Userss { get; set; }
+    public virtual DbSet<Function> function { get; set; }
+    public virtual DbSet<UserFunction> userfunction { get; set; }
+    public virtual DbSet<UserSession> UserSession { get; set; }
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("name=Mydb");
 
+
+
+    
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Customer>(entity =>
         {
             entity.HasKey(e => e.CustomerId).HasName("PK__Customer__A4AE64B800BC461F");
@@ -62,6 +80,7 @@ public partial class MyDbContext : DbContext
             entity.HasKey(e => e.AssignmentId).HasName("PK__Dispatch__32499E573A817140");
 
             entity.Property(e => e.AssignmentId).HasColumnName("AssignmentID");
+            entity.Property(e => e.Deliverydate).HasColumnType("datetime");
             entity.Property(e => e.DropoffLat).HasColumnType("decimal(9, 6)");
             entity.Property(e => e.DropoffLng).HasColumnType("decimal(9, 6)");
             entity.Property(e => e.DropoffLocation).HasMaxLength(255);
@@ -72,9 +91,9 @@ public partial class MyDbContext : DbContext
             entity.Property(e => e.PickupLat).HasColumnType("decimal(9, 6)");
             entity.Property(e => e.PickupLng).HasColumnType("decimal(9, 6)");
             entity.Property(e => e.PickupLocation).HasMaxLength(255);
+            entity.Property(e => e.Pickupdate).HasColumnType("datetime");
             entity.Property(e => e.RequestId).HasColumnName("RequestID");
             entity.Property(e => e.Status).HasMaxLength(50);
-            entity.Property(e => e.TruckId).HasColumnName("TruckID");
 
             entity.HasOne(d => d.AssignedByNavigation).WithMany(p => p.DispatchAssignments)
                 .HasForeignKey(d => d.AssignedBy)
@@ -86,10 +105,9 @@ public partial class MyDbContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_DispatchAssignments_ShippingRequests");
 
-            entity.HasOne(d => d.Truck).WithMany(p => p.DispatchAssignments)
-                .HasForeignKey(d => d.TruckId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_DispatchAssignments_Trucks");
+            entity.HasOne(d => d.Trip).WithMany(p => p.DispatchAssignments)
+                .HasForeignKey(d => d.TripId)
+                .HasConstraintName("FK_DispatchAssignments_Trips");
         });
 
         modelBuilder.Entity<Dispatcher>(entity =>
@@ -163,12 +181,21 @@ public partial class MyDbContext : DbContext
             entity.Property(e => e.RoleName).HasMaxLength(50);
         });
 
+        modelBuilder.Entity<Shift>(entity =>
+        {
+            entity.Property(e => e.ShiftId).HasColumnName("ShiftID");
+            entity.Property(e => e.EndTime).HasPrecision(0);
+            entity.Property(e => e.ShiftName).HasMaxLength(50);
+            entity.Property(e => e.StartTime).HasPrecision(0);
+        });
+
         modelBuilder.Entity<ShippingRequest>(entity =>
         {
             entity.HasKey(e => e.RequestId).HasName("PK__Shipping__33A8519AA7E85CED");
 
             entity.Property(e => e.RequestId).HasColumnName("RequestID");
             entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
+            entity.Property(e => e.Deliverydate).HasColumnType("datetime");
             entity.Property(e => e.DropoffLat).HasColumnType("decimal(9, 6)");
             entity.Property(e => e.DropoffLng).HasColumnType("decimal(9, 6)");
             entity.Property(e => e.DropoffLocation).HasMaxLength(255);
@@ -176,6 +203,7 @@ public partial class MyDbContext : DbContext
             entity.Property(e => e.PickupLat).HasColumnType("decimal(9, 6)");
             entity.Property(e => e.PickupLng).HasColumnType("decimal(9, 6)");
             entity.Property(e => e.PickupLocation).HasMaxLength(255);
+            entity.Property(e => e.Pickupdate).HasColumnType("datetime");
             entity.Property(e => e.Status).HasMaxLength(50);
 
             entity.HasOne(d => d.Customer).WithMany(p => p.ShippingRequests)
@@ -186,6 +214,23 @@ public partial class MyDbContext : DbContext
             entity.HasOne(d => d.ProductType).WithMany(p => p.ShippingRequests)
                 .HasForeignKey(d => d.ProductTypeId)
                 .HasConstraintName("FK_ShippingRequests_ProductType");
+        });
+
+        modelBuilder.Entity<Trip>(entity =>
+        {
+            entity.Property(e => e.EndTime).HasPrecision(0);
+            entity.Property(e => e.ShiftId).HasColumnName("ShiftID");
+            entity.Property(e => e.StartTime).HasPrecision(0);
+            entity.Property(e => e.Status).HasMaxLength(50);
+            entity.Property(e => e.TruckId).HasColumnName("TruckID");
+
+            entity.HasOne(d => d.Shift).WithMany(p => p.Trips)
+                .HasForeignKey(d => d.ShiftId)
+                .HasConstraintName("FK_Trips_Shifts");
+
+            entity.HasOne(d => d.Truck).WithMany(p => p.Trips)
+                .HasForeignKey(d => d.TruckId)
+                .HasConstraintName("FK_Trips_Trucks");
         });
 
         modelBuilder.Entity<Truck>(entity =>

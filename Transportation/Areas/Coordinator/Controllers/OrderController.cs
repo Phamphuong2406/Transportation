@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataAccess.DataContext;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Transportation.Infrastructure.Data;
+
 
 namespace Transportation.Areas.Coordinator.Controllers
 {
@@ -16,6 +17,8 @@ namespace Transportation.Areas.Coordinator.Controllers
         }
         public IActionResult Index()
         {
+            var userName = User.Identity.IsAuthenticated ? User.Identity.Name : "Khách";
+            ViewData["UserName"] = userName;
             return View(_context.ShippingRequests.Include(x =>x.Customer).ToList());
         }
     }

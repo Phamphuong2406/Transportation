@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div>
+    <h5 class="card-title">Thông tin người dùng</h5>
+
+    <!-- Button to trigger modal -->
+    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#createDispatcherModal">
+        Thêm mới
+    </button>
+
+    <table class="table table-striped" id="myTable">
+        <thead>
+            <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Họ và tên</th>
+                <th scope="col">Email</th>
+
+                <th scope="col">Tình trạng</th>
+                <th scope="col">Số điện thoại</th>
+                <th scope="col">Vai trò</th>
+            </tr>
+        </thead>
+        <tbody id="Listuser">
+          
+
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+  
+
+     <script>
+            let table = new DataTable('#myTable');
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            //Dùng fetch API để tự động gửi token trong tất cả các request.
+
+            if (typeof fetchWithAuth !== "function") {
+                console.error("fetchWithAuth chưa được định nghĩa. Kiểm tra lại _Layout.cshtml!");
+                return;
+            }
+
+            fetchWithAuth("/api/UserManagementAPI/GetAllUser")
+                .then(response => response.json())
+                .then(data => {
+                    let rows = data.map(users => `
+                                    <tr>
+                                                <td>${users.UserId}</td>
+                                                <td>${users.Username}</td>
+                                                <td>${users.Email}</td>
+                                                <td>${users.IsActive}</td>
+                                                 <td>${users.PhoneNumber}</td>
+                                                <td>${users.RolesName}</td>
+                                    </tr>
+                                `).join("");
+
+                    document.getElementById("Listuser").innerHTML = rows;
+                })
+                .catch(error => console.error("Lỗi:", error));
+        });
+    </script>
+}

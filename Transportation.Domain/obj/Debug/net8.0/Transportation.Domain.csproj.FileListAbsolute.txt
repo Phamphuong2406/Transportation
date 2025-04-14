@@ -10,3 +10,17 @@ C:\Users\Admin\source\repos\Transportation\Transportation.Domain\obj\Debug\net8.
 C:\Users\Admin\source\repos\Transportation\Transportation.Domain\obj\Debug\net8.0\refint\Transportation.Domain.dll
 C:\Users\Admin\source\repos\Transportation\Transportation.Domain\obj\Debug\net8.0\Transportation.Domain.pdb
 C:\Users\Admin\source\repos\Transportation\Transportation.Domain\obj\Debug\net8.0\ref\Transportation.Domain.dll
+C:\Users\Admin\source\repos\Transportation\Transportation.Domain\obj\Debug\net8.0\Transportation.Domain.sourcelink.json
+C:\Users\Admin\source\repos\Transportation\Transportation\Transportation.Domain\bin\Debug\net8.0\Transportation.Domain.deps.json
+C:\Users\Admin\source\repos\Transportation\Transportation\Transportation.Domain\bin\Debug\net8.0\Transportation.Domain.dll
+C:\Users\Admin\source\repos\Transportation\Transportation\Transportation.Domain\bin\Debug\net8.0\Transportation.Domain.pdb
+C:\Users\Admin\source\repos\Transportation\Transportation\Transportation.Domain\obj\Debug\net8.0\Transportation.Domain.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\Transportation\Transportation\Transportation.Domain\obj\Debug\net8.0\Transportation.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\source\repos\Transportation\Transportation\Transportation.Domain\obj\Debug\net8.0\Transportation.Domain.AssemblyInfoInputs.cache
+C:\Users\Admin\source\repos\Transportation\Transportation\Transportation.Domain\obj\Debug\net8.0\Transportation.Domain.AssemblyInfo.cs
+C:\Users\Admin\source\repos\Transportation\Transportation\Transportation.Domain\obj\Debug\net8.0\Transportation.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\Transportation\Transportation\Transportation.Domain\obj\Debug\net8.0\Transportation.Domain.sourcelink.json
+C:\Users\Admin\source\repos\Transportation\Transportation\Transportation.Domain\obj\Debug\net8.0\Transportation.Domain.dll
+C:\Users\Admin\source\repos\Transportation\Transportation\Transportation.Domain\obj\Debug\net8.0\refint\Transportation.Domain.dll
+C:\Users\Admin\source\repos\Transportation\Transportation\Transportation.Domain\obj\Debug\net8.0\Transportation.Domain.pdb
+C:\Users\Admin\source\repos\Transportation\Transportation\Transportation.Domain\obj\Debug\net8.0\ref\Transportation.Domain.dll

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation.Domain\\Transportation.Domain.csproj": {}
+    "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation.Domain\\Transportation.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation.Domain\\Transportation.Domain.csproj": {
+    "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation.Domain\\Transportation.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation.Domain\\Transportation.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation.Domain\\Transportation.Domain.csproj",
         "projectName": "Transportation.Domain",
-        "projectPath": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation.Domain\\Transportation.Domain.csproj",
+        "projectPath": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation.Domain\\Transportation.Domain.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

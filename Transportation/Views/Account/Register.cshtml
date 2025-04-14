@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+
+
+                    <div class="card mb-3">
+
+                        <div class="card-body">
+
+                            <div class="pt-4 pb-2">
+                                <h5 class="card-title text-center pb-0 fs-4">Đăng ký thành viên</h5>
+                                <p class="text-center small">Enter your personal details to create account</p>
+                            </div>
+
+                            <form id="RegisForm" class="row g-3 needs-validation" novalidate>
+
+
+                                <div class="col-12">
+                                    <label  class="form-label">Email</label>
+                                    <input type="text" id="email" class="form-control" required>
+                                    
+                                </div>
+
+                                <div class="col-12">
+                                    <label  class="form-label">Số điện thoại</label>
+                                    <input id="phoneNumber" type="text" class="form-control" required>
+                                  
+                                </div>
+                                <div class="col-12">
+                                    <label  class="form-label">Tên đầy đủ</label>
+                                    <input id="fullName" class="form-control" required>
+                                   
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Tên đăng nhập</label>
+                                    <input id="username" class="form-control" required>
+
+                                </div>
+                                <div class="col-12">
+                                    <label  class="form-label">Mật khẩu</label>
+                                    <input id="passwordHash" class="form-control" required>
+                             
+                                </div>
+
+                                <div class="col-12">
+                                    <label  class="form-label">Địa chỉ</label>
+                                    <input id="address" class="form-control" required>
+                                    
+                                </div>
+
+
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
+                                        <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
+                                        <div class="invalid-feedback">You must agree before submitting.</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100" type="submit">Tạo tài khoản</button>
+                                </div>
+                                <div class="col-12">
+                                    <p class="small mb-0">Already have an account? <a href="pages-login.html">Đăng nhập</a></p>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</div>
+
+@section Scripts {
+
+    <script>
+        document.getElementById("RegisForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            let Username = document.getElementById("username").value;
+            let Email = document.getElementById("email").value;
+            let PhoneNumber = document.getElementById("phoneNumber").value;
+            let PasswordHash = document.getElementById("passwordHash").value;
+            let FullName = document.getElementById("fullName").value;
+            let Address = document.getElementById("address").value;
+
+            fetch("/api/AccountAPI/AccountRegister", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ Username, Email, PhoneNumber, PasswordHash, FullName, Address })
+            })
+               
+                .then(data => {
+                    console.log('token', data);
+                    if (data.ok) {
+                        
+                        window.location.href = "/home/index"; // Chuyển hướng sau khi đăng nhập
+                    } else {
+                        alert("Sai tài khoản hoặc mật khẩu!");
+                    }
+                })
+                .catch(error => console.error("Lỗi:", error));
+        });
+    </script>
+}

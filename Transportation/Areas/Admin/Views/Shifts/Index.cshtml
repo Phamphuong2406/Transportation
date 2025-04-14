@@ -1,0 +1,181 @@
+﻿@model IEnumerable<DataAccess.Entity.Shift>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+ @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<button type="button" class="btn btn-info text-white" data-bs-toggle="modal" data-bs-target="#createDispatcherModal">
+    <i class="ri-add-box-fill text-white"></i> Thêm mới ca làm
+</button>
+
+<table class="table table-striped" id="myTable">
+    <thead>
+        <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Tên ca</th>
+            <th scope="col">T/g bắt đầu</th>
+            <th scope="col">T/g kết thúc</th>
+            <th scope="col">Lựa chọn</th>
+        </tr>
+    </thead>
+    <tbody id="shiftList">
+       
+    </tbody>
+</table>
+<!-- Modal Thêm Mới Ca Làm -->
+<div class="modal fade" id="createDispatcherModal" tabindex="-1" aria-labelledby="createDispatcherModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createDispatcherModalLabel">Thêm Mới Ca Làm</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/api/ShiftAPI/CreateShift" method="post" id="createShiftForm">
+                <div class="modal-body">
+
+                    <div class="mb-3">
+                        <label for="ShiftName" class="form-label">Tên Ca</label>
+                        <input type="text" class="form-control" id="ShiftName" name="ShiftName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="StartTime" class="form-label">Thời Gian Bắt Đầu</label>
+                        <input type="time" class="form-control" id="startTime" name="StartTime" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="EndTime" class="form-label">Thời Gian Kết Thúc</label>
+                        <input type="time" class="form-control" id="EndTime" name="EndTime" required>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Chỉnh Sửa Ca Làm -->
+<div class="modal fade" id="editShiftModal" tabindex="-1" aria-labelledby="editShiftModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/api/ShiftAPI/EditShift" method="post" id="editShiftForm">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editShiftModalLabel">Chỉnh Sửa Ca Làm</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <input type="hidden" id="editShiftId" name="ShiftId">
+                    <div class="mb-3">
+                        <label for="ShiftName" class="form-label">Tên Ca</label>
+                        <input type="text" class="form-control" id="editShiftName" name="ShiftName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="StartTime" class="form-label">Thời Gian Bắt Đầu</label>
+                        <input type="time" class="form-control" id="editStartTime" name="StartTime" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="EndTime" class="form-label">Thời Gian Kết Thúc</label>
+                        <input type="time" class="form-control" id="editEndTime" name="EndTime" required>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let table = new DataTable('#myTable');
+            fetch("/api/ShiftAPI/Get_Shift")
+                .then(response => response.json())
+                .then(data => {
+                    let rows = data.map(shift => `
+                                    <tr>
+                                        <td>${shift.ShiftId}</td>
+                                        <td>${shift.ShiftName}</td>
+                                        <td>${shift.StartTime}</td>
+                                        <td>${shift.EndTime}</td>
+                                         <td>
+                                            <a class="btn btn-warning btn-circle edit-btn" data-id="${shift.ShiftId}"><i class="fas fa-pen"></i></a>
+                                            <a class="btn btn-danger btn-circle delete-btn" data-id="${shift.ShiftId}"><i class="fas fa - trash"></i></a>
+                                        </td>
+                                    </tr>
+                                `).join("");
+
+                    document.getElementById("shiftList").innerHTML = rows;
+                })
+                .catch(error => console.error("Lỗi:", error));
+            // create
+            document.getElementById('createShiftForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                const form = e.target;
+                const formData = new FormData(form);
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Ca làm mới đã được thêm!');
+                            location.reload(); // Reload the page to reflect changes
+                        } else {
+                            alert('Có lỗi xảy ra, vui lòng thử lại.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Có lỗi xảy ra, vui lòng thử lại.');
+                    });
+            });
+            //edit
+            document.querySelectorAll('.edit-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    let shiftId = this.getAttribute('data-id');
+                    fetch(`/Admin/Shifts/GetById?shiftId=${shiftId}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log('data edit', data);
+                            document.getElementById('editShiftId').value = data.shiftId;
+                            document.getElementById('editShiftName').value = data.shiftName;
+                            document.getElementById('editStartTime').value = data.startTime;
+                            document.getElementById('editEndTime').value = data.endTime;
+                            new bootstrap.Modal(document.getElementById('editShiftModal')).show();
+                        });
+                });
+            });
+
+            document.getElementById('editShiftForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                let formData = new FormData(this);
+                fetch(form.action, {
+                    method: 'PUT',
+                    body: formData
+                }).then(response => location.reload());
+            });
+
+            document.querySelectorAll('.delete-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    let shiftId = this.getAttribute('data-id');
+                    if (confirm('Bạn có chắc chắn muốn xóa ca làm này?')) {
+                        fetch(`/api/ShiftAPI/Delete?shiftId=${shiftId}`, {
+                            method: 'DELETE'
+                        }).then(response => location.reload());
+                    }
+                });
+            });
+        });
+    </script>
+}

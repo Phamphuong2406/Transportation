@@ -1,4 +1,4 @@
-﻿@model Transportation.Infrastructure.Data.RealTimeTracking
+﻿@model DataAccess.Entity.RealTimeTracking
 
 @{
     ViewData["Title"] = "Realtime Tracking";
@@ -18,45 +18,31 @@
 <div id="map" style="height: 500px; width: 100%; margin-top: 20px;"></div>
 
 
-
-
 @section Scripts {
-    <!-- Thêm các thư viện cần thiết -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
 
-    <style>
-        #map {
-            height: 500px;
-            width: 100%;
-        }
-    </style>
-
     <script>
-        // Khởi tạo bản đồ
-        var map = L.map('map').setView([10.762622, 106.660172], 13); // Vị trí mặc định (TP.HCM)
+    
+        const truckId = '@ViewBag.truckId' ? parseInt('@ViewBag.truckId') : 1; // Set giá trị mặc định nếu null
 
-        // Thêm lớp bản đồ từ OpenStreetMap
+
+        var map = L.map('map').setView([10.762622, 106.660172], 13);
+
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // Tạo một icon tùy chỉnh cho xe tải (nếu cần)
         var truckIcon = L.icon({
-            iconUrl: '/img/truck.png', // Đảm bảo file này tồn tại trong thư mục wwwroot/img/
+            iconUrl: '/img/truck.png',
             iconSize: [50, 50]
         });
 
         let marker, circle;
 
-        function success(pos) {
-            const lat = pos.coords.latitude;
-            const lng = pos.coords.longitude;
-            const accuracy = pos.coords.accuracy;
-
-            // Cập nhật thông tin tọa độ trên giao diện
+        function updateLocationOnMap(lat, lng, accuracy) {
             document.getElementById('latitude').textContent = lat.toFixed(6);
             document.getElementById('longitude').textContent = lng.toFixed(6);
 
@@ -65,14 +51,21 @@
                 map.removeLayer(circle);
             }
 
-            // Thêm marker và vùng chính xác
-            marker = L.marker([lat, lng], { icon: truckIcon }).addTo(map).bindPopup("Vị trí hiện tại của bạn");
+            marker = L.marker([lat, lng], { icon: truckIcon }).addTo(map)
+                .bindPopup(`🚛 Truck ID: ${truckId}<br>📍 Lat: ${lat}<br>📍 Lng: ${lng}`)
+                .openPopup();
+
             circle = L.circle([lat, lng], { radius: accuracy }).addTo(map);
-
             map.fitBounds(circle.getBounds());
+        }
 
-            // Gửi dữ liệu vị trí đến server
-            sendLocationToServer(lat, lng);
+        function success(pos) {
+            const lat = pos.coords.latitude;
+            const lng = pos.coords.longitude;
+            const accuracy = pos.coords.accuracy;
+
+            updateLocationOnMap(lat, lng, accuracy);
+            sendLocationToHub(lat, lng);
         }
 
         function error(err) {
@@ -83,46 +76,31 @@
             }
         }
 
-        // Gửi dữ liệu tọa độ đến server
-        function sendLocationToServer(latitude, longitude) {
-            fetch('/Drivers/HomeDriver/UpdateLocation', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ CurrentLat: latitude, CurrentLng: longitude })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data.message); // Kết quả trả về từ server
-                })
-                .catch(error => {
-                    console.error("Lỗi gửi vị trí:", error);
-                });
-        }
-
-        // Theo dõi vị trí liên tục
         navigator.geolocation.watchPosition(success, error);
 
         // Kết nối với SignalR Hub
         const connection = new signalR.HubConnectionBuilder()
-            .withUrl("/trackingHub") // Đường dẫn đến Hub
+            .withUrl("/locationHub")
+            .configureLogging(signalR.LogLevel.Information) // Ghi log thông tin quan trọng
             .build();
 
-        connection.on("ReceiveLocationUpdate", function (location) {
-            if (location) {
-                // Cập nhật marker trên bản đồ nếu nhận thông tin từ server
-                if (marker) {
-                    marker.setLatLng([location.lat, location.lng])
-                        .bindPopup(`Truck ID: ${location.truckId}<br>Lat: ${location.lat}<br>Lng: ${location.lng}`)
-                        .openPopup();
-                }
+        connection.on("ReceiveLocation", function (receivedTruckId, lat, lng) {
+            if (receivedTruckId === truckId) {
+                updateLocationOnMap(lat, lng, 0);
             }
         });
 
-        // Kết nối tới server SignalR
-        connection.start().catch(function (err) {
-            console.error("SignalR Error:", err.toString());
-        });
+        connection.start().catch(err => console.error("Lỗi kết nối SignalR:", err));
+
+        function sendLocationToHub(latitude, longitude) {
+            console.log("Gửi tọa độ:", truckId, latitude, longitude);
+
+            connection.invoke("SendLocationUpdate",truckId, 20.970475823374986, 105.79439013678694)
+                .then(() => console.log("Gửi thành công"))
+                .catch(err => console.error("Lỗi khi gửi:", err));
+        }
     </script>
 }
+
+
+

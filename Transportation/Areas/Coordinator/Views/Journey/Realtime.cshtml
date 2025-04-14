@@ -1,11 +1,18 @@
-﻿@model IEnumerable<Transportation.Infrastructure.Data.RealTimeTracking>
-
+﻿@model IEnumerable<DataAccess.Entity.RealTimeTracking>
 @{
-    ViewData["Title"] = "Realtime Tracking";
-    Layout = "~/Areas/Drivers/Views/Shared/_LayoutDriver.cshtml";
+    ViewData["Title"] = "Realtime";
+    Layout = "~/Areas/Coordinator/Views/Shared/_LayoutCoordinator.cshtml";
 }
 
-<h1>Vị trí hiện tại của xe tải</h1>
+<style>
+    #map {
+        height: 500px;
+        width: 100%;
+        margin-top: 20px;
+    }
+</style>
+
+<h5>Vị trí hiện tại của xe tải</h5>
 
 <div id="map"></div>
 
@@ -14,102 +21,76 @@
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
-    <style>
-        #map {
-            height: 500px;
-            width: 100%;
-            margin-top: 20px;
-        }
-    </style>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
 
     <script>
-        // Lấy danh sách các điểm từ model
+        // Lấy danh sách các điểm từ model (lịch sử vị trí)
         var locations = [
-            @foreach (var location in Model)
-            {
-                <text>{ lat: @Html.Raw(location.CurrentLat), lng: @Html.Raw(location.CurrentLng), timestamp: "@location.Timestamp.ToString("yyyy-MM-dd HH:mm:ss")" }, </text>
-            }
-        ];
+        @foreach (var location in Model)
+        {
+            <text>{ lat: @Html.Raw(location.CurrentLat), lng: @Html.Raw(location.CurrentLng), timestamp: "@location.Timestamp.ToString("yyyy-MM-dd HH:mm:ss")" }, </text>
+        }
+                                ];
 
+        const truckId = '@ViewBag.TruckId'; // Lấy Truck ID từ Razor ViewBag
+
+        // Khởi tạo bản đồ nếu có dữ liệu lịch sử
         if (locations.length > 0) {
-            // Khởi tạo bản đồ tại điểm đầu tiên
             var map = L.map('map').setView([locations[0].lat, locations[0].lng], 13);
-
-            // Thêm lớp nền bản đồ
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
+
             var truckIcon = L.icon({
                 iconUrl: '@Url.Content("~/img/truck.png")',
-                iconSize: [70, 70]
-            });
-            // Vẽ đường đi (Polyline)
-            var latlngs = locations.map(function (loc) {
-                return [loc.lat, loc.lng];
+                iconSize: [50, 50]
             });
 
-            // Thêm polyline vào bản đồ
+            // Vẽ đường đi từ dữ liệu cũ
+            var latlngs = locations.map(loc => [loc.lat, loc.lng]);
             var polyline = L.polyline(latlngs, { color: 'blue' }).addTo(map);
-
-            // Zoom để bao phủ toàn bộ polyline
             map.fitBounds(polyline.getBounds());
 
-            // Marker tại điểm đầu và điểm cuối
-            var startMarker = L.marker([locations[0].lat, locations[0].lng]).addTo(map).bindPopup("Điểm đầu tiên: " + locations[0].timestamp);
-            var endMarker = L.marker([locations[locations.length - 1].lat, locations[locations.length - 1].lng], { icon: truckIcon }).addTo(map).bindPopup("Điểm hiện tại(cuối cùng): " + locations[locations.length - 1].timestamp);
+            // Marker cho điểm đầu và cuối
+            var startMarker = L.marker([locations[0].lat, locations[0].lng]).addTo(map)
+                .bindPopup("Điểm đầu tiên: " + locations[0].timestamp);
+            var truckMarker = L.marker([locations[locations.length - 1].lat, locations[locations.length - 1].lng], { icon: truckIcon })
+                .addTo(map)
+                .bindPopup("Điểm hiện tại (cuối cùng): " + locations[locations.length - 1].timestamp)
+                .openPopup();
         } else {
             document.getElementById('map').innerHTML = "<p>Không có dữ liệu vị trí để hiển thị.</p>";
         }
+
+        // --- Cập nhật vị trí theo thời gian thực bằng SignalR ---
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/locationHub") // Đường dẫn tới Hub
+            .configureLogging(signalR.LogLevel.Information) // Ghi log
+            .build();
+
+        connection.on("ReceiveLocation", function (receivedTruckId, lat, lng) {
+            if (receivedTruckId === truckId) {
+                console.log(`Cập nhật vị trí xe tải ${truckId}: Lat ${lat}, Lng ${lng}`);
+
+                // Cập nhật vị trí marker trên bản đồ
+                if (truckMarker) {
+                    truckMarker.setLatLng([lat, lng])
+                        .bindPopup(`🚛 Truck ID: ${truckId}<br>📍 Lat: ${lat}<br>📍 Lng: ${lng}`)
+                        .openPopup();
+                } else {
+                    truckMarker = L.marker([lat, lng], { icon: truckIcon })
+                        .addTo(map)
+                        .bindPopup(`🚛 Truck ID: ${truckId}<br>📍 Lat: ${lat}<br>📍 Lng: ${lng}`)
+                        .openPopup();
+                }
+
+                // Tự động pan map đến vị trí mới
+                map.panTo(new L.LatLng(lat, lng));
+            }
+        });
+
+        // Kết nối SignalR
+        connection.start().catch(err => console.error("Lỗi kết nối SignalR:", err));
     </script>
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

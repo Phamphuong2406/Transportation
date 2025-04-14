@@ -1,13 +1,14 @@
 ﻿using AutoMapper;
+using DataAccess.DataContext;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
-using Transportation.Infrastructure.Data;
+
 
 namespace Transportation.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
+  //  [Authorize(Roles = "Admin")]
     public class HomeAdminController : Controller
     {
         private MyDbContext _context;
@@ -19,14 +20,17 @@ namespace Transportation.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
+            var userName = User.Identity.IsAuthenticated ? User.Identity.Name : "Khách";
+            ViewData["UserName"] = userName;
             return View();
         }
-        public IActionResult Compareorders()
+        // so sánh khối lượng đơn hàng của các xe
+        public IActionResult Compareordersoftruck(int? month)
         {
-            var data = _context.DispatchAssignments.
+            var data = _context.DispatchAssignments.Where(t => t.RequestDate.Month == month).
                 Select(x => new
                 {
-                    TruckId = x.TruckId,
+                    TruckId = x.Trip.TruckId,
                     Status = x.Status,
 
                 }).ToList();
@@ -40,6 +44,7 @@ namespace Transportation.Areas.Admin.Controllers
             return Json(result);
         }
 
+        // tổng doanh thu theo tháng
         public IActionResult CompareRevenue()
         {
             // lấy dữ liệu của bảng
@@ -54,6 +59,45 @@ namespace Transportation.Areas.Admin.Controllers
                });
             return Json(resultt);
         }
+
+        //trạng thái đơn hàng
+        public IActionResult Compareorders()
+        {
+            var orderStatusCounts = _context.DispatchAssignments
+            .GroupBy(o => o.Status)
+            .Select(g => new
+            {
+                Status = g.Key,
+                Count = g.Count()
+            })
+            .ToList();
+            return Json(orderStatusCounts);
+        }
+
+        // Tổng khối lượng hàng hóa
+        public IActionResult CargoWeightChart()
+        {
+            var weightData = _context.DispatchAssignments
+                .Where(o => o.Status == "Đã giao hàng" || o.Status == "Đã nhận hàng") // Lọc theo trạng thái
+                .GroupBy(o => o.RequestDate.Month)  // Nhóm theo ngày
+                .Select(g => new
+                {
+                    Date = g.Key,
+                    TotalWeight = g.Sum(o => o.Weight)
+                })
+
+                .ToList();
+            return Json(weightData);
+        }
+
+
+
+        /* Biểu đồ chi phí vận hành
+ Loại biểu đồ: Đường hoặc tròn.
+ Mục đích: Theo dõi các khoản chi phí như nhiên liệu, bảo dưỡng xe, lương tài xế, v.v.
+ Thông tin hiển thị: Phân tích chi phí theo danh mục hoặc thời gian.*/
+
+
     }
 }
 

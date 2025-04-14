@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using BusinessLogic.DTOs;
+using BusinessLogic.Public;
+using DataAccess.DataContext;
+using DataAccess.Entity;
 using Microsoft.AspNetCore.Mvc;
-using Transportation.Application.DTO;
-using Transportation.Application.Public;
-using Transportation.Domain.ViewModel.Register;
-using Transportation.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Transportation.Areas.Admin.Controllers
 {
@@ -19,42 +21,34 @@ namespace Transportation.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            var data = _context.Drivers.ToList();
-            return View(data);
+            return View();
         }
       
         [HttpPost]
-        public async Task<IActionResult> RegisterDriver(DriverDTO model)
+        public IActionResult EditDriver(Driver model)
         {
-
-            if (ModelState.IsValid)
+            var driver = _context.Drivers.FirstOrDefault( x => x.DriverId == model.DriverId );
+            if (driver == null)
             {
-                var user = _mapper.Map<User>(model);
-
-                user.RandomKey = Until.GenerateRandomkey();
-                user.PasswordHash = model.PasswordHash.ToMd5Hash(user.RandomKey);
-                user.RoleId = 3;
-                user.IsActive = true;
-                _context.Users.Add(user);
-                _context.SaveChanges();
-                //nếu user có role bằng 2 thì sẽ tạo mới 1 khách hàng 
-                var driver = new Driver
-                {
-
-                    UserId = user.UserId,
-                    FullName = model.FullName,
-                    DateOfBirth = model.DateOfBirth,
-                    Idcard = model.Idcard,
-                    HealthStatus = model.HealthStatus
-                };
-                _context.Drivers.Add(driver);
-                await _context.SaveChangesAsync();
-
-                return RedirectToAction("Index");
-
+                return NotFound();
             }
-
-            return View();
+            driver.FullName = model.FullName;
+            driver.DateOfBirth = model.DateOfBirth;
+            driver.Idcard = model.Idcard;
+            driver.HealthStatus = model.HealthStatus;
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public IActionResult DeleteDriver(int DriverId)
+        {
+            var driver = _context.Drivers.FirstOrDefault(s => s.DriverId == DriverId);
+            if (driver != null)
+            {
+                _context.Drivers.Remove(driver);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
     }
     }

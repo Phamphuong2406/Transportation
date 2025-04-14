@@ -1,4 +1,4 @@
-﻿@model Transportation.Infrastructure.Data.DispatchAssignment
+﻿@model DataAccess.Entity.DispatchAssignment
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
@@ -28,12 +28,12 @@
         </thead>
         <tbody>
             <tr>
-                <th>@Model.TruckId</th>
-                <td>@Model.Truck.ParkingLocation</td>
+                <th>@Model.Trip.TruckId</th>
+                <td>@Model.Trip.Truck.ParkingLocation</td>
                 <td>@Model.PickupLocation</td>
                 <td>@Model.DropoffLocation</td>
                 <td>
-                    <a asp-area="Coordinator" asp-controller="Journey" class="btn btn-warning btn-sm" asp-action="Realtime" asp-route-Id="@Model.TruckId">Theo dõi</a>
+                    <a asp-area="Coordinator" asp-controller="Journey" class="btn btn-warning btn-sm" asp-action="Realtime" asp-route-Id="@Model.Trip.TruckId">Theo dõi</a>
                 </td>
             </tr>
         </tbody>
@@ -49,7 +49,7 @@
     <script src="https://unpkg.com/leaflet-routing-machine@3.2.0/dist/leaflet-routing-machine.js"></script>
     <script>
         // Khởi tạo bản đồ
-        var map = L.map('map').setView([@Model.Truck.ParkingLat, @Model.Truck.ParkingLng], 13);
+        var map = L.map('map').setView([@Model.Trip.Truck.ParkingLat, @Model.Trip.Truck.ParkingLng], 13);
 
         // Thêm tile layer
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -61,14 +61,14 @@
             iconSize: [70, 70]
         });
         // Marker cho các điểm
-        var parkingMarker = L.marker([@Model.Truck.ParkingLat, @Model.Truck.ParkingLng], { icon: truckIcon }).addTo(map).bindPopup("Điểm đỗ xe (Điểm đầu)");
+        var parkingMarker = L.marker([@Model.Trip.Truck.ParkingLat, @Model.Trip.Truck.ParkingLng], { icon: truckIcon }).addTo(map).bindPopup("Điểm đỗ xe (Điểm đầu)");
         var pickupMarker = L.marker([@Model.PickupLat, @Model.PickupLng]).addTo(map).bindPopup("Điểm lấy hàng (Điểm giữa)");
         var dropoffMarker = L.marker([@Model.DropoffLat, @Model.DropoffLng]).addTo(map).bindPopup("Điểm trả hàng (Điểm cuối)");
 
         // Tự động thêm tuyến đường
         L.Routing.control({
             waypoints: [
-                L.latLng(@Model.Truck.ParkingLat, @Model.Truck.ParkingLng), // Điểm đỗ xe
+                L.latLng(@Model.Trip.Truck.ParkingLat, @Model.Trip.Truck.ParkingLng), // Điểm đỗ xe
                 L.latLng(@Model.PickupLat, @Model.PickupLng), // Điểm lấy hàng
                 L.latLng(@Model.DropoffLat, @Model.DropoffLng) // Điểm trả hàng
             ],

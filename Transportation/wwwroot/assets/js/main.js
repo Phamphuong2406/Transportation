@@ -93,6 +93,19 @@
     onscroll(document, headerScrolled)
   }
 
+    /**
+     * Animation on scroll function and init
+     */
+    /*function aosInit() {
+        AOS.init({
+            duration: 600,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+    }
+    window.addEventListener('load', aosInit);
+*/
   /**
    * Back to top button
    */
@@ -186,7 +199,7 @@
 
   const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const isSmallScreen = window.matchMedia('(max-width: 1023.5px)').matches;
-
+/*
   tinymce.init({
     selector: 'textarea.tinymce-editor',
     plugins: 'preview importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons accordion',
@@ -228,21 +241,21 @@
     ],
     importcss_append: true,
     file_picker_callback: (callback, value, meta) => {
-      /* Provide file and text for the link dialog */
+      *//* Provide file and text for the link dialog *//*
       if (meta.filetype === 'file') {
         callback('https://www.google.com/logos/google.jpg', {
           text: 'My text'
         });
       }
 
-      /* Provide image and alt text for the image dialog */
+      *//* Provide image and alt text for the image dialog *//*
       if (meta.filetype === 'image') {
         callback('https://www.google.com/logos/google.jpg', {
           alt: 'My alt text'
         });
       }
 
-      /* Provide alternative source and posted for the media dialog */
+      *//* Provide alternative source and posted for the media dialog *//*
       if (meta.filetype === 'media') {
         callback('movie.mp4', {
           source2: 'alt.ogg',
@@ -260,7 +273,7 @@
     content_css: useDarkMode ? 'dark' : 'default',
     content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
   });
-
+*/
   /**
    * Initiate Bootstrap validation check
    */

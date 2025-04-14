@@ -1,120 +1,210 @@
-﻿@model IEnumerable<Transportation.Infrastructure.Data.Truck>
+﻿@model IEnumerable<DataAccess.Entity.Truck>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Danh sách xe tải";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
- @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-<div>
-    <h5 class="card-title">Thông tin xe tải </h5>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-  <a href="~/Admin/Trucks/RegisterTruck">Thêm mới </a>
-    <table class="table table-striped">
+<div>
+    <h5 class="card-title">Thông tin xe tải</h5>
+    <a href="~/Admin/Trucks/RegisterTruck" class="btn btn-primary mb-3">Thêm mới</a>
+
+    <table class="table table-striped" id="myTable">
         <thead>
             <tr>
-                <th scope="col">Mã số xe</th>
+                <th scope="col">STT</th>
                 <th scope="col">Biển số xe</th>
                 <th scope="col">Tên tài xế</th>
-                <th scope="col">Tải trọng(tấn)</th>
+                <th scope="col">Tải trọng (kg)</th>
                 <th scope="col">Loại nhiên liệu</th>
-                <th scope="col">Định mức tiêu thụ(l/100km)</th>
                 <th scope="col">Điểm đỗ xe</th>
-                <th scope="col">lựa chọn</th>
-
+                <th scope="col">Lựa chọn</th>
             </tr>
         </thead>
-        <tbody>
-            @foreach (var item in Model)
+        <tbody id="truckList">
+         @*    @foreach (var item in Model)
             {
                 <tr>
                     <th scope="row">@item.TruckId</th>
-                    <th>@item.ConsumptionRate</th>
+                    <td>@item.LicensePlate</td>
                     <td>@item.Driver.FullName</td>
                     <td>@item.Capacity</td>
                     <td>@item.FuelType</td>
-                    <td>@item.ConsumptionRate</td>
-                    <td>@item.ParkingLocation<td>
-                    <td>Xóa/sửa</td>
-
+                    <td>@item.ParkingLocation (@item.ParkingLat, @item.ParkingLng)</td>
+                    <td>
+                        <a class="btn btn-warning btn-circle edit-btn"
+                           data-id="@item.TruckId"
+                           data-licenseplate="@item.LicensePlate"
+                           data-driver="@item.Driver.FullName"
+                           data-capacity="@item.Capacity"
+                           data-fueltype="@item.FuelType"
+                           data-parkinglocation="@item.ParkingLocation"
+                           data-lat="@item.ParkingLat"
+                           data-lng="@item.ParkingLng">
+                            <i class="fas fa-pen"></i>
+                        </a>
+                        <a class="btn btn-danger btn-circle delete-btn" data-id="@item.TruckId">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
                 </tr>
-            }
-
-
+            } *@
         </tbody>
     </table>
 </div>
 
-<!-- Modal for adding new dispatcher -->
-<div class="modal fade" id="createDispatcherModal" tabindex="-1" aria-labelledby="createDispatcherModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<!-- Popup Sửa -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="createDispatcherModalLabel">Thêm nhân viên mới</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form asp-action="RegisterDispatcher" asp-controller="Dispatchers" asp-area="Admin" method="post" id="createDispatcherForm">
+            <form method="post" action="/Admin/Trucks/Edit">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Chỉnh sửa thông tin xe tải</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
                 <div class="modal-body">
-                    <div class="form-group mb-3">
-                        <label for="Capacity" class="form-label">Tải trọng</label>
-                        <input type="text" class="form-control" id="Capacity" name="Capacity" required>
+                    <input type="hidden" name="TruckId" id="editTruckId" />
+                    <div class="mb-3">
+                        <label for="editLicensePlate" class="form-label">Biển số xe</label>
+                        <input type="text" class="form-control" name="LicensePlate" id="editLicensePlate" required />
                     </div>
-                    <div class="form-group mb-3">
-                        <label for="PhoneNumber" class="form-label">Số điện  thoại</label>
-                        <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" required>
+                    <div class="mb-3">
+                        <label for="editDriver" class="form-label">Tên tài xế</label>
+                        <input type="text" class="form-control" id="editDriver" readonly />
                     </div>
-                    <div class="form-group mb-3">
-                        <label for="FullName" class="form-label">Họ và tên</label>
-                        <input type="text" class="form-control" id="FullName" name="FullName" required>
+                    <div class="mb-3">
+                        <label for="editParkingLocation" class="form-label">Điểm đỗ xe</label>
+                        <input type="text" class="form-control" name="ParkingLocation" id="editParkingLocation" required />
                     </div>
-                    <div class="form-group mb-3">
-                        <label for="PasswordHash" class="form-label">Mật khẩu</label>
-                        <input type="text" class="form-control" id="PasswordHash" name="PasswordHash" required>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="editParkingLat" class="form-label">ParkingLat</label>
+                            <input type="text" class="form-control" name="ParkingLat" id="editParkingLat" readonly />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="editParkingLng" class="form-label">ParkingLng</label>
+                            <input type="text" class="form-control" name="ParkingLng" id="editParkingLng" readonly />
+                        </div>
                     </div>
-                    <div class="form-group mb-3">
-                        <label for="Username" class="form-label">
-                            Tên đăng nhập</lable>
-                            <input type="text" class="form-control" id="Username" name="Username" required>
-                    </div>
-
-                    <div class="form-group mb-3">
-                        <label for="Department" class="form-label">Khu vực quản lý</label>
-                        <input type="text" class="form-control" id="Department" name="Department" required>
-                    </div>
+                    <div id="map" style="height: 400px; margin-top: 20px;"></div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                    <button type="submit" class="btn btn-primary">Lưu</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
+<!-- Popup Xóa -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Bạn có chắc chắn muốn xóa xe tải này không?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <a class="btn btn-danger" id="confirmDeleteBtn">Xóa</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
     <script>
-        // Optional: Add AJAX handling for form submission
-        document.getElementById('createDispatcherForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const form = e.target;
-            const formData = new FormData(form);
+        // DataTable
+        let table = new DataTable('#myTable');
 
-            fetch(form.action, {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => {
-                    if (response.ok) {
-                        alert('Nhân viên mới đã được thêm!');
-                        location.reload(); // Reload the page to reflect changes
-                    } else {
-                        alert('Có lỗi xảy ra, vui lòng thử lại.');
-                    }
+        // Map Variables
+        let map;
+        let marker;
+        document.addEventListener("DOMContentLoaded", function () {
+
+            fetch("/api/TruckAPI/GetAllTruck")
+                .then(response => response.json())
+                .then(data => {
+                    let rows = data.map(truck => `
+                                    <tr>
+                                        <td>${truck.TruckId}</td>
+                                        <td>${truck.LicensePlate}</td>
+                                         <td>${truck.Capacity}</td>
+                                         <td>${truck.FuelType}</td>
+                                        <td>${truck.ParkingLocation}</td>
+                                        <td>
+                                <a class="btn btn-warning btn-circle edit-btn"
+                                     data-id="truck.TruckId"
+                                           data-licenseplate="${truck.LicensePlate}"
+
+                                           data-capacity="${truck.Capacity}"
+                                           data-fueltype="${truck.FuelType}"
+                                           data-parkinglocation="${truck.ParkingLocation}"
+                                           data-lat="${truck.ParkingLat}"
+                                           data-lng="${truck.ParkingLng}">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                                        <a class="btn btn-danger btn-circle delete-btn" data-id="${truck.TruckId}">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                                        </td>
+                                    </tr>
+                                `).join("");
+
+                    document.getElementById("truckList").innerHTML = rows;
                 })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Có lỗi xảy ra, vui lòng thử lại.');
+                .catch(error => console.error("Lỗi:", error));
+        });
+        // Popup Sửa
+        document.querySelectorAll('.edit-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                let truckId = this.getAttribute('data-id');
+                document.getElementById('editTruckId').value = truckId;
+                document.getElementById('editLicensePlate').value = this.getAttribute('data-licenseplate');
+                document.getElementById('editDriver').value = this.getAttribute('data-driver');
+                document.getElementById('editParkingLocation').value = this.getAttribute('data-parkinglocation');
+                document.getElementById('editParkingLat').value = this.getAttribute('data-lat');
+                document.getElementById('editParkingLng').value = this.getAttribute('data-lng');
+
+                let lat = parseFloat(this.getAttribute('data-lat'));
+                let lng = parseFloat(this.getAttribute('data-lng'));
+
+                if (map) {
+                    map.remove();
+                }
+                map = L.map('map').setView([lat, lng], 15);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 18,
+                    attribution: '© OpenStreetMap'
+                }).addTo(map);
+
+                marker = L.marker([lat, lng], { draggable: true }).addTo(map);
+
+                marker.on('dragend', function (e) {
+                    let newLatLng = marker.getLatLng();
+                    document.getElementById('editParkingLat').value = newLatLng.lat;
+                    document.getElementById('editParkingLng').value = newLatLng.lng;
                 });
+
+                let editModal = new bootstrap.Modal(document.getElementById('editModal'));
+                editModal.show();
+            });
+        });
+
+        // Popup Xóa
+        document.querySelectorAll('.delete-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                let truckId = this.getAttribute('data-id');
+                let deleteUrl = `/api/TruckAPI/DeleteTruck?truckId=${truckId}`;
+                document.getElementById('confirmDeleteBtn').setAttribute('href', deleteUrl);
+
+                let deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+                deleteModal.show();
+            });
         });
     </script>
 }
-
-

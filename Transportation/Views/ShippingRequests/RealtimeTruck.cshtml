@@ -1,0 +1,46 @@
+﻿@model IEnumerable<DataAccess.Entity.RealTimeTracking>
+@{
+    ViewData["Title"] = "RealtimeTruck";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+       
+}
+
+<h2>Bản đồ Hành trình Xe tải</h2>
+<div id="map" style="height: 500px; width: 100%;"></div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var map = L.map('map').setView([10.762622, 106.660172], 12); // Mặc định tại TP.HCM
+
+        // Thêm bản đồ từ OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Dữ liệu tọa độ từ Model
+        var coordinates = [
+            @foreach (var item in Model)
+            {
+            @:[@item.CurrentLat, @item.CurrentLng],
+            }
+                    ];
+
+        if (coordinates.length > 0) {
+            var latlngs = coordinates; // Chuyển danh sách thành mảng
+
+            // Vẽ tuyến đường trên bản đồ
+            var polyline = L.polyline(latlngs, { color: 'blue' }).addTo(map);
+
+            // Căn chỉnh bản đồ để hiển thị đầy đủ tuyến đường
+            map.fitBounds(polyline.getBounds());
+
+            // Thêm marker cho điểm đầu và cuối
+            L.marker(latlngs[0]).addTo(map).bindPopup("Điểm bắt đầu").openPopup();
+            L.marker(latlngs[latlngs.length - 1]).addTo(map).bindPopup("Điểm kết thúc");
+        } else {
+            alert("Không có dữ liệu vị trí.");
+        }
+    });
+</script>
+
+

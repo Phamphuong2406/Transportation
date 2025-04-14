@@ -1,45 +1,34 @@
-﻿@model IEnumerable<Transportation.Infrastructure.Data.Dispatcher>
+﻿@model IEnumerable<DataAccess.Entity.Dispatcher>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
- @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
 <div>
-    <h5 class="card-title">Thông tin tài xế</h5>
+    <h5 class="card-title">Thông tin nhân viên điều phối</h5>
 
     <!-- Button to trigger modal -->
     <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#createDispatcherModal">
         Thêm mới
     </button>
 
-    <table class="table table-striped">
+    <table class="table table-striped" id="myTable">
         <thead>
             <tr>
-                <th scope="col">Mã nhân viên</th>
+                <th scope="col">STT</th>
                 <th scope="col">Họ và tên</th>
                 <th scope="col">Khu vực quản lý</th>
-               
-                <th scope="col">lựa chọn</th>
+                <th scope="col">Lựa chọn</th>
             </tr>
         </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <th scope="row">@item.DispatcherId</th>
-                    <td>@item.FullName</td>
-                    <td>@item.Department</td>
-                    
-                    <td >Xóa/sửa</td>
-
-                </tr>
-            }
-
-
+        <tbody id="listDispatcher">
+            <!-- Data will be loaded via JS -->
         </tbody>
     </table>
-    </div>
-   
+</div>
+
 <!-- Modal for adding new dispatcher -->
 <div class="modal fade" id="createDispatcherModal" tabindex="-1" aria-labelledby="createDispatcherModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -48,14 +37,14 @@
                 <h5 class="modal-title" id="createDispatcherModalLabel">Thêm nhân viên mới</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form asp-action="RegisterDispatcher" asp-controller="Dispatchers" asp-area="Admin" method="post" id="createDispatcherForm">
+            <form id="createDispatcherForm" action="/api/AccountAPI/DispatcherRegister" method="post">
                 <div class="modal-body">
                     <div class="form-group mb-3">
                         <label for="Email" class="form-label">Email</label>
-                        <input  type="text" class="form-control" id="Email" name="Email" required>
+                        <input type="text" class="form-control" id="Email" name="Email" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="PhoneNumber" class="form-label">Số điện  thoại</label>
+                        <label for="PhoneNumber" class="form-label">Số điện thoại</label>
                         <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" required>
                     </div>
                     <div class="form-group mb-3">
@@ -67,10 +56,9 @@
                         <input type="text" class="form-control" id="PasswordHash" name="PasswordHash" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="Username" class="form-label">Tên đăng nhập</lable>
-                            <input type="text" class="form-control" id="Username" name="Username" required>
+                        <label for="Username" class="form-label">Tên đăng nhập</label>
+                        <input type="text" class="form-control" id="Username" name="Username" required>
                     </div>
-                    
                     <div class="form-group mb-3">
                         <label for="Department" class="form-label">Khu vực quản lý</label>
                         <input type="text" class="form-control" id="Department" name="Department" required>
@@ -85,30 +73,125 @@
     </div>
 </div>
 
+<!-- Modal for edit -->
+<div class="modal fade" id="editDispatcherModal" tabindex="-1" aria-labelledby="editDispatcherModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form asp-action="EditDispatcher" asp-controller="Dispatchers" asp-area="Admin" method="post" id="editDispatcherForm">
+                <div class="modal-header">
+                    <h5 class="modal-title">Chỉnh sửa nhân viên điều phối</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="editDispatcherId" name="DispatcherId" />
+                    <div class="form-group mb-3">
+                        <label for="editFullName">Họ và tên</label>
+                        <input type="text" class="form-control" id="editFullName" name="FullName" required />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="editDepartment">Khu vực quản lý</label>
+                        <input type="text" class="form-control" id="editDepartment" name="Department" required />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for delete -->
+<div class="modal fade" id="deleteDispatcherModal" tabindex="-1" aria-labelledby="deleteDispatcherModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form asp-action="DeleteDispatcher" asp-controller="Dispatchers" asp-area="Admin" method="post" id="deleteDispatcherForm">
+                <div class="modal-header">
+                    <h5 class="modal-title">Xóa nhân viên điều phối</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc chắn muốn xóa nhân viên này không?</p>
+                    <input type="hidden" id="deleteDispatcherId" name="DispatcherId" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-danger">Xóa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
     <script>
-        // Optional: Add AJAX handling for form submission
-        document.getElementById('createDispatcherForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const form = e.target;
-            const formData = new FormData(form);
-
-            fetch(form.action, {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => {
-                    if (response.ok) {
-                        alert('Nhân viên mới đã được thêm!');
-                        location.reload(); // Reload the page to reflect changes
-                    } else {
-                        alert('Có lỗi xảy ra, vui lòng thử lại.');
-                    }
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("/api/AccountAPI/GetAllDispatcher")
+                .then(response => response.json())
+                .then(data => {
+                  
+                    let rows = data.map(item => `
+                                <tr>
+                                    <td>${item.DispatcherId}</td>
+                                    <td>${item.FullName}</td>
+                                     <td>${item.Department}</td>
+                                    <td>
+                                        <button class="btn btn-warning btn-circle" data-bs-toggle="modal" data-bs-target="#editDispatcherModal"
+                                            onclick="loadEditModal('${item.DispatcherId}', '${item.FullName}', '${item.Department}')">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+                                        <button class="btn btn-danger btn-circle" data-bs-toggle="modal" data-bs-target="#deleteDispatcherModal"
+                                            onclick="setDeleteId('${item.DispatcherId}')">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            `).join("");
+                    document.getElementById("listDispatcher").innerHTML = rows;
                 })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Có lỗi xảy ra, vui lòng thử lại.');
-                });
+                .catch(error => console.error("Lỗi:", error));
         });
+
+        // Load data into Edit Modal
+        function loadEditModal(id, fullName, department) {
+            document.getElementById("editDispatcherId").value = id;
+            document.getElementById("editFullName").value = fullName;
+            document.getElementById("editDepartment").value = department;
+        }
+
+        // Set ID for Delete Modal
+        function setDeleteId(id) {
+            document.getElementById("deleteDispatcherId").value = id;
+        }
+
+        // Submit forms (Create, Edit, Delete) with fetch
+        ['createDispatcherForm', 'editDispatcherForm', 'deleteDispatcherForm'].forEach(formId => {
+            const form = document.getElementById(formId);
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Thành công!');
+                            location.reload();
+                        } else {
+                            alert('Có lỗi xảy ra.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Lỗi:', error);
+                        alert('Có lỗi xảy ra.');
+                    });
+            });
+        });
+
+        // DataTable
+        new DataTable('#myTable');
     </script>
 }

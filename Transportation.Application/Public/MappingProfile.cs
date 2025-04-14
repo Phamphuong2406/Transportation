@@ -18,6 +18,7 @@ namespace Transportation.Application.Public
             CreateMap<RegisterVM, User>();
             CreateMap<DriverDTO, User>();
             CreateMap<DispatcherDTO, User>();
+            CreateMap<Shift, ShiftDTO>().ReverseMap();
             /* CreateMap<WarehouseVM, Mwarehouse>();
              CreateMap<InventoryVM, Inventory>();*/
         }

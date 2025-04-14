@@ -1,12 +1,14 @@
-﻿using ExcelDataReader;
+﻿using BusinessLogic.DTOs;
+using DataAccess.DataContext;
+using DataAccess.Entity;
+using ExcelDataReader;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Transportation.Application.DTO;
-using Transportation.Infrastructure.Data;
+
 
 namespace Transportation.Controllers
 {
-    [Authorize(Roles = "Customer")]
+ 
     public class WarehouseController : Controller
     {
         private MyDbContext _context;
@@ -15,101 +17,48 @@ namespace Transportation.Controllers
             _context = context;
 
         }
+        private Customer GetCurrentCustomer()
+        {
+            var userIDClaim = HttpContext.User.Claims.SingleOrDefault(id => id.Type == "UserID");
+
+            if (userIDClaim != null && long.TryParse(userIDClaim.Value, out long userID))
+            {
+                return _context.Customers.SingleOrDefault(x => x.UserId == (int)userID);
+            }
+
+            return null;
+        }
+
         public IActionResult Index()
         {
-            var userIDClaim = HttpContext.User.Claims.SingleOrDefault(id => id.Type == "UserID");
-
-            // Kiểm tra nếu claim tồn tại và userID hợp lệ
-            if (userIDClaim != null && long.TryParse(userIDClaim.Value, out long userID))
-            {
-                var customer = _context.Customers.SingleOrDefault(x => x.UserId == (int)userID);
-
-                if (customer != null)
-                {
-
-                   var data = _context.Warehouses.Where(u => u.CustomerId == customer.CustomerId).Select(x => new WarehouseDto
-                   {
-                       WarehouseId = x.WarehouseId,
-                       Name = x.Name,
-                       Address = x.Address,
-                       Latitude = x.Latitude,
-                       Longitude = x.Longitude,
-                       Capacity = x.Capacity,
-                       IsActive = x.IsActive,
-                      ClosingTime = x.ClosingTime,
-                     OpeningTime = x.OpeningTime
-                   }).ToList();    
-
-                    return View(data);
-
-                }
-                else
-                {
-                    // Thêm lỗi nếu không tìm thấy Customer
-                    ModelState.AddModelError("", "Không tìm thấy thông tin khách hàng.");
-                }
-            }
-            else
-            {
-                // Thêm lỗi nếu không có UserID hợp lệ
-                ModelState.AddModelError("", "Không thể xác định tài khoản người dùng.");
-            }
-
            
-
             return View();
         }
-       
 
+
+
+        [HttpGet]
         public IActionResult Create()
         {
-            var data = new Warehouse();
-
-
-       
-
-            return View(data);
-
+            return View();
         }
+
         [HttpPost]
-        public IActionResult Create(Warehouse model)
-           
+        public IActionResult Delete(int id)
         {
-            var userIDClaim = HttpContext.User.Claims.SingleOrDefault(id => id.Type == "UserID");
-
-            // Kiểm tra nếu claim tồn tại và userID hợp lệ
-            if (userIDClaim != null && long.TryParse(userIDClaim.Value, out long userID))
+            var warehouse = _context.Warehouses.Find(id);
+            if (warehouse == null)
             {
-                var customer = _context.Customers.SingleOrDefault(x => x.UserId == (int)userID);
-
-                if (customer != null)
-                {
-                    
-                    model.CustomerId = customer.CustomerId; // Gán CustomerId từ bảng Customer
-
-                    // Thêm vào cơ sở dữ liệu
-                    _context.Warehouses.Add(model);
-                    _context.SaveChanges();
-
-                    return View();
-
-                }
-                else
-                {
-                    // Thêm lỗi nếu không tìm thấy Customer
-                    ModelState.AddModelError("", "Không tìm thấy thông tin khách hàng.");
-                }
-            }
-            else
-            {
-                // Thêm lỗi nếu không có UserID hợp lệ
-                ModelState.AddModelError("", "Không thể xác định tài khoản người dùng.");
+                return Json(new { success = false, errorMessage = "Kho không tồn tại!" });
             }
 
-            return View(model);
+            _context.Warehouses.Remove(warehouse);
+            _context.SaveChanges();
 
+            return Json(new { success = true });
         }
-      
+
+
         public IActionResult GetWarehouseListPartial()
         {
             var warehouses = _context.Warehouses.ToList();
@@ -120,8 +69,14 @@ namespace Transportation.Controllers
         [HttpPost]
         public async Task<IActionResult> UploadExcel(IFormFile file)
         {
-            if (file != null && file.Length > 0)
+            if (file == null || file.Length == 0)
             {
+                ModelState.AddModelError("", "Vui lòng chọn file hợp lệ.");
+                return View();
+            }
+            try
+            {
+
                 var uploadFolder = $"{Directory.GetCurrentDirectory()}\\wwwroot\\Uploads\\";
 
                 if (!Directory.Exists(uploadFolder))
@@ -147,41 +102,66 @@ namespace Transportation.Controllers
 
                             while (reader.Read())
                             {
-                                if (!isHeaderSkipped)
+                                if (!isHeaderSkipped) // bỏ qua dòng tiêu đề
                                 {
                                     isHeaderSkipped = true;
                                     continue;
                                 }
+                                // Kiểm tra nếu dòng hiện tại hoàn toàn trống
+                                if (IsEmptyRow(reader))
+                                    break; // Dừng vòng lặp khi gặp dòng trống
+
 
                                 Warehouse s = new Warehouse();
-                                s.Name = reader.GetValue(0).ToString();
-                                s.Address = reader.GetValue(1).ToString();
-                                s.Latitude = Convert.ToDecimal(reader.GetValue(2).ToString());
-                                s.Longitude = Convert.ToDecimal(reader.GetValue(3).ToString());
-                                s.Capacity = Convert.ToInt32(reader.GetValue(4).ToString());
-                                s.IsActive = Convert.ToBoolean(reader.GetValue(5).ToString());
- 
-                                string closingTimeString = reader.GetValue(6).ToString();
+                                s.Name = reader.GetValue(0)?.ToString();
+                                s.Address = reader.GetValue(1)?.ToString();
+                                s.Latitude = Convert.ToDecimal(reader.GetValue(2)?.ToString());
+                                s.Longitude = Convert.ToDecimal(reader.GetValue(3)?.ToString());
+                                s.Capacity = Convert.ToInt32(reader.GetValue(4)?.ToString());
+                                s.IsActive = Convert.ToBoolean(reader.GetValue(5)?.ToString());
+
+                                string closingTimeString = reader.GetValue(6)?.ToString();
                                 DateTime closingDateTime = DateTime.Parse(closingTimeString);
                                 s.ClosingTime = TimeOnly.FromTimeSpan(closingDateTime.TimeOfDay);
 
-                                string openTimeString = reader.GetValue(7).ToString();
+                                string openTimeString = reader.GetValue(7)?.ToString();
                                 DateTime openDateTime = DateTime.Parse(openTimeString);
                                 s.OpeningTime = TimeOnly.FromTimeSpan(openDateTime.TimeOfDay);
 
-                                s.CustomerId = Convert.ToInt32(reader.GetValue(8).ToString());
+                                s.CustomerId = Convert.ToInt32(reader.GetValue(8)?.ToString());
 
                                 _context.Warehouses.Add(s);
                                 await _context.SaveChangesAsync();
+                               
                             }
+
+                           
                         } while (reader.NextResult());
 
-                        ViewBag.Message = "success";
-                    }
-                }
 
+                        return RedirectToAction("Index");
+                    }
+                   
+                }
+               
             }
-            return View();
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Lỗi khi xử lý file: " + ex.Message);
+                return View();
+            }
+        }
+
+        private bool IsEmptyRow(IExcelDataReader reader)
+        {
+            for (int i = 0; i < reader.FieldCount; i++)
+            {
+                if (reader.GetValue(i) != null && !string.IsNullOrWhiteSpace(reader.GetValue(i)?.ToString()))
+                {
+                    return false; // Dòng có dữ liệu, tiếp tục đọc
+                }
+            }
+            return true; // Dòng hoàn toàn trống
         }
 
     }

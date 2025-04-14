@@ -1,0 +1,180 @@
+﻿@model DataAccess.Entity.Trip
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Coordinator/Views/Shared/_LayoutCoordinator.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#createDispatcherModal">
+    Thêm mới
+</button>
+
+<table class="table table-striped" id="myTable">
+    <thead>
+        <tr>
+            <th scope="col">Mã Chuyến</th>
+            <th scope="col">Ca làm</th>
+            <th scope="col">Xe v/c</th>
+            <th scope="col">Ngày thực hiện</th>
+            <th scope="col">Trạng thái</th>
+            <th scope="col">Tùy chọn</th>
+        </tr>
+    </thead>
+    <tbody id="ListTrip">
+    </tbody>
+</table>
+
+<!-- Modal for adding new dispatcher -->
+<div class="modal fade" id="createDispatcherModal" tabindex="-1" aria-labelledby="createDispatcherModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createDispatcherModalLabel">Thêm chuyến hàng mới</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/api/TripAPI/CreateTrip" method="post" id="createDispatcherForm">
+                <div class="modal-body">
+                    <div class="form-group mb-3">
+                        <label for="dropdownTruck" class="form-label">Xe tải</label>
+                        <select id="dropdownTruck" name="TruckId" class="form-control" required>
+                            <option value="">-- Chọn xe --</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="dropdownShift" class="form-label">Ca làm</label>
+                        <select id="dropdownShift" name="ShiftId" class="form-control" required>
+                            <option value="">-- Chọn ca làm --</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="StartTime" class="form-label">Giờ bắt đầu</label>
+                        <input type="time" class="form-control" id="StartTime" name="StartTime" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="EndTime" class="form-label">Giờ kết thúc</label>
+                        <input type="time" class="form-control" id="EndTime" name="EndTime" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="AssignedDate" class="form-label">Ngày thực hiện</label>
+                        <input type="date" class="form-control" id="AssignedDate" name="AssignedDate" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        const formatDate = (isoDate) => {
+            const d = new Date(isoDate);
+            return `${d.getDate().toString().padStart(2, '0')}/${(d.getMonth() + 1).toString().padStart(2, '0')}/${d.getFullYear()}`;
+        };
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let table = new DataTable('#myTable');
+
+            // Load danh sách chuyến
+            fetch("/api/TripAPI/GetAllTrip")
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    let rows = data.map(item => `
+                                <tr>
+                                    <td>${item.TripId}</td>
+                                    <td>${item.ShiftId}</td>
+                                    <td>${item.TruckId}</td>
+                                    <td>${formatDate(item.AssignedDate)}</td>
+                                    <td>${item.Status}</td>
+                                    <td>
+                                        <button class="btn btn-warning btn-circle" data-bs-toggle="modal" data-bs-target="#editModal"
+                                            onclick="loadEditModal('${item.TripId}')">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+                                        <button class="btn btn-danger btn-circle" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                            onclick="setDeleteId('${item.TripId}')">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            `).join("");
+                    document.getElementById("ListTrip").innerHTML = rows;
+                })
+                .catch(error => console.error("Lỗi:", error));
+        });
+
+        let isTruckLoaded = false;
+        let isShiftLoaded = false;
+
+        // Tự động load dropdown khi mở modal
+        $('#createDispatcherModal').on('shown.bs.modal', function () {
+            if (!isTruckLoaded) {
+                $.ajax({
+                    url: "/api/TruckAPI/GetAllTruck",
+                    type: "GET",
+                    success: function (data) {
+                        console.log(data);
+                        let dropdown = $("#dropdownTruck");
+                        dropdown.empty();
+                        dropdown.append('<option value="">-- Chọn xe --</option>');
+                        $.each(data, function (index, item) {
+                            dropdown.append(`<option value="${item.TruckId}">${item.LicensePlate}</option>`);
+                        });
+                        isTruckLoaded = true;
+                    },
+                    error: function () {
+                        alert("Không thể tải danh sách xe!");
+                    }
+                });
+            }
+
+            if (!isShiftLoaded) {
+                $.ajax({
+                    url: "/api/ShiftAPI/GetAllShift",
+                    type: "GET",
+                    success: function (data) {
+                        console.log(data);
+                        let dropdown = $("#dropdownShift");
+                        dropdown.empty();
+                        dropdown.append('<option value="">-- Chọn ca làm --</option>');
+                        $.each(data, function (index, item) {
+                            dropdown.append(`<option value="${item.ShiftId}">${item.ShiftName}</option>`);
+                        });
+                        isShiftLoaded = true;
+                    },
+                    error: function () {
+                        alert("Không thể tải danh sách ca làm!");
+                    }
+                });
+            }
+        });
+
+        // Gửi form bằng AJAX
+        document.getElementById('createDispatcherForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Chuyến hàng mới đã được thêm!');
+                        location.reload();
+                    } else {
+                        alert('Có lỗi xảy ra, vui lòng thử lại.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Có lỗi xảy ra, vui lòng thử lại.');
+                });
+        });
+    </script>
+}

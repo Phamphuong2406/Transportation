@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using DataAccess.DataContext;
+using DataAccess.Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Transportation.Infrastructure.Data;
 
 namespace Transportation.Areas.Coordinator.Controllers
 {
@@ -18,6 +19,8 @@ namespace Transportation.Areas.Coordinator.Controllers
         //Hôm có danh sách các xe
         public IActionResult Index()
         {
+            var userName = User.Identity.IsAuthenticated ? User.Identity.Name : "Khách";
+            ViewData["UserName"] = userName;
 
             return View(_context.Trucks.Include(x => x.Driver).ToList());
         }
@@ -25,7 +28,7 @@ namespace Transportation.Areas.Coordinator.Controllers
 
         public IActionResult Detail(int Id)
         {
-            var data = _context.DispatchAssignments.Include(x =>x.Truck).FirstOrDefault(x => x.TruckId == Id);
+            var data = _context.DispatchAssignments.Include(x =>x.Trip.Truck).FirstOrDefault(x => x.Trip.TruckId == Id);
             if (data != null)
             {
 

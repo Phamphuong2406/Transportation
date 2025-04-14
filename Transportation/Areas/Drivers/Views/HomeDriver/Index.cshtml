@@ -1,63 +1,56 @@
-﻿@model IEnumerable<Transportation.Infrastructure.Data.DispatchAssignment>
+﻿@model IEnumerable<DataAccess.Entity.Trip>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Indexx";
     Layout = "~/Areas/Drivers/Views/Shared/_LayoutDriver.cshtml";
 }
  @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<div class="container mt-4">
 
+    <div class="row">
+        <div class="col-md-5">
+            <h5 class="card-title">Danh sách chuyến hàng</h5>  
+            <a class="btn btn-danger btn-sm " href="~/Drivers/HomeDriver/CurrentLocation"> <i class="bi bi-geo-alt"></i> </a>
 
-<div>
-    <h5 class="card-title">đơn hàng vận chuyển</h5>
+            <table class="table table-striped" id="myTable">
+                <thead>
+                    <tr>
+                        <th scope="col">STT</th>
+                        <th scope="col">Ngày thực hiện</th>
+                        <th scope="col">Ca làm</th>
+                   
+                        <th scope="col">Trạng thái</th>
+                        <th scope="col">Lựa chọn</th>
+                    </tr>
+                </thead>
+               
+                <tbody id="data-list">
+                 
+                </tbody>
+            </table>
+        </div>
 
-    <!-- Table with stripped rows -->
+        <!-- Cột danh sách xe -->
+        <div style="margin-top: 85px;" class="col-md-7">
+            <h5 class="card-title">Danh sách YCVC tương ứng</h5>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Mã </th>
+                        <th scope="col">Địa chỉ nhận</th>
+                        <th scope="col">Địa chỉ giao</th>
+                        <th scope="col">Trọng tải</th>
+                        <th scope="col">Đơn giá</th>
+                        <th scope="col">Lựa chọn</th>
+                    </tr>
+                </thead>
+                <tbody id="ycvc-list">
+                    <!-- Dữ liệu sẽ được render tại đây thông qua JavaScript -->
+                </tbody>
+            </table>
+        </div>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">Mã </th>
-                <th scope="col">Địa chỉ nhận</th>
-                <th scope="col">Địa chỉ giao</th>
-                <th scope="col">Trọng tải</th>
-                <th scope="col">Đơn giá</th>
-                <th scope="col">Khách hàng</th>
-                <th scope="col">lựa chọn</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <th scope="row" class="request-id">@item.RequestId</th>
-                    <td>@item.PickupLocation</td>
-                    <td>@item.DropoffLocation</td>
-                    <td>@item.Weight</td>
-                    <td>@item.ShippingCost</td>
-                    <td>@item.Request.Customer.FullName</td>
-                    <td>
+    </div>
 
-                            <a asp-area="Drivers" asp-controller="HomeDriver" class="btn btn-warning btn-sm" asp-action="Detail" asp-route-Id="@item.AssignmentId">Xem đường</a>
-                        @if (item.Status == "Đã giao hàng")
-                        {
-                            <!-- Nếu đã giao hàng, hiển thị trạng thái -->
-                            <h6 class="text-success">Đã giao hàng</h6>
-                        }
-                        else
-                        {
-                            <!-- Button to trigger modal -->
-                            <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                            data-bs-target="#createDispatcherModal"
-                            onclick="setRequestId('@item.RequestId')">
-                                Xác nhận
-                            </button>
-                        }
-                    </td>
-
-                </tr>
-            }
-
-
-        </tbody>
-    </table>
 </div>
 
 <!-- Modal for confirmation -->
@@ -68,7 +61,7 @@
                 <h5 class="modal-title" id="createDispatcherModalLabel">Xác nhận đơn hàng</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form asp-action="UploadImgAndStatus" asp-controller="HomeDriver" asp-area="Drivers" method="post" enctype="multipart/form-data" id="createDispatcherForm">
+            <form action="/api/DispatchAPI/UploadImgAndStatus" method="post" enctype="multipart/form-data" id="updateStatus">
                 <div class="modal-body">
                     <!-- Hidden input to store AssignmentId -->
                     <input type="hidden" id="requestId" name="RequestId">
@@ -88,84 +81,299 @@
 </div>
 
  @section Scripts {
-    <script>
-        function setRequestId(requestId) {
-            document.getElementById('requestId').value = requestId;
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+   
+<script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            loadRequests();
+        });
+
+        function loadRequests() {
+            fetch("/api/TripAPI/GetTripByDriverId")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Lỗi khi gọi API");
+                    }
+                    return response.json(); // Lúc này trả về dữ liệu JSON từ server
+                })
+                .then(data => {
+                    console.log(data);
+                    const tableBody = document.getElementById("data-list");
+                    tableBody.innerHTML = ""; // Xóa dữ liệu cũ
+
+                    data.forEach(item => {
+                        let statusHtml = "";
+                        if (item.Status === "Đã Hoàn Thành") {
+                            statusHtml = '<button class="btn btn-secondary">Đã kết thúc ca</button>';
+                        } else {
+                            statusHtml = `<button class="btn btn-success start-shift-btn" data-tripid="${item.TripId}">Bắt đầu ca làm</button>`;
+                        }
+                        const row = `
+                      <tr data-id="${item.TripId}" class="table-row">
+                          <td scope="row">${item.TripId}</td>
+                          <td>${item.AssignedDate}</td>
+                          <td>${item.StartTime} - ${item.EndTime}</td>
+                          <td>${item.Status}</td>
+                          <td>${statusHtml}</td>
+                      </tr>`;
+                        tableBody.innerHTML += row;
+                    });
+                })
+                .catch(error => {
+                    console.error("Lỗi fetch:", error);
+                });
+
+        }
+        function loadTripDetails(tripId) {
+            fetch(`/api/DispatchAPI/ProcessRowTrip?tripId=${tripId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Lỗi khi gọi API");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Data nhận được:', data);
+
+                    let ycvcTableBody = document.querySelector('#ycvc-list');
+                    if (!ycvcTableBody) {
+                        console.warn("Không tìm thấy phần tử #ycvc-list");
+                        return;
+                    }
+                    ycvcTableBody.innerHTML = '';
+
+                    data.forEach(ycvc => {
+                        let actionButtons = '';
+
+                        if (ycvc.Status === "Đã gán xe") {
+                            actionButtons = `
+                                <button type="button" class="btn btn-primary" onclick="getRequestId('${ycvc.RequestId}')"> Đã lấy hàng</button>
+                            `;
+                        } else if (ycvc.Status === "Đã lấy hàng") {
+                            actionButtons = `
+                                <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#createDispatcherModal"
+                                        onclick="setRequestId('${ycvc.RequestId}')">
+                                    XN trả hàng
+                                </button>
+                            `;
+                        } else if (ycvc.Status === "Đã giao hàng") {
+                            actionButtons = `<h6 class="text-success">Đã trả hàng</h6>`;
+                        }
+
+                        let row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${ycvc.RequestId}</td>
+                            <td>${ycvc.PickupLocation}</td>
+                            <td>${ycvc.DropoffLocation}</td>
+                            <td>${ycvc.Weight}</td>
+                            <td>${ycvc.ShippingCost}</td>
+                            <td>
+                                <a href="/Drivers/HomeDriver/Detail/${ycvc.AssignmentId}" class="btn btn-warning btn-sm text-white">
+                                    <i class="bi bi-info-circle text-white"></i> Chi tiết
+                                </a>
+                                ${actionButtons}
+                            </td>
+                        `;
+                        ycvcTableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.log('Error:', error));
         }
 
-        function submitForm(button) {
-            const form = document.getElementById('createDispatcherForm');
-            const formData = new FormData(form);
+        // ✅ Event delegation: xử lý khi click vào .table-row, kể cả khi tạo động
+        document.getElementById('data-list')?.addEventListener('click', function (e) {
+            const clickedRow = e.target.closest('.table-row');
+            if (clickedRow && !e.target.closest('button')) {
+                const tripId = clickedRow.getAttribute('data-id');
+                loadTripDetails(tripId);
+            }
+        });
 
-            fetch(form.action, {
-                method: 'POST',
-                body: formData,
+
+    function setRequestId(requestId) {
+        document.getElementById('requestId').value = requestId;
+    }
+
+    function submitForm(button) {
+        const form = document.getElementById('updateStatus');
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+        })
+            .then(async (response) => {
+                const result = await response.json();
+                if (response.ok) {
+                    // Thành công
+                    alert("Đã xác nhận giao hàng thành công!");
+
+                    location.reload(); // Load lại trang nếu cần
+
+                } else if (response.status === 400) {
+                    // Lỗi dữ liệu không hợp lệ
+                    alert(result.message || "Dữ liệu không hợp lệ. Vui lòng kiểm tra lại.");
+                } else {
+                    // Lỗi khác
+                    alert("Đã xảy ra lỗi: " + (result.message || "Không xác định."));
+                }
             })
-                .then(async (response) => {
-                    const result = await response.json();
-                    if (response.ok) {
-                        // Thành công
-                        alert("Đã xác nhận giao hàng thành công!");
+            .catch((error) => {
+                console.error("Error:", error);
+                alert("Không thể gửi yêu cầu. Vui lòng thử lại.");
+            });
+    }
 
-                        location.reload(); // Load lại trang nếu cần
+    function getRequestId(requestId) {
+        document.getElementById('requestId').value = requestId;
+        // Gửi AJAX đến endpoint
+        $.ajax({
+                url: '/api/DispatchAPI/StartShippingRequest',
+            method: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify({ requestId: requestId }),
+            success: function (response) {
+                alert(response.message);
 
-                    } else if (response.status === 400) {
-                        // Lỗi dữ liệu không hợp lệ
-                        alert(result.message || "Dữ liệu không hợp lệ. Vui lòng kiểm tra lại.");
+                // Thay đổi nút thành thẻ <h> với nội dung "Đã giao"
+
+                location.reload(); // Load lại trang nếu cần
+            },
+            error: function (xhr) {
+                alert('Có lỗi xảy ra: ' + xhr.responseJSON?.message || 'Không thể cập nhật trạng thái.');
+            }
+        });
+    }
+</script>
+
+<script>
+    let table = new DataTable('#myTable');
+        let watchId = null; // Lưu ID của watchPosition để dừng khi kết thúc ca làm
+        let lastSentTime = 0; // Lưu thời gian gửi vị trí lần cuối
+        const updateInterval = 3 * 60 * 1000; // 3 phút (180000ms)
+
+        // Khởi tạo kết nối SignalR
+        let connection = new signalR.HubConnectionBuilder()
+            .withUrl("/locationHub") // Địa chỉ của Hub
+            .configureLogging(signalR.LogLevel.Information) // Ghi log thông tin quan trọng
+            .build();
+
+        // Kết nối đến Hub
+        async function startConnection() {
+            try {
+                await connection.start();
+                console.log("✅ Kết nối đến LocationHub thành công!");
+            } catch (err) {
+                console.error("❌ Lỗi kết nối đến Hub:", err);
+                setTimeout(startConnection, 5000); // Thử kết nối lại sau 5s nếu lỗi
+            }
+        }
+        startConnection();
+
+        // Hàm kiểm tra tripId hợp lệ
+        function isValidTripId(tripId) {
+            return tripId !== null && tripId !== undefined && !isNaN(tripId) && Number(tripId) > 0;
+        }
+
+        // Hàm bắt đầu chia sẻ vị trí (cập nhật mỗi 3 phút)
+        function startTracking(tripId, button) {
+            if (!navigator.geolocation) {
+                alert("❌ Trình duyệt không hỗ trợ định vị!");
+                return;
+            }
+
+            if (!isValidTripId(tripId)) {
+                console.error("⚠ Lỗi: tripId không hợp lệ!", tripId);
+                alert("⚠ Lỗi: Không tìm thấy ID xe tải hợp lệ!");
+                return;
+            }
+
+            watchId = navigator.geolocation.watchPosition((position) => {
+                let lat = position.coords.latitude;
+                let lng = position.coords.longitude;
+                let now = Date.now();
+
+                // Chỉ gửi vị trí nếu đã qua 3 phút kể từ lần gửi trước
+                if (now - lastSentTime >= updateInterval) {
+                    lastSentTime = now; // Cập nhật thời gian gửi cuối
+
+                    console.log(`📡 Gửi vị trí: Trip ${tripId} | Lat: ${lat} | Lng: ${lng}`);
+
+                    // Gửi dữ liệu đến SignalR Hub
+                    connection.invoke("SendLocationUpdate", Number(tripId), lat, lng)
+                        .catch(err => console.error("❌ Lỗi gửi dữ liệu đến Hub:", err));
+                }
+            }, (error) => {
+                console.error("⚠ Lỗi khi lấy vị trí:", error);
+            }, {
+                enableHighAccuracy: true, // Độ chính xác cao
+                maximumAge: 0 // Luôn lấy vị trí mới nhất
+            });
+
+            // Cập nhật giao diện
+            button.innerText = "Kết thúc ca làm";
+            button.classList.remove("btn-success");
+            button.classList.add("btn-danger");
+            button.onclick = () => stopTracking(tripId, button);
+        }
+
+        // Hàm dừng theo dõi vị trí và gọi API StopSharing
+        function stopTracking(tripId, button) {
+            if (watchId !== null) {
+                navigator.geolocation.clearWatch(watchId);
+                watchId = null;
+            }
+
+            console.log("🚫 Đã dừng chia sẻ vị trí");
+
+            // Gửi yêu cầu đến API StopSharing
+            fetch("/api/TripAPI/StopSharing", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ tripId: tripId })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        console.log("✅ Cập nhật trạng thái thành công:", data);
+
+                        // Chỉ cập nhật giao diện khi API phản hồi thành công
+                        button.innerText = "Đã kết thúc ca";
+                        button.classList.remove("btn-danger");
+                        button.classList.add("btn-secondary");
+                        button.disabled = true; // Vô hiệu hóa nút
+
+                        // Reload trang sau 1 giây để cập nhật trạng thái mới
+                        setTimeout(() => {
+                            location.reload();
+                        }, 1000);
                     } else {
-                        // Lỗi khác
-                        alert("Đã xảy ra lỗi: " + (result.message || "Không xác định."));
+                        console.error("⚠ API trả về lỗi:", data.message);
+                        alert("⚠ Không thể kết thúc ca làm. Hãy thử lại!");
                     }
                 })
-                .catch((error) => {
-                    console.error("Error:", error);
-                    alert("Không thể gửi yêu cầu. Vui lòng thử lại.");
-                });
+                .catch(error => console.error("❌ Lỗi khi gửi StopSharing:", error));
+
+           
         }
-    </script>
 
- }
-@* @section Scripts {
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Lắng nghe sự kiện click cho tất cả nút "Xác nhận đã giao"
-            document.querySelectorAll('.btn-primary').forEach(function (button) {
-                button.addEventListener('click', function () {
-                    // Tìm hàng hiện tại (tr) chứa nút được nhấn
-                    const currentRow = button.closest('tr');
-                    if (!currentRow) {
-                        console.error("Không tìm thấy hàng chứa nút.");
-                        return;
-                    }
 
-                    // Lấy RequestId từ cột tương ứng
-                    const requestIdCell = currentRow.querySelector('.request-id');
-                    if (!requestIdCell) {
-                        console.error("Không tìm thấy cột chứa RequestId.");
-                        return;
-                    }
-                    const requestId = parseInt(requestIdCell.textContent.trim());
-
-                    // Gửi AJAX đến endpoint
-                    $.ajax({
-                        url: '/Drivers/HomeDriver/UpdateStatus',
-                        method: 'POST',
-                        contentType: 'application/json',
-                        data: JSON.stringify({ requestId: requestId }),
-                        success: function (response) {
-                            alert(response.message);
-
-                            // Thay đổi nút thành thẻ <h> với nội dung "Đã giao"
-                            const parentCell = button.parentElement;
-                            parentCell.innerHTML = '<h6 class="text-success">Đã giao</h6>';
-                        },
-                        error: function (xhr) {
-                            alert('Có lỗi xảy ra: ' + xhr.responseJSON?.message || 'Không thể cập nhật trạng thái.');
-                        }
-                    });
-                });
+        // Gán sự kiện cho tất cả nút "Bắt đầu ca làm"
+        document.querySelectorAll(".start-shift-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                let tripId = this.getAttribute("data-tripid");
+                startTracking(tripId, this);
             });
         });
-    </script>
+
+</script>
 }
- *@

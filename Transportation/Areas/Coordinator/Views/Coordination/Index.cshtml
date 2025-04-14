@@ -1,95 +1,49 @@
-﻿@model IEnumerable<Transportation.Infrastructure.Data.ShippingRequest>
+﻿@model IEnumerable<DataAccess.Entity.ShippingRequest>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Coordinator/Views/Shared/_LayoutCoordinator.cshtml";
-    <style>
-        .selected-row {
-            background-color: #f0f8ff !important; /* Màu xanh nhạt */
-        }
-
-    </style>
+            <style>
+                .selected-row {
+                    background-color: #f0f8ff !important; /* Màu xanh nhạt */
+                }
+            </style>
 }
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <div class="container mt-4">
-    <!-- Form lọc dữ liệu -->
-    <div class="filter-section">
-        <form id="filter-form" method="get" asp-action="Filter" asp-controller="Coordination">
-            <input type="date"
-                   id="search-input"
-                   name="keyword"
-                   placeholder="Nhập từ khóa để lọc..."
-            @* value="@Request.Query["keyword"]" *@ />
-            <button type="submit">Tìm kiếm</button>
-        </form>
-    </div>
+
     <div class="row">
-        <div class="col-md-7" >
+        <div class="col-md-7">
             <h5 class="card-title">Bảng đơn hàng</h5>
 
-            <table class="table table-striped">
+            <table class="table table-striped" id="myTable">
                 <thead>
                     <tr>
-                        <th scope="col">Mã đơn hàng</th>
+                        <th scope="col">STT</th>
+                        <th scope="col">Khách hàng</th>
                         <th scope="col">Ngày đặt</th>
-                        <th scope="col">Địa chỉ nhận</th>
-                        <th scope="col">Địa chỉ giao</th>
-                        <th scope="col">Giá ship</th>
+                        <th scope="col">Giá vc</th>
                         <th scope="col">Trọng tải</th>
                         <th scope="col">Loại hàng</th>
-
                         <th scope="col">Lựa chọn</th>
                     </tr>
                 </thead>
-                <tbody id="data-list">
-                    @if (Model != null && Model.Any())
-                    {
-                        @foreach (var item in Model)
-                        {
-                            <tr data-id="@item.RequestId" class="table-row">
-                                <th scope="row">@item.RequestId</th>
-                                <td>@item.RequestDate</td>
-                                <td>@item.PickupLocation</td>
-                                <td>@item.DropoffLocation</td>
-                                <td>@item.ShippingCost</td>
-                                <td>@item.Weight</td>
-                                <td>@item.ProductTypeId</td>
-                                <td>
-                                    <a asp-area="Coordinator" asp-controller="Coordination" asp-action="Detail" asp-route-Id="@item.RequestId" class="btn btn-warning btn-sm">Xem đường</a>
-                                    @if (item.Status == "Đã điều phối xe" || item.Status == "Đã nhận hàng")
-                                    {
-                                        <!-- Nếu đã giao hàng, hiển thị trạng thái -->
-                                        <h6 class="text-success">Đã điều phối</h6>
-                                    }
-                                    else
-                                    {
-                                        <!-- Button to trigger modal -->
-                                        <h6>Chưa điều phối</h6>
-                                    }
-                                </td>
-                            </tr>
-                        }
-                    }
-                    else
-                    {
-                        <p>Không có dữ liệu để hiển thị.</p>
-                    }
+                <tbody id="listUnassignedRequests">
                 </tbody>
             </table>
-
         </div>
 
         <!-- Cột danh sách xe -->
-        <div class="col-md-5">
-            <h5 class="card-title">Danh sách xe</h5>
+        <div style="margin-top: 60px;" class="col-md-5">
+            <h5 class="card-title">Danh sách chuyến hàng phù hợp</h5>
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Mã xe</th>
-                        <th>Tài xế</th>
-                        <th>Tải trọng</th>
-                        <th>Nhiên liệu sd</th>
-                        <th>Điểm đỗ</th>
+                        <th>Mã</th>
+                        <th>Ca làm</th>
+                        <th>Xe v/c</th>
+                        <th>ngày giao</th>
+                        <th>Tình trạng</th>
                         <th>Lựa chọn</th>
                     </tr>
                 </thead>
@@ -101,13 +55,6 @@
 
     </div>
 
-    <!-- Hàng hiển thị danh sách điều phối thành công -->
-    <div class="row mt-4">
-        <div class="col-12">
-            <h5 class="card-title">Danh sách điều phối thành công</h5>
-            @await Component.InvokeAsync("DispartchList"),
-        </div>
-    </div>
 </div>
 @* Modal popup *@
 <div class="modal fade" id="routeModal" tabindex="-1" aria-labelledby="routeModalLabel" aria-hidden="true">
@@ -126,36 +73,248 @@
 
 @section Scripts {
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Filter form submission
+        let mapInstance = null;
+        let selectedRequestId = null;
+
+        document.addEventListener("DOMContentLoaded", function () {
+            loadRequests();
+        });
+
+        function loadRequests() {
+            fetch("/api/DispatchAPI/GetUnassignedRequests")
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.getElementById("listUnassignedRequests");
+                    tableBody.innerHTML = ""; // Xóa dữ liệu cũ
+
+                    data.forEach(item => {
+                        let statusHtml = "";
+                        if (item.Status === "Đã điều phối xe" || item.Status === "Đã nhận hàng" || item.Status === "Đang giao hàng") {
+                            statusHtml = '<h6 class="text-success">Đã điều phối</h6>';
+                        } else if (item.Status === "Chờ xác nhận") {
+                            statusHtml = '<h6>Chưa điều phối</h6>';
+                        } else {
+                            statusHtml = '<h6 class="text-danger">Đã hủy</h6>';
+                        }
+
+                        const row = `
+                                    <tr data-id="${item.RequestId}" class="table-row">
+                                        <th scope="row">${item.RequestId}</th>
+                                        <th>${item.CustomerName}</th>
+                                        <td>${item.RequestDate}</td>
+                                        <td>${item.ShippingCost}</td>
+                                        <td>${item.Weight}</td>
+                                        <td>${item.ProductNameType}</td>
+                                        <td>
+                                                <a href="/Coordinator/Coordination/Detail/${item.RequestId}" class="btn btn-warning btn-sm icon text-white">
+                                                <i class="bi bi-info-circle text-white"></i> Xem
+                                            </a>
+                                            ${statusHtml}
+                                        </td>
+                                    </tr>`;
+                        tableBody.innerHTML += row;
+                    });
+
+                    // Khởi tạo hoặc làm mới DataTable
+                    const tableElement = $("#datatable-request");
+                    if ($.fn.DataTable.isDataTable(tableElement)) {
+                        tableElement.DataTable().clear().destroy();
+                    }
+                    tableElement.DataTable({
+                        responsive: true,
+                        autoWidth: false,
+                        order: [[0, "desc"]],
+                    });
+
+                    attachRowEvents();
+                })
+                .catch(error => {
+                    console.error("Lỗi khi lấy dữ liệu yêu cầu:", error);
+                });
+        }
+ 
+  
+        function attachRowEvents() {
+
+            const rows = document.querySelectorAll('.table-row');
+
+
+            rows.forEach(row => {
+                row.addEventListener('click', function () {
+                    rows.forEach(r => r.classList.remove('selected-row'));
+                    this.classList.add('selected-row');
+
+                    selectedRequestId = this.getAttribute('data-id');
+                    console.log('huu',selectedRequestId);
+                    fetch('/api/DispatchAPI/ProcessRow', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ id: parseInt(selectedRequestId) }),
+                    })
+                        .then(response => response.ok ? response.json() : Promise.reject('Không thể chuyến hàng phù hợp'))
+                        .then(data => {
+                            console.log(data);
+                            const trucksTable = document.querySelector('.col-md-5 table tbody');
+                            trucksTable.innerHTML = '';
+
+                            if (Array.isArray(data) && data.length > 0) {
+                                data.forEach(trip => {
+                                    const row = `
+                                                <tr>
+                                                    <td>${trip.TripId}</td>
+                                                    <td>${trip.ShiftName}</td>
+                                                    <td>${trip.TruckId}</td>
+                                                    <td>${trip.AssignedDate}</td>
+                                                    <td>${trip.Status}</td>
+                                                    <td>
+                                                        <button class="btn btn-primary btn-sm assign-trip-btn" data-trip-id="${trip.TripId}">Phân công</button>
+                                                        <button class="btn btn-info btn-sm route-truck-btn text-white" data-trip-id="${trip.TripId}">
+                                                            <i class="bi bi-info-circle text-white"></i> Chi tiết
+                                                        </button>
+                                                    </td>
+                                                </tr>`;
+                                    trucksTable.innerHTML += row;
+                                });
+                                attachButtonEvents();
+                            } else {
+                                trucksTable.innerHTML = `<tr><td colspan="6" class="text-center">Không có xe phù hợp</td></tr>`;
+                            }
+                        })
+                        .catch(error => console.error('Error fetching trucks:', error));
+                });
+            });
+        }
+
+        function attachButtonEvents() {
+            document.querySelectorAll('.assign-trip-btn').forEach(button => {
+                button.addEventListener('click', async function () {
+                    const tripId = this.getAttribute('data-trip-id');
+                 //   selectedRequestId = this.getAttribute('data-id');
+                    console.log('dd',tripId);
+                    console.log('gg',selectedRequestId);
+                    try {
+                        const response = await fetch('/api/DispatchAPI/CreateCoordination', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                requestId: parseInt(selectedRequestId),
+                                tripId: parseInt(tripId),
+                            }),
+                        });
+
+                        const result = await response.json();
+
+                        if (!response.ok) throw new Error(result.message || 'Có lỗi xảy ra khi điều xe.');
+                        alert(result.message);
+                        await updateRequestStatus(selectedRequestId);
+                        location.reload();
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('Có lỗi xảy ra khi điều xe.');
+                    }
+                });
+            });
+
+            document.querySelectorAll('.route-truck-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    const tripId = this.getAttribute('data-trip-id');
+
+                    fetch('/api/DispatchAPI/Vehicleroute', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ tripId }),
+                    })
+                        .then(response => response.ok ? response.json() : Promise.reject('Không thể tải lộ trình, vui lòng thử lại!'))
+                        .then(data => {
+                            if (!data || data.length === 0) {
+                                alert('Chưa có yêu cầu nào');
+                                return;
+                            }
+
+                            const modal = new bootstrap.Modal(document.getElementById('routeModal'));
+                            modal.show();
+
+                            if (mapInstance) {
+                                mapInstance.remove();
+                                mapInstance = null;
+                            }
+
+                            mapInstance = L.map('map').setView([data[0].pickupLat, data[0].pickupLng], 13);
+                            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 25 }).addTo(mapInstance);
+
+                            const waypoints = [];
+                            data.forEach(point => {
+                                waypoints.push(L.latLng(point.pickupLat, point.pickupLng));
+                                waypoints.push(L.latLng(point.dropoffLat, point.dropoffLng));
+                            });
+
+                            const routingControl = L.Routing.control({
+                                waypoints: waypoints,
+                                routeWhileDragging: true,
+                                showAlternatives: false,
+                                lineOptions: { styles: [{ color: 'blue', weight: 4 }] },
+                                createMarker: (i, waypoint) => {
+                                    const label = i % 2 === 0 ? 'Điểm lấy hàng' : 'Điểm trả hàng';
+                                    return L.marker(waypoint.latLng).bindPopup(label);
+                                }
+                            }).addTo(mapInstance);
+
+                            routingControl.on('routesfound', function (e) {
+                                const summary = e.routes[0].summary;
+                                const distance = (summary.totalDistance / 1000).toFixed(2);
+                                const time = (summary.totalTime / 60).toFixed(2);
+                                alert(`Tổng quãng đường: ${distance} km\nThời gian dự kiến: ${time} phút`);
+                            });
+                        })
+                        .catch(error => {
+                            console.error('Error fetching vehicle route:', error);
+                            alert('Không thể tải lộ trình, vui lòng thử lại!');
+                        });
+                });
+            });
+        }
+
+        async function updateRequestStatus(requestId) {
+            try {
+                await fetch(`/api/DispatchAPI/UpdateRequestStatus/${requestId}`, { method: 'POST' });
+            } catch (error) {
+                console.error('Lỗi khi cập nhật trạng thái đơn hàng:', error);
+            }
+        }
+    </script>
+
+
+@*   <script>
+
+        $(document).ready(function () {
+
             $("#filter-form").submit(function (e) {
                 e.preventDefault(); // Ngăn việc submit form truyền thống
 
                 const keyword = $("#search-input").val(); // Lấy từ khóa lọc
-
                 $.ajax({
-                    url: '/Coordinator/Coordination/Filter', // URL gọi đến action
+                    url: '/api/CoordinationAPI/Filter', // URL gọi đến action
                     type: 'GET',
                     data: { keyword: keyword }, // Truyền tham số từ khóa
                     success: function (response) {
                         console.log('data:', response);
-                        $("#data-list").empty(); // Xóa dữ liệu cũ
+                        $("#listUnassignedRequests").empty(); // Xóa dữ liệu cũ
 
                         $.each(response, function (index, item) {
                             var row = `<tr data-id="${item.requestId}" class="table-row">
-                                            <th scope="row">${item.requestId}</th>
-                                            <td>${item.requestDate}</td>
-                                            <td>${item.pickupLocation}</td>
-                                            <td>${item.dropoffLocation}</td>
-                                            <td>${item.shippingCost}</td>
-                                            <td>${item.weight}</td>
-                                            <td>${item.productTypeId}</td>
-                                            <td>
-                                                <a asp-area="Coordinator" asp-controller="Coordination" asp-action="Detail" asp-route-Id="${item.requestId}" class="btn btn-warning btn-sm">Xem đường</a>
-                                                ${item.Status === "Đã điều phối xe" || item.Status === "Đã nhận hàng" ? '<h6 class="text-success">Đã điều phối</h6>' : '<h6>Chưa điều phối</h6>'}
-                                            </td>
-                                        </tr>`;
-                            $("#data-list").append(row);
+                                                                                    <th scope="row">${item.requestId}</th>
+                                                                                    <td>${item.requestDate}</td>
+                                                                                    <td>${item.pickupLocation}</td>
+                                                                                    <td>${item.dropoffLocation}</td>
+                                                                                    <td>${item.shippingCost}</td>
+                                                                                    <td>${item.weight}</td>
+                                                                                    <td>${item.productTypeId}</td>
+                                                                                    <td>
+                                                                                        <a asp-area="Coordinator" asp-controller="Coordination" asp-action="Detail" asp-route-Id="${item.requestId}" class="btn btn-warning btn-sm">Xem đường</a>
+                                                                                        ${item.Status === "Đã điều phối xe" || item.Status === "Đã nhận hàng" ? '<h6 class="text-success">Đã điều phối</h6>' : '<h6>Chưa điều phối</h6>'}
+                                                                                    </td>
+                                                                                </tr>`;
+                            $("#listUnassignedRequests").append(row);
                         });
 
                         // Gắn lại các sự kiện cho các hàng mới thêm vào
@@ -166,206 +325,7 @@
                     }
                 });
             });
-
-            // Gắn sự kiện click vào các hàng trong bảng đơn hàng
-            const attachRowEvents = () => {
-                const rows = document.querySelectorAll('.table-row');
-
-                rows.forEach(row => {
-                    row.addEventListener('click', function () {
-                        rows.forEach(r => r.classList.remove('selected-row')); // Bỏ lớp 'selected-row' khỏi tất cả các hàng
-                        this.classList.add('selected-row'); // Thêm lớp 'selected-row' vào hàng được click
-
-                        selectedRequestId = this.getAttribute('data-id'); // Lấy ID đơn hàng từ thuộc tính data-id
-
-                        fetch('/Coordinator/Coordination/ProcessRow', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({ id: parseInt(selectedRequestId) }),
-                        })
-                            .then(response => response.ok ? response.json() : Promise.reject('Không thể lấy danh sách xe'))
-                            .then(data => {
-                                console.log('Data received from /ProcessRow:', data);
-                                const trucksTable = document.querySelector('.col-md-5 table tbody');
-                                trucksTable.innerHTML = '';
-
-                                if (Array.isArray(data) && data.length > 0) {
-                                    data.forEach(truck => {
-                                        const row = `
-                                            <tr>
-                                                <td>${truck.truckId}</td>
-                                                <td>${truck.driverName}</td>
-                                                <td>${truck.capacity}</td>
-                                                <td>${truck.fuelType}</td>
-                                                <td>${truck.parkingLocation}</td>
-                                                <td>
-                                                    <button class="btn btn-primary btn-sm assign-truck-btn" data-truck-id="${truck.truckId}">Điều xe</button>
-                                                    <button class="btn btn-info btn-sm route-truck-btn" data-truck-id="${truck.truckId}">
-                                                        <i class="bi bi-info-circle"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>`;
-                                        trucksTable.innerHTML += row;
-                                    });
-
-                                    attachButtonEvents();
-                                } else {
-                                   trucksTable.innerHTML = `<tr><td colspan="6" class="text-center">Không có xe phù hợp</td></tr>`;
-                                    console.log('No trucks available');
-                                }
-                            })
-                            .catch(error => console.error('Error fetching trucks:', error));
-                    });
-                });
-                function attachButtonEvents() {
-                    // Gắn sự kiện click vào nút "Điều xe"
-                    document.querySelectorAll('.assign-truck-btn').forEach(button => {
-                        button.addEventListener('click', async function () {
-                            const truckId = this.getAttribute('data-truck-id');
-                            console.log('Assign truck clicked, Truck ID:', truckId);
-
-                            // Gửi RequestId và TruckId tới endpoint
-                            try {
-                                const response = await fetch('/Coordinator/Coordination/Createe', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                    },
-                                    body: JSON.stringify({
-                                        requestId: parseInt(selectedRequestId),
-                                        truckId: parseInt(truckId),
-                                    }),
-                                });
-
-                                if (!response.ok) {
-                                    throw new Error('Failed to assign truck');
-                                }
-
-                                alert('Điều xe thành công!');
-                                await updateRequestStatus(selectedRequestId);
-                                location.reload(true);
-                            } catch (error) {
-                                console.error('Error:', error);
-                                alert('Có lỗi xảy ra khi điều xe.');
-                            }
-                        });
-                    });
-                    //SỰ KIỆN XEM LỘ TRÌNH DỰ KIẾN CỦA XE
-                    //  nối thành công bằng Leaflet Routing Machine
-                    const routeButtons = document.querySelectorAll('.route-truck-btn');
-                    let mapInstance = null; // Biến toàn cục để lưu trữ bản đồ
-
-                    routeButtons.forEach(button => {
-                        button.addEventListener('click', function () {
-                            const truckId = this.getAttribute('data-truck-id');
-                            console.log('Route button clicked, Truck ID:', truckId);
-
-                            // Gửi yêu cầu tới endpoint để lấy tọa độ
-                            fetch('/Coordinator/Coordination/Vehicleroute', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                },
-                                body: JSON.stringify({ truckId: truckId }),
-                            })
-                                .then(response => {
-                                    if (!response.ok) {
-                                        throw new Error('Không thể tải lộ trình, vui lòng thử lại!');
-                                    }
-                                    return response.json(); // Lấy dữ liệu JSON
-                                })
-                                .then(data => {
-                                    console.log('Coordinates received:', data);
-
-                                    // Kiểm tra nếu dữ liệu trả về rỗng
-                                    if (!data || data.length === 0) {
-                                        alert('Chưa có yêu cầu nào');
-                                        return;
-                                    }
-
-                                    // Hiển thị modal sau khi nhận dữ liệu
-                                    const modal = new bootstrap.Modal(document.getElementById('routeModal'));
-                                    modal.show();
-
-                                    // Kiểm tra và xóa bản đồ cũ nếu đã tồn tại
-                                    if (mapInstance) {
-                                        mapInstance.remove(); // Loại bỏ bản đồ cũ
-                                        mapInstance = null; // Reset biến
-                                    }
-
-                                    // Khởi tạo bản đồ
-                                    mapInstance = L.map('map').setView([data[0].pickupLat, data[0].pickupLng], 13);
-                                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                        maxZoom: 25,
-                                    }).addTo(mapInstance);
-
-                                    // Sử dụng Leaflet Routing Machine để tính toán đường đi
-                                    const waypoints = [];
-                                    data.forEach(point => {
-                                        waypoints.push(L.latLng(point.pickupLat, point.pickupLng));
-                                        waypoints.push(L.latLng(point.dropoffLat, point.dropoffLng));
-                                    });
-
-                                    // Tính toán và hiển thị lộ trình
-                                    const routingControl = L.Routing.control({
-                                        waypoints: waypoints, // Danh sách các điểm cần tìm đường
-                                        routeWhileDragging: true, // Cho phép kéo để chỉnh sửa lộ trình
-                                        showAlternatives: false,  // Không hiển thị các lộ trình thay thế
-                                        lineOptions: {
-                                            styles: [{ color: 'blue', weight: 4 }]
-                                        },
-                                        createMarker: (i, waypoint, n) => {
-                                            // Tạo marker tùy chỉnh
-                                            const label = i % 2 === 0 ? 'Điểm lấy hàng' : 'Điểm trả hàng';
-                                            return L.marker(waypoint.latLng).bindPopup(label);
-                                        }
-                                    }).addTo(mapInstance);
-
-                                    // Lắng nghe sự kiện `routesfound` để lấy thông tin lộ trình
-                                    routingControl.on('routesfound', function (e) {
-                                        const routes = e.routes; // Mảng các lộ trình
-                                        const summary = routes[0].summary; // Tóm tắt lộ trình đầu tiên
-                                        const distance = (summary.totalDistance / 1000).toFixed(2); // Quãng đường (km)
-                                        const time = (summary.totalTime / 60).toFixed(2); // Thời gian (phút)
-
-                                        // Hiển thị thông báo
-                                        alert(`Tổng quãng đường: ${distance} km\nThời gian dự kiến: ${time} phút`);
-                                    });
-                                })
-                                .catch(error => {
-                                    console.error('Error fetching vehicle route:', error);
-                                    alert('Đã xảy ra lỗi khi tải lộ trình.');
-                                });
-                        });
-                    });
-
-                }
-                // Gửi requestId tới endpoint /ShippingRequests/UpdateStatus
-                async function updateRequestStatus(requestId) {
-                    try {
-                        const response = await fetch('/Coordinator/Coordination/UpdateStatus', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({
-                                requestId: parseInt(requestId),
-                            }),
-                        });
-
-                        if (!response.ok) {
-                            throw new Error('Failed to update request status');
-                        }
-                    } catch (error) {
-                        console.error('Error updating request status:', error);
-                    }
-                }
-            };
-
-            attachRowEvents(); // Gọi hàm gắn sự kiện sau khi dữ liệu đã được thêm
-        });
-
-    </script>
+       
+        }
+    </script>   *@
 }

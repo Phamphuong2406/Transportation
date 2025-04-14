@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataAccess.DataContext;
+using DataAccess.Entity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
-
-using Transportation.Infrastructure.Data;
 
 
 namespace Transportation.Areas.Admin.Controllers
@@ -20,31 +20,17 @@ namespace Transportation.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var truck = _context.Trucks.Include(x => x.Driver).ToList();
-            return View(truck);
+           
+            return View();
         }
         [HttpGet]
         public IActionResult RegisterTruck()
         {
            
-            ViewBag.Driver = new SelectList(_context.Drivers, "DriverId", "FullName"); // tạo 1 dropdown lựa chọn có value = id và giá trị = tên
-            return View();
+            return RedirectToAction("Index");
         }
-      [HttpPost]
-        public IActionResult RegisterTruck(Truck model, [FromForm] decimal latitude, [FromForm] decimal longitude)
-        {
+   
+        
 
-            ViewBag.Driver = new SelectList(_context.Drivers, "DriverId", "FullName"); // tạo 1 dropdown lựa chọn có value = id và giá trị = tên
-            if (ModelState.IsValid)
-            {
-                model.ParkingLat = latitude;
-                model.ParkingLng = longitude;
-                _context.Add(model);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            
-            return View();
-        }
     }
 }

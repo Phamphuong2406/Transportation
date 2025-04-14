@@ -1,0 +1,129 @@
+﻿@{
+    ViewData["Title"] = "LogIn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+                    @*   <div class="d-flex justify-content-center py-4">
+                    <a href="index.html" class="logo d-flex align-items-center w-auto">
+                    <img src="~/img/oto.jpg" alt="">
+
+                    </a>
+                    </div> *@<!-- End Logo -->
+
+                    <div class="card mb-3">
+
+                        <div class="card-body">
+
+                            <div class="pt-4 pb-2">
+                                <h5 class="card-title text-center pb-0 fs-4">Đăng nhập tài khoản của bạn</h5>
+                                <p class="text-center small">Điền thông của bạn để đăng nhập</p>
+                            </div>
+
+                            <form id="loginForm" class="row g-3 needs-validation" novalidate>
+
+                                <div class="col-12">
+                                    <label class="form-label">Username</label>
+                                    <input type="text" id="username" class="form-control" required />
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" id="password" required />
+
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
+                                        <label class="form-check-label" for="rememberMe">Remember me</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100" type="submit">Đăng nhập</button>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100" id="google-login-btn">Đăng nhập với Google</button>
+                                </div>
+                                <div class="col-12">
+                                    <p class="small mb-0">Bạn chưa có tài khoản? <a asp-action="Register" asp-controller="Account">Đăng ký thành viên</a></p>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</div>
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            let loginForm = document.getElementById("loginForm");
+            if (loginForm) {
+                loginForm.addEventListener("submit", function (event) {
+                    event.preventDefault();
+                    let username = document.getElementById("username").value;
+                    let password = document.getElementById("password").value;
+
+                    fetch("/api/AccountAPI/AccountLogin", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ username, password })
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log('token', data);
+                            if (data.token) {
+                                localStorage.setItem("access_token", data.token);
+                                window.location.href = "/home/index"; // Chuyển hướng sau khi đăng nhập
+                            } else {
+                                alert("Sai tài khoản hoặc mật khẩu!");
+                            }
+                        })
+                        .catch(error => console.error("Lỗi:", error));
+                });
+            }
+
+            let googleLoginBtn = document.getElementById("google-login-btn");
+            if (googleLoginBtn) {
+                googleLoginBtn.addEventListener("click", async function () {
+                    try {
+                        const response = await fetch("/api/AccountAPI/Authorize", {
+                            method: "GET",
+                            headers: { "Content-Type": "application/json" }
+                        });
+
+                        if (response.ok) {
+                            const data = await response.json();
+                            if (data.redirectUrl) {
+                                window.location.href = data.redirectUrl; // Chuyển hướng đến Google
+                            } else {
+                                alert("Không nhận được URL đăng nhập Google!");
+                            }
+                          
+                        } else {
+                            alert("Đăng nhập thất bại. Vui lòng thử lại!");
+                        }
+                    } catch (error) {
+                        console.error("Lỗi đăng nhập:", error);
+                        alert("Có lỗi xảy ra, vui lòng thử lại!");
+                    }
+                });
+            }
+
+        });
+    </script>
+}

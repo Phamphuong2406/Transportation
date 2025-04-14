@@ -3,9 +3,324 @@
 
 }
 
+<!-- Hero Section -->
+<section id="hero" class="hero section dark-background">
 
-<div >
-    <h1 class="display-4">Welcome</h1>
-  
-    <a href="~/User/Logout">Đăng xuất</a>
-</div>
+    <img src="~/assets/img/dich-vu-van-tai-tai-quan-tan-binh (1).jpg" alt="" class="hero-bg">
+
+    <div class="container">
+        <div class="row gy-4 d-flex justify-content-between">
+            <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                <h2 class="text-danger">Quản lý và điều hàng vận tải</h2>
+                <h4 data-aos-delay="100" class="text-danger"> Trải nghiệm ngay</h4>
+
+              @*   <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos-delay="200">
+                    <input type="text" class="form-control" placeholder="Your ZIP code or City. e.g. New York">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form> *@
+
+                <div class="row " data-aos-delay="300">
+
+                   
+                        <div  >
+                        <h4 style="color: blue;">Liên hệ: 07987645534</h4>
+                           
+                 
+                    </div><!-- End Stats Item -->
+
+                  
+
+                </div>
+
+            </div>
+
+          
+
+        </div>
+    </div>
+
+</section><!-- /Hero Section -->
+<h2>Chào mừng, User ID: @ViewBag.UserId</h2>
+
+<!-- Featured Services Section -->
+<section id="featured-services" class="featured-services section">
+
+    <div class="container">
+
+        <div class="row gy-4">
+
+            <div class="col-lg-4 col-md-6 service-item d-flex"  data-aos-delay="100">
+                <div class="icon flex-shrink-0"><i class="fa-solid fa-cart-flatbed"></i></div>
+                <div>
+                    <h4 class="title">Quản lý tập trung toàn bộ quy trình vận tải</h4>
+                    <p class="description">Thông tin xuyên suốt, minh bạch dễ dàng tra soát, tìm kiếm</p>
+                 
+                </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div class="col-lg-4 col-md-6 service-item d-flex"  data-aos-delay="200">
+                <div class="icon flex-shrink-0"><i class="fa-solid fa-truck"></i></div>
+                <div>
+                    <h4 class="title">Công cụ theo dõi trực tuyến trực quan, toàn diện</h4>
+                    <p class="description">
+                        Giảm thiểu sai sót trong vận hành do thao tác thủ công. 
+                        Dễ dàng tra soát, tìm kiếm thông tin bất cứ khi nào
+                    </p>
+                   
+                </div>
+            </div><!-- End Service Item -->
+
+            <div class="col-lg-4 col-md-6 service-item d-flex"  data-aos-delay="300">
+                <div class="icon flex-shrink-0"><i class="fa-solid fa-truck-ramp-box"></i></div>
+                <div>
+                    <h4 class="title">Giảm thiểu tối đa thời gian, chi phí vận hành</h4>
+                    <p class="description">Chủ doanh nghiệp dễ dàng nắm bắt thông tin để đưa ra quyết định</p>
+                  
+                </div>
+            </div><!-- End Service Item -->
+
+        </div>
+
+    </div>
+
+</section><!-- /Featured Services Section -->
+<!-- About Section -->
+<section id="about" class="about section">
+
+    <div class="container">
+
+        <div class="row gy-4">
+
+            <div class="col-lg-6 position-relative align-self-start order-lg-last order-first"  data-aos-delay="200">
+                <img src="~/assets/img/vc.jpg" class="img-fluid" alt="">
+              @*   <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a> *@
+            </div>
+
+            <div class="col-lg-6 content order-last  order-lg-first"  data-aos-delay="100">
+                <h3>Giải pháp số quản lý vận tải - Logistics</h3>
+                <p>
+                    Ra đời sau nhiều năm nghiên cứu và phát triển bởi đội ngũ chuyên gia, đến nay đã được nhiều khách hàng trong lĩnh vực vận tải tin dùng. Mô hình quản lý tổng thể với mức phí cực thấp sẽ giúp doanh nghiệp giảm chi phí hoạt động, tăng hiệu quả kinh doanh và tăng khả năng mở rộng quy mô.
+                </p>
+                <ul>
+                    <li>
+                        <i class="bi bi-diagram-3"></i>
+                        <div>
+                            <h5>Quản lý đơn hàng vận chuyển</h5>
+                            <p>Tạo và quản lý đơn hàng theo bảng giá hợp đồng</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="bi bi-fullscreen-exit"></i>
+                        <div>
+                            <h5>Quản lý lệnh điều phối</h5>
+                            <p>Tính năng điều phối xe thông minh. Theo dõi tài xế theo thời gian thực</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="bi bi-broadcast"></i>
+                        <div>
+                            <h5>Báo cáo tài chính tổng thể</h5>
+                            <p>Báo cáo doanh thu, lợi nhuận tổng, lợi nhuận theo xe</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+</section><!-- /About Section -->
+<!-- Services Section -->
+<section id="services" class="services section">
+
+    <!-- Section Title -->
+    <div class="container section-title" >
+        <span>Tính năng nổi bật<br></span>
+        <h2>Tính năng nổi bật</h2>
+      
+    </div><!-- End Section Title -->
+
+    <div class="container">
+
+        <div class="row gy-4">
+
+            <div class="col-lg-4 col-md-6"  data-aos-delay="100">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="assets/img/service-1.jpg" alt="" class="img-fluid">
+                    </div>
+                    <h3>Quản lý đơn hàng</h3>
+                    <p>Tạo và quản lý đơn hàng từ bảng giá có sẵn, ghi công nợ khách hàng. Xử lý các phát sinh ngoại lệ như đổi tuyến nơi nâng hạ, thay đổi giá</p>
+                </div>
+            </div><!-- End Card Item -->
+
+            <div class="col-lg-4 col-md-6"  data-aos-delay="200">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="~/assets/img/service-2.jpg" alt="" class="img-fluid">
+                    </div>
+                    <h3><a href="#" class="stretched-link">Quản lý lệnh điều phối</a></h3>
+                    <p>Dễ dàng quản lý thông tin lệnh điều động xe vận chuyển theo thời gian thực thông qua App Mobile kết nối giữa tài xế và hệ thống phần mềm.</p>
+                </div>
+            </div><!-- End Card Item -->
+
+            <div class="col-lg-4 col-md-6"  data-aos-delay="300">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="~/assets/img/service-3.jpg" alt="" class="img-fluid">
+                    </div>
+                    <h3><a href="#" class="stretched-link">Kiểm soát chi phí vận chuyển</a></h3>
+                    <p>Kiểm soát phí phát sinh trong quá trình vận chuyển như: phí nâng cont, phí hạ, phí cầu đường, vé cổng, phí hải quan, phí sửa chữa phát sinh.</p>
+                </div>
+            </div><!-- End Card Item -->
+
+            <div class="col-lg-4 col-md-6" data-aos-delay="400">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="~/assets/img/service-4.jpg" alt="" class="img-fluid">
+                    </div>
+                    <h3><a href="#" class="stretched-link">Vận hành mọi lúc- mọi nơi</a></h3>
+                    <p>Điều hành mọi lúc mọi nơi, phát hiện kịp thời các đề xuất mới từ các bộ phận thông qua tính năng Notifications Real-Time, quản lý công việc từ xa.</p>
+                </div>
+            </div><!-- End Card Item -->
+
+            <div class="col-lg-4 col-md-6"  data-aos-delay="500">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="~/assets/img/service-5.jpg" alt="" class="img-fluid">
+                    </div>
+                    <h3>Tính năng thống kê trực quan</h3>
+                    <p>Biểu đồ thống kê trực quan giúp doanh nghiệp dễ dàng theo dõi tình hình kinh doanh như: doanh thu theo xe, doanh theo theo tài xế, lợi nhuận.</p>
+                </div>
+            </div><!-- End Card Item -->
+
+            <div class="col-lg-4 col-md-6"  data-aos-delay="600">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="~/assets/img/service-6.jpg" alt="" class="img-fluid">
+                    </div>
+                    <h3><a href="#" class="stretched-link">Đơn giản - Thông minh</a></h3>
+                    <p>Giao diện đồ họa đẹp, có thể tự tùy biến giúp dễ dàng thực hiện các thao tác trên hệ thống phần mềm. Thuật toán thông minh giúp tự động hóa quy trình.</p>
+                </div>
+            </div><!-- End Card Item -->
+
+        </div>
+
+    </div>
+
+</section><!-- /Services Section -->
+<!-- Features Section -->
+<section id="features" class="features section">
+
+    <!-- Section Title -->
+    <div class="container section-title" >
+        <span>Cước phí</span>
+        <h2>Cước phí</h2>
+        
+    </div><!-- End Section Title -->
+
+    <div class="container">
+
+       
+
+        <div class="row gy-4 align-items-center features-item">
+            
+            <div class="order-2 order-md-1" data-aos-delay="200">
+                <h3>Cước phí vận chuyển hàng hóa</h3>
+                <h5>
+                Để biết chính xác cước phí vận chuyển hàng hóa của bạn là bao nhiêu thì bạn vui lòng liên hệ: 0943962244</h5>
+
+                <h5>– Chuyên viên tư vấn vận chuyển hàng hóa Bắc Nam.</h5>
+
+               <h5> Các yếu tố ảnh hưởng đến chi phí vận chuyển hàng:</h5>
+                <h5>Để bạn biết cách tính giá cước vận chuyển hàng là như thế nào. Thì tôi xin đưa ra các yếu tố ảnh hưởng đến chi phí vận chuyển:</h5>
+                <h5>
+                    Số lượng, trọng lượng, kích thướt, tính chất hàng hóa ⇒ Phương án và phương tiện phù hợp để vận chuyển.</h5>
+                 
+                <h5>   Địa điểm giao nhận hàng hóa xa hay gần ⇒ Phương thức giao nhận.</h5>
+                <h5> Thời gian giao nhận yêu cầu ⇒ Loại hình vận chuyển hàng hóa.</h5>
+                    <h5> Mối quan hệ thân thiết với khách hàng ⇒ Chính sách ưu đãi dành cho khách hàng thân thiết.
+               </h5>
+                <h5> Ngoài ra, chúng tôi còn xem xét một số yếu tố khác để có chính sách ưu đãi cho những khách hàng mới.</h5>
+               
+                <h5> Cách tiết kiệm tối đa giá cước vận chuyển hàng:</h5>
+                <h5>
+                    Để có cước phí vận chuyển hàng hóa rẻ nhất. Bạn nên cung cấp các thông tin cụ thể và chi tiết về hàng hóa. Khi có thông tin càng sớm, chúng tôi càng dễ dàng sắp sếp về phương án ⇒ Cước phí vận chuyển hàng hóa rẻ hơn.
+
+                    Hãy là khách hàng thân thiết của Trọng Tấn. Bởi khách hàng thân thiết sẽ được ưu đãi rất nhiều không chỉ là chi phí vận chuyển mà còn ưu đãi về các dịch vụ liên quan khác.
+                </h5>
+               
+            </div>
+        </div><!-- Features Item -->
+
+       
+
+    </div>
+
+</section><!-- /Features Section -->
+<footer id="footer" class="footer dark-background" style="margin-top: 100px;">
+
+    <div class="container footer-top">
+        <div class="row gy-4">
+            <div class="col-lg-5 col-md-12 footer-about">
+                <a href="index.html" class="logo d-flex align-items-center">
+                    <span class="sitename">
+                        CÔNG TY TNHH DV VẬN TẢI TRỌNG TẤN
+                    </span>
+                </a>
+                <p>MST: 0312527659 - Tel: 028 62590486</p>
+                <div class="social-links d-flex mt-4">
+                    <a href=""><i class="bi bi-twitter-x"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-6 footer-links">
+                <h4>Quy Định Chung</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Terms of service</a></li>
+                    <li><a href="#">Privacy policy</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-2 col-6 footer-links">
+                <h4>Dịch Vụ Chính</h4>
+                <ul>
+                    <li><a href="#">Web Design</a></li>
+                    <li><a href="#">Web Development</a></li>
+                    <li><a href="#">Product Management</a></li>
+                    <li><a href="#">Marketing</a></li>
+                    <li><a href="#">Graphic Design</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+                <h4>Liên Hệ</h4>
+                <p>Thanh Thiên: 0941728181</p>
+                <p>Kim Hằng: 0913838089</p>
+                <p class="mt-4"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
+                <p><strong>Email:</strong> <span>info@example.com</span></p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Logis</strong> <span>Công ty vận tải Logis</span></p>
+        <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you've purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+    </div>
+
+</footer>

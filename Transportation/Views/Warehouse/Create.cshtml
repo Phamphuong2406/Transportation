@@ -1,4 +1,4 @@
-﻿@model Transportation.Infrastructure.Data.Warehouse
+﻿@model DataAccess.Entity.Warehouse
 @{
     ViewData["Title"] = "Create";
 
@@ -30,61 +30,38 @@
                 <div class="card-body">
                     <div class="pt-4 pb-2">
                         <h5 class="card-title text-center pb-0 fs-4">Thêm mới kho</h5>
-                        <form method="post" enctype="multipart/form-data">
-                            <div class="row">
-                                <lable>Select Excel File </lable>
-                                <input type="file" name="file" />
-                            </div>
-                    
-                            <div class="row">
-                                <div class="col-3">
-                                    <input type="submit"  asp-controller="Warehouse" asp-action="UploadExcel" class="btn btn-dark" value="Upload Excel File" />
-                                </div>
-                            </div>
-                        </form>
+                   
                     </div>
 
-                    <form asp-action="Create" asp-controller="WareHouse" method="post" class="row g-3 needs-validation" novalidate>
+                    <form id="Createwarehouse" class="row g-3 needs-validation" novalidate>
                         <div class="col-12">
                             <label asp-for="Address" class="form-label">Địa chỉ</label>
-                            <input asp-for="Address" id="Address" class="form-control" required>
+                            <input id="address" class="form-control" required>
                             <span asp-validation-for="Address" class="text-danger"></span>
                         </div>
 
                         <div class="col-12">
                             <label asp-for="Name" class="form-label">Tên kho</label>
-                            <input asp-for="Name" class="form-control" required>
+                            <input id="name"  class="form-control" required>
                             <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
 
                         <div class="col-12">
-                            <label asp-for="Capacity" class="form-label">Sức chứa</label>
-                            <input asp-for="Capacity" class="form-control" required>
+                            <label asp-for="Capacity" class="form-label">Trọng tải xe cho phép</label>
+                            <input id="capacity" class="form-control" required>
                             <span asp-validation-for="Capacity" class="text-danger"></span>
                         </div>
 
-                        <div class="col-12">
-                            <label>
-                                <input type="radio" name="IsActive" value="true" checked>
-                                Còn hạn
-                            </label>
-
-                            <label>
-                                <input type="radio" name="IsActive" value="false">
-                                Hết hạn
-                            </label>
-                            <span asp-validation-for="IsActive" class="text-danger"></span>
-                        </div>
-
+                  
                         <div class="row">
                             <div class="col-sm-6">
                                 <label asp-for="OpeningTime" class="form-label">Giờ mở cửa</label>
-                                <input asp-for="OpeningTime" type="time" class="form-control" required>
+                                <input id="openingTime" type="time" class="form-control" required>
                                 <span asp-validation-for="OpeningTime" class="text-danger"></span>
                             </div>
                           <div class="col-sm-6">
                                 <label asp-for="ClosingTime" class="form-label">Giờ đóng cửa</label>
-                                <input asp-for="ClosingTime" type="time" class="form-control" required>
+                                <input id="closingTime" type="time" class="form-control" required>
                                 <span asp-validation-for="ClosingTime" class="text-danger"></span>
                           </div>
                         </div>
@@ -105,144 +82,121 @@
         </div>
     </div>
 
-    <!-- Hàng chứa danh sách -->
-    <div class="row list-container">
-        <div class="col-12">
-            <h3>Danh sách kho</h3>
-            <div id="warehouseListContainer">
-              @*  // @await Html.PartialAsync("_WarehouseListPartial") *@
-            </div>
-
-        </div>
-    </div>
+    
 </div>
 @section Scripts {
     <script>
-        $('form').on('submit', function (e) {
-            e.preventDefault(); // Ngăn gửi form mặc định
+        document.addEventListener("DOMContentLoaded", function () {
+            // 1️⃣ Lắng nghe sự kiện gửi form
+            document.getElementById("Createwarehouse").addEventListener("submit", function (event) {
+                event.preventDefault(); // Ngăn chặn reload trang
 
-            $.ajax({
-                url: $(this).attr('action'),
-                method: $(this).attr('method'),
-                data: $(this).serialize(), // Lấy tất cả dữ liệu từ form
-                success: function () {
-                    // Tải lại trang sau khi thành công
-                    location.reload();
-                },
-                error: function () {
-                    alert("Có lỗi xảy ra khi thêm kho.");
-                }
+                let formData = {
+                    Address: document.getElementById("address").value,
+                    Name: document.getElementById("name").value,
+                    Capacity: document.getElementById("capacity").value,
+                    OpeningTime: document.getElementById("openingTime").value,
+                    ClosingTime: document.getElementById("closingTime").value,
+                    Latitude: document.getElementById("Latitude").value,
+                    Longitude: document.getElementById("Longitude").value
+                           
+                };
+
+                fetch("/api/WarehouseAPI/CreateWarehouse", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(formData),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert("Thêm kho thành công!");
+                            window.location.href = "/Warehouse/Index";
+                        } else {
+                            alert("Có lỗi xảy ra!");
+                        }
+                    })
+                    .catch(error => console.error("Lỗi:", error));
             });
-        });
-        </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Khởi tạo bản đồ
-            var map = L.map('map').setView([21.028511, 105.804817], 13);
 
-            // Thêm lớp gạch từ OpenStreetMap
-            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            // 2️⃣ Khởi tạo bản đồ OpenStreetMap
+            var map = L.map("map").setView([21.028511, 105.804817], 13);
+            L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                attribution: '&copy; OpenStreetMap contributors'
             }).addTo(map);
 
-            // Thêm marker hiện tại (nếu cần)
             var marker;
-
-            // Lắng nghe sự kiện nhập địa chỉ
-            var addressInput = document.getElementById('Address');
-            var suggestionContainer = document.createElement('div');
-            suggestionContainer.className = 'suggestion-container';
+            var addressInput = document.getElementById("address"); // ✅ Đảm bảo đúng ID
+            var suggestionContainer = document.createElement("div");
+            suggestionContainer.className = "suggestion-container";
             addressInput.parentNode.appendChild(suggestionContainer);
 
-            // Hàm delay (debounce) để giảm số lần gọi API
+            // ✅ Hàm debounce để giảm số lần gọi API
             let debounceTimeout;
-            const debounce = (callback, delay) => {
+            function debounce(callback, delay) {
                 clearTimeout(debounceTimeout);
                 debounceTimeout = setTimeout(callback, delay);
-            };
-
-            addressInput.addEventListener('input', function () {
-                var address = this.value.trim();
-
-                if (address) {
-                    debounce(() => {
-                        // Gọi Geocoding API để tìm kiếm địa chỉ
-                        fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`)
-                            .then(response => {
-                                if (!response.ok) {
-                                    throw new Error(`HTTP error! Status: ${response.status}`);
-                                }
-                                return response.json();
-                            })
-                            .then(data => {
-                                suggestionContainer.innerHTML = ''; // Xóa các gợi ý cũ
-
-                                if (data.length > 0) {
-                                    data.forEach(function (item) {
-                                        var suggestionItem = document.createElement('div');
-                                        suggestionItem.className = 'suggestion-item';
-                                        suggestionItem.textContent = item.display_name;
-
-                                        suggestionItem.addEventListener('click', function () {
-                                            // Cập nhật form với địa chỉ được chọn
-                                            addressInput.value = item.display_name;
-                                            document.getElementById('Latitude').value = item.lat;
-                                            document.getElementById('Longitude').value = item.lon;
-
-                                            // Cập nhật bản đồ
-                                            var latlng = [item.lat, item.lon];
-                                            map.setView(latlng, 13);
-
-                                            if (marker) {
-                                                map.removeLayer(marker);
-                                            }
-
-                                            marker = L.marker(latlng).addTo(map).bindPopup(item.display_name).openPopup();
-
-                                            suggestionContainer.innerHTML = ''; // Xóa danh sách gợi ý
-                                        });
-
-                                        suggestionContainer.appendChild(suggestionItem);
-                                    });
-                                } else {
-                                    suggestionContainer.innerHTML = '<div class="suggestion-item">Không tìm thấy địa chỉ.</div>';
-                                }
-                            })
-                            .catch(error => {
-                                console.error('Lỗi khi gọi Geocoding API:', error);
-                                suggestionContainer.innerHTML = '<div class="suggestion-item">Lỗi khi kết nối đến API, vui lòng thử lại sau.</div>';
-                            });
-                    }, 500); // Delay 500ms
-                } else {
-                    suggestionContainer.innerHTML = ''; // Xóa gợi ý nếu không có gì trong ô input
-                }
-            });
-
-            // Ẩn danh sách gợi ý khi mất focus
-            addressInput.addEventListener('blur', function () {
-                setTimeout(() => suggestionContainer.innerHTML = '', 200); // Đợi 200ms trước khi ẩn
-            });
-            // Gọi AJAX để lấy danh sách kho
-            function loadWarehouseList() {
-                $.ajax({
-                    url: '/Warehouse/GetWarehouseListPartial',
-                    method: 'GET',
-                    success: function (partialView) {
-
-                        $("#warehouseListContainer").html(partialView);
-                   
-                    },
-                    error: function () {
-                        alert("Không thể tải danh sách kho.");
-                    }
-                });
             }
 
-            // Load danh sách lần đầu
-            loadWarehouseList();
-           
+            addressInput.addEventListener("input", function () {
+                var address = this.value.trim();
+                if (!address) {
+                    suggestionContainer.innerHTML = "";
+                    return;
+                }
+
+                debounce(() => {
+                    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            suggestionContainer.innerHTML = "";
+
+                            if (data.length > 0) {
+                                data.forEach(item => {
+                                    var suggestionItem = document.createElement("div");
+                                    suggestionItem.className = "suggestion-item";
+                                    suggestionItem.textContent = item.display_name;
+
+                                    suggestionItem.addEventListener("click", function () {
+                                        addressInput.value = item.display_name;
+                                        document.getElementById("Latitude").value = item.lat;
+                                        document.getElementById("Longitude").value = item.lon;
+
+                                        var latlng = [item.lat, item.lon];
+                                        map.setView(latlng, 13);
+
+                                        if (marker) map.removeLayer(marker);
+                                        marker = L.marker(latlng).addTo(map).bindPopup(item.display_name).openPopup();
+
+                                        suggestionContainer.innerHTML = ""; // Ẩn danh sách
+                                    });
+
+                                    suggestionContainer.appendChild(suggestionItem);
+                                });
+                            } else {
+                                suggestionContainer.innerHTML = '<div class="suggestion-item">Không tìm thấy địa chỉ.</div>';
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Lỗi API:", error);
+                            suggestionContainer.innerHTML = '<div class="suggestion-item">Lỗi khi tìm kiếm địa chỉ!</div>';
+                        });
+                }, 500);
+            });
+
+            // ✅ Chỉ ẩn danh sách gợi ý nếu người dùng không chọn gì
+            addressInput.addEventListener("blur", function () {
+                setTimeout(() => {
+                    if (!document.activeElement.classList.contains("suggestion-item")) {
+                        suggestionContainer.innerHTML = "";
+                    }
+                }, 200);
+            });
         });
     </script>
+
 }
 
 <style>

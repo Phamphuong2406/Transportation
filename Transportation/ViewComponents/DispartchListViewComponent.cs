@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataAccess.DataContext;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-using Transportation.Infrastructure.Data;
 
 namespace Transportation.ViewComponents
 {
@@ -17,7 +17,7 @@ namespace Transportation.ViewComponents
         public IViewComponentResult Invoke()
         {
             // Ánh xạ dữ liệu vào ViewModel
-            var dispatch = _context.DispatchAssignments.ToList();
+            var dispatch = _context.DispatchAssignments.Include(x =>x.Trip).ToList();
 
             return View(dispatch);
         }

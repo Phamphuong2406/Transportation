@@ -1,7 +1,8 @@
-﻿@model Transportation.Infrastructure.Data.ShippingRequest
+﻿@model DataAccess.Entity.ShippingRequest
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
     <style>
 
     
@@ -10,15 +11,44 @@
             max-width: 950px; 
         }
 
+        .btt {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: Red;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
 
     </style>
 }
 
 <div>
-    <h5 class="card-title">Thông tin yêu cầu vận chuyển</h5>  <a href="~/Warehouse/Create">Danh sách kho</a>
 
-   
-    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#createDispatcherModal">
+    <div>
+        <div class="row">
+            <div class="card">
+              
+                    <!-- Tabs dưới dạng liên kết -->
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                        <a class="nav-link @(ViewData["ActiveTab"] as string == "Home" ? "active" : "")" asp-controller="ShippingRequests" asp-action="Index"><strong>Yêu cầu vận chuyển</strong></a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link @(ViewData["ActiveTab"] as string == "Profile" ? "active" : "")" asp-controller="Warehouse" asp-action="Index"><strong>Kho Hàng</strong></a>
+                        </li>
+                        
+                    </ul>
+              
+            </div>
+        </div>
+    </div>
+
+
+ 
+    <button type="button" class="btn btn-primary text-white" data-bs-toggle="modal" data-bs-target="#createDispatcherModal" style="margin-top: 10px;">
+        <i class="fas fa-plus text-white"></i>
         Thêm mới
     </button>
     <table class="table table-striped" id="shippingRequestTable">
@@ -32,7 +62,7 @@
                 <th scope="col">Khối lương </th>
                 <th scope="col">Giá vận chuyển</th>
                 <th scope="col">Ghi chú</th>
-                <th scope="col">Tình trạng</th>
+                <th scope="col">Trạng thái</th>
                 <th scope="col">Lựa chọn</th>
             </tr>
         </thead>
@@ -50,45 +80,28 @@
                 <h5 class="modal-title" id="createDispatcherModalLabel">Tạo mới yều cầu vận chuyển</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form asp-controller="ShippingRequests" asp-action="Create" asp-area="" method="post" id="createDispatcherForm">
+            <form id="createRequestForm" class="form-control">
                 <div class="modal-body">
                     <div class="row">
                         <div id="map" class="col-lg-6" >
-                           
-
+                          
                         </div>
                         <div class="col-lg-6">
                            
                             <div class="form-group">
                                 <label class="form-label">Điểm lấy hàng</label>
-                                <select asp-for="PickupLocation" class="form-control" id="pickupWarehouse" required>
+                                <select class="form-control" id="warehouseDropdown" required>
                                     <option value="">-- Chọn kho --</option>
-                                    @foreach (var warehouse in ViewBag.Warehouses)
-                                    {
-                                        <option value="@warehouse.Address"
-                                                data-lat="@warehouse.Latitude"
-                                                data-lng="@warehouse.Longitude">
-                                            @warehouse.Name
-                                        </option>
-                                    }
+                                  
                                 </select>
                                 <span asp-validation-for="PickupLocation" class="text-danger"></span>
                             </div>
 
                             <div class="form-group">
-                                <label class="form-label">Điểm nhận hàng</label>
-                                <select asp-for="DropoffLocation" class="form-control" id="dropoffWarehouse" required>
-                                    <option value="">-- Chọn kho --</option>
-                                    @foreach (var warehouse in ViewBag.Warehouses)
-                                    {
-                                        <option value="@warehouse.Address"
-                                                data-lat="@warehouse.Latitude"
-                                                data-lng="@warehouse.Longitude">
-                                            @warehouse.Name
-                                        </option>
-                                    }
-                                </select>
-                                <span asp-validation-for="DropoffLocation" class="text-danger"></span>
+                                <label class="form-label">Điểm trả hàng</label>
+                                <input type="text"  id="dropoffLocation" class="form-control" placeholder="Nhập địa chỉ">
+                                <ul id="addressSuggestions" class="list-group"></ul>
+                                
                             </div>
 
                             <div class="form-group row">
@@ -105,19 +118,18 @@
                             <div class="form-group row">
                                 <div class="col-sm-6">
                                     <label class="form-label">Lọai hàng hóa</label>
-                                    <select asp-for="ProductTypeId" class="form-control" asp-items="ViewBag.productType" required>
+                                    <select id="productTypeDropdown"  class="form-control" required>
                                         <option value="">-- Chọn loại hàng --</option>
                                     </select>
-                                    <span asp-validation-for="ProductTypeId" class="text-danger"></span>
+                                    <span class="text-danger"></span>
                                 </div>
-                              
                             </div>
 
                             <div class="form-group row align-items-center">
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <label class="form-label">Trọng lượng (kg)</label>
-                                        <input asp-for="Weight" class="form-control" required>
+                                        <input asp-for="Weight"  class="form-control" required>
                                         <span asp-validation-for="Weight" class="text-danger"></span>
                                     </div>
                                     <div class="col-sm-3">
@@ -132,7 +144,6 @@
                                     
                                 </div>
                                 
-                            
                             </div>
 
                             <div class="form-group row">
@@ -154,10 +165,13 @@
                                 <span asp-validation-for="Note" class="text-danger"></span>
                             </div>
 
-                            <input type="hidden" id="FromLatitude" name="FromLatitude" />
-                            <input type="hidden" id="FromLongitude" name="FromLongitude" />
-                            <input type="hidden" id="ToLatitude" name="ToLatitude" />
-                            <input type="hidden" id="ToLongitude" name="ToLongitude" />
+                            <input type="hidden" id="PickupLat" name="PickupLat" />
+                            <input type="hidden" id="PickupLng" name="PickupLng" />
+                            <input type="hidden" id="DropoffLat" name="DropoffLat" />
+                            <input type="hidden" id="DropoffLng" name="DropoffLng" />
+                            <input type="hidden" id="WarehouseAddress" name="WarehouseAddress" />
+                            
+
                         </div>
                     </div>
 
@@ -173,41 +187,84 @@
     </div>
 </div>
 
+<!-- Popup Bản Đồ -->
+<div id="mapPopup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: white; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border-radius: 8px; width: 700px; height: 500px;">
+    <div id="mapContainer" style="width: 100%; height: 90%;"></div>
+    <button onclick="closePopup()">Đóng</button>
+</div>
 
 
 @section Scripts {
+
     <script>
         $(document).ready(function () {
-            // Gọi AJAX để lấy danh sách yêu cầu vận chuyển khi trang được tải
             loadShippingRequests();
 
             function loadShippingRequests() {
                 $.ajax({
-                    url: '@Url.Action("GetShippingRequests", "ShippingRequests")', // Gọi action để lấy dữ liệu
+                    url: "/api/ShippingRequestAPI/GetShippingRequets",
                     type: 'GET',
+                  
                     success: function (data) {
                         var tableBody = $('#shippingRequestTable tbody');
-                        tableBody.empty(); // Xóa nội dung cũ của bảng
-                        console.log('data nhận được là :', data);
-                        // Duyệt qua danh sách và hiển thị từng yêu cầu
-                        data.forEach(function (item) {
-                            var row = '<tr>' +
-                                '<td>' + item.requestId + '</td>' +
-                                '<td>' + new Date(item.requestDate).toLocaleDateString() + '</td>' +
-                               
-                                '<td>' + item.pickupLocation + '</td>' +
-                                '<td>' + item.dropoffLocation + '</td>' +
-                                '<td>' + item.weight + '</td>' +
-                                '<td>' + item.shippingCost + '</td>' +
-                                '<td>' + item.note + '</td>' +
-                                '<td>' + item.status + '</td>' +
-                                '<td>' +
-                                '<a href="/ShippingRequests/Edit/' + item.id + '">Sửa</a> | ' +
-                                '<a href="/ShippingRequests/Delete/' + item.id + '">Xóa</a>' +
-                                '</td>' +
-                                '</tr>';
-                            tableBody.append(row);
-                        });
+                        tableBody.empty();
+
+                        console.log('Dữ liệu nhận được:', data);
+
+                        if (data && data.length) {
+                            data.forEach(function (item) {
+                                var requestDate = new Date(item.RequestDate).toLocaleDateString('vi-VN', { timeZone: 'UTC' });
+
+                                var detailLink = (item.Status === "Đang giao hàng" && item.RequestId)
+                                    ? ` <a href="javascript:void(0);" class="btt" onclick="openPopup(${item.RequestId})">Theo dõi đơn</a>`
+                                    : '';
+                                var statusColor = "";
+                                if (item.Status === "Đã điều phối xe") {
+                                    statusColor = "text-warning"; // Màu vàng
+                                } else if (item.Status === "Đang giao hàng") {
+                                    statusColor = "text-danger"; // Màu đỏ
+                                } else if (item.Status === "Đã nhận hàng") {
+                                    statusColor = "text-success"; // Màu xanh
+                                }
+                                else if (item.Status === "Đã giao hàng") {
+                                    statusColor = "text-primary"; // Màu xanh
+                                }
+                                var actionButton = "";
+                                if (item.Status === "Chờ xác nhận") {
+                                    actionButton = `<button class="btn btn-danger  btn-circle cancel-request" data-id="${item.RequestId}">
+                                <i class="fas fa-trash"></i> Hủy
+                            </button>`;
+                                } else if (item.Status === "Đã giao hàng") {
+                                    actionButton = `<button class="btn btn-success btn-sm btn-circle received-confirmation" data-id="${item.RequestId}">
+                                <i class="fas fa-check"></i> Đã nhận được hàng
+                            </button>`;
+                                }
+
+                                var row = `
+                                        <tr>
+                                            <td>${item.RequestId}</td>
+                                            <td>${item.RequestDate}</td>
+                                            <td>${item.PickupLocation}</td>
+                                            <td>${item.DropoffLocation}</td>
+                                            <td>${item.Weight}</td>
+                                            <td>${item.ShippingCost}</td>
+                                            <td>${item.Note || ''}</td>
+                                                  <td><span class="${statusColor}">${item.Status}</span>${detailLink}</td>
+                                             
+                                            <td>
+
+                                                      ${actionButton}
+                                            </td>
+
+                                        </tr>
+                                    `;
+
+                                tableBody.append(row);
+                            });
+                        } else {
+                            tableBody.append('<tr><td colspan="9" class="text-center">Không có yêu cầu vận chuyển nào.</td></tr>');
+                        }
                     },
                     error: function () {
                         alert("Có lỗi xảy ra khi tải dữ liệu yêu cầu vận chuyển.");
@@ -215,106 +272,330 @@
                 });
             }
 
+            
         });
     </script>
+ 
 
+   @*  popup tạo ycvc *@
     <script>
-        var map;  // Biến global cho bản đồ
-        var pickupMarker, dropoffMarker;  // Biến để lưu các marker
-        var routeControl;  // Biến lưu trữ điều khiển route (lộ trình)
+        var mapCreateDispatcher; // Bản đồ trong modal
+        var pickupMarker, dropoffMarker; // Marker
+        var routeControl; // Điều khiển lộ trình
 
-        // Khi modal được mở, khởi tạo bản đồ
+        // Khởi tạo bản đồ khi mở modal
         $('#createDispatcherModal').on('shown.bs.modal', function () {
-            if (!map) {  // Kiểm tra nếu bản đồ chưa được khởi tạo
-                map = L.map('map').setView([10.762622, 106.660172], 13); // Khởi tạo bản đồ với vị trí mặc định
+            if (!mapCreateDispatcher) {
+                mapCreateDispatcher = L.map('map').setView([10.762622, 106.660172], 13);
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                }).addTo(map);
+                    attribution: '&copy; OpenStreetMap contributors'
+                }).addTo(mapCreateDispatcher);
             }
         });
-
-        // Nếu có sự kiện change từ các dropdown, cập nhật vị trí marker và tính toán lộ trình
+       
         $(document).ready(function () {
-            $('#pickupWarehouse, #dropoffWarehouse').change(function () {
+            let debounceTimer;
+
+            $('#warehouseDropdown').change(function () {
                 var selectedWarehouse = $(this).find('option:selected');
                 var latitude = selectedWarehouse.data('lat');
                 var longitude = selectedWarehouse.data('lng');
+               var address = selectedWarehouse.data('address');
 
-                if ($(this).attr('id') == 'pickupWarehouse') {
-                    // Cập nhật marker cho điểm lấy hàng
-                    if (pickupMarker) {
-                        map.removeLayer(pickupMarker);  // Xóa marker cũ nếu có
-                    }
-                    pickupMarker = L.marker([latitude, longitude]).addTo(map)
-                        .bindPopup('Điểm lấy hàng')
-                        .openPopup();
-                    
-                    $('#FromLatitude').val(latitude);
-                    $('#FromLongitude').val(longitude);
-                  
-
-                } else if ($(this).attr('id') == 'dropoffWarehouse') {
-                    // Cập nhật marker cho điểm trả hàng
-                    if (dropoffMarker) {
-                        map.removeLayer(dropoffMarker);  // Xóa marker cũ nếu có
-                    }
-                    dropoffMarker = L.marker([latitude, longitude]).addTo(map)
-                        .bindPopup('Điểm trả hàng')
-                        .openPopup();
-                    
-                    $('#ToLatitude').val(latitude);
-                    $('#ToLongitude').val(longitude);
-
+                // Cập nhật marker cho điểm lấy hàng
+                if (pickupMarker) {
+                    mapCreateDispatcher.removeLayer(pickupMarker);
                 }
-             
-               
-                // Sau khi cả hai marker đã được đặt, vẽ đường nối giữa chúng
+                pickupMarker = L.marker([latitude, longitude]).addTo(mapCreateDispatcher)
+                    .bindPopup('Điểm lấy hàng')
+                    .openPopup();
+
+                $('#PickupLat').val(latitude);
+                $('#PickupLng').val(longitude);
+                $("#WarehouseAddress").val(address); // Gán vào thẻ input hidden
+                drawRoute();
+            });
+
+            $('#dropoffLocation').on('input', function () {
+                clearTimeout(debounceTimer);
+
+                const query = $(this).val().trim();
+                if (query.length > 5) {
+                    debounceTimer = setTimeout(() => {
+                        $.getJSON(`https://nominatim.openstreetmap.org/search?format=json&q=${query}&limit=5`, function (data) {
+                            $('#addressSuggestions').empty();
+                            if (data.length > 0) {
+                                data.forEach(function (item) {
+                                    $('#addressSuggestions').append(`<li class="list-group-item suggestion-item" data-lat="${item.lat}" data-lng="${item.lon}" >${item.display_name}</li>`);
+                                });
+                                $('#addressSuggestions').show();
+                            } else {
+                                $('#addressSuggestions').append('<li class="list-group-item text-danger">Không tìm thấy kết quả</li>').show();
+                            }
+                        }).fail(function () {
+                            $('#addressSuggestions').empty().append('<li class="list-group-item text-danger">Lỗi khi tìm kiếm địa chỉ</li>').show();
+                        });
+                    }, 300);
+                } else {
+                    $('#addressSuggestions').empty().hide();
+                }
+            });
+
+            $(document).on('click', '.suggestion-item', function () {
+                const latitude = $(this).data('lat');
+                const longitude = $(this).data('lng');
+
+                $('#dropoffLocation').val($(this).text());
+                $('#DropoffLat').val(latitude);
+                $('#DropoffLng').val(longitude);
+
+                if (dropoffMarker) {
+                    mapCreateDispatcher.removeLayer(dropoffMarker);
+                }
+                dropoffMarker = L.marker([latitude, longitude]).addTo(mapCreateDispatcher)
+                    .bindPopup('Điểm trả hàng')
+                    .openPopup();
+
+                $('#addressSuggestions').empty().hide();
+                drawRoute();
+            });
+
+            function drawRoute() {
                 if (pickupMarker && dropoffMarker) {
-                    // Kiểm tra nếu đã có routeControl, xóa nó đi trước khi vẽ lại
                     if (routeControl) {
                         routeControl.remove();
                     }
-
-                    // Sử dụng leaflet-routing-machine để vẽ lộ trình giữa hai điểm
                     routeControl = L.Routing.control({
                         waypoints: [
-                            L.latLng(pickupMarker.getLatLng()),  // Điểm bắt đầu
-                            L.latLng(dropoffMarker.getLatLng())  // Điểm kết thúc
+                            L.latLng(pickupMarker.getLatLng()),
+                            L.latLng(dropoffMarker.getLatLng())
                         ],
-                        routeWhileDragging: true,  // Cập nhật lộ trình khi kéo điểm
-                        createMarker: function () { return null; } // Không tạo thêm marker trên đường đi
-                    }).addTo(map);
+                        routeWhileDragging: true,
+                        createMarker: function () { return null; }
+                    }).addTo(mapCreateDispatcher);
 
-                    // Lắng nghe sự kiện routesfound để lấy thông tin về quãng đường và thời gian
                     routeControl.on('routesfound', function (e) {
-                        var route = e.routes[0]; // Lấy lộ trình đầu tiên
-                        var distance = route.summary.totalDistance / 1000; // Quá trình tính toán quãng đường (km)
-                        var duration = route.summary.totalTime / 60; // Thời gian (phút)
-                        document.getElementById("distance").value = distance.toFixed(2);
-                        document.getElementById("duration").value = duration.toFixed(0);
-                     
+                        const route = e.routes[0];
+                        const distance = route.summary.totalDistance / 1000;
+                        const duration = route.summary.totalTime / 60;
+                        $('#distance').val(distance.toFixed(2));
+                        $('#duration').val(duration.toFixed(0));
+                    });
+                }
+            }
+            let isProductTypeLoaded = false;
+            let isWarehouseLoaded = false;
+
+            $("#productTypeDropdown").one("click", function () {
+                if (!isProductTypeLoaded) {
+                    $.ajax({
+                        url: "/api/ShippingRequestAPI/GetAllProductType",
+                        type: "GET",
+                        success: function (data) {
+                            let dropdown = $("#productTypeDropdown");
+                            dropdown.empty();
+                            dropdown.append('<option value="">-- Chọn loại hàng --</option>');
+
+                            $.each(data, function (index, item) {
+                                dropdown.append(`<option value="${item.ProductTypeId}">${item.Name}</option>`);
+                            });
+
+                            isProductTypeLoaded = true;
+                        },
+                        error: function () {
+                            alert("Không thể tải danh sách loại hàng hóa!");
+                        }
                     });
                 }
             });
-        });
-    </script>
-    <script>
 
+            $("#warehouseDropdown").one("click", function () {
+                if (!isWarehouseLoaded) {
+                    $.ajax({
+                        url: "/api/ShippingRequestAPI/GetWarehouse",
+                        type: "GET",
+                        success: function (data) {
+                            let dropdown = $("#warehouseDropdown");
+                            dropdown.empty();
+                            dropdown.append('<option value="">-- Chọn kho hàng --</option>');
+
+                            $.each(data, function (index, item) {
+                                dropdown.append(`<option value="${item.WarehouseId}" data-lat="${item.Latitude}"  data-lng="${item.Longitude}" data-address="${item.Address}">${item.Name}</option>`);
+                            });
+
+                            isWarehouseLoaded = true;
+                        },
+                        error: function () {
+                            alert("Không thể tải danh sách kho hàng!");
+                        }
+                    });
+                }
+            });
+
+        });
+        $(document).on("click", ".cancel-request", function () {
+            var requestId = $(this).data("id");
+
+            if (confirm("Bạn có chắc chắn muốn hủy yêu cầu này?")) {
+                $.ajax({
+                    url: "/api/ShippingRequestAPI/DeleteRequest",
+                    type: "PUT",
+                    data: { id: requestId },
+                    success: function (response) {
+                        if (response.ok) {
+                            alert("Yêu cầu đã được hủy thành công.");
+                            location.reload();
+                        } else {
+                            alert("Không thể hủy yêu cầu. Vui lòng thử lại!");
+                        }
+                    },
+                    error: function () {
+                        alert("Có lỗi xảy ra, vui lòng thử lại sau!");
+                    }
+                });
+            }
+        });
+
+        $(document).on("click", ".received-confirmation", function () {
+            var requestId = $(this).data("id");
+
+            if (confirm("Xác nhận bạn đã nhận được hàng?")) {
+                $.ajax({
+                    url: "/api/ShippingRequestAPI/ConfirmReceived",
+                    type: "PUT",
+                    data: { id: requestId },
+                    success: function (response) {
+                        if (response.ok) {
+                            alert("Bạn đã xác nhận nhận hàng.");
+                            location.reload();
+                        } else {
+                            alert("Không thể xác nhận. Vui lòng thử lại!");
+                        }
+                    },
+                    error: function () {
+                        alert("Có lỗi xảy ra, vui lòng thử lại sau!");
+                    }
+                });
+            }
+        });
+       
+        let requestForm = document.getElementById("createRequestForm");
+        if (requestForm) {
+            requestForm.addEventListener("submit", function (event) {
+                event.preventDefault();
+                let DropoffLocation = document.getElementById("dropoffLocation").value;
+                let WarehouseId = document.getElementById("warehouseDropdown").value;
+               // let duration = document.getElementById("duration").value;
+              //  let distance = document.getElementById("distance").value;
+                let Weight = document.getElementById("Weight").value;
+                let Pickupdate = document.getElementById("Pickupdate").value;
+                let Deliverydate = document.getElementById("Deliverydate").value;
+                let Note = document.getElementById("Note").value;
+                let PickupLat = document.getElementById("PickupLat").value;
+                let PickupLng = document.getElementById("PickupLng").value;
+                let DropoffLat = document.getElementById("DropoffLat").value;
+                let DropoffLng = document.getElementById("DropoffLng").value;
+                let ProductTypeId = document.getElementById("productTypeDropdown").value;
+                let ShippingCost = document.getElementById("ShippingCost").value;
+                let PickupLocation = document.getElementById("WarehouseAddress").value;
+               
+                fetch("/api/ShippingRequestAPI/CreateRequest", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ ShippingCost, PickupLocation, DropoffLocation, WarehouseId, Weight, Pickupdate, Deliverydate, Note, PickupLat, PickupLng, DropoffLat, DropoffLng, ProductTypeId })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.ok) {
+                            alert("Tạo yêu cầu thành công!");
+                            window.location.href = "/ShippingRequest/Index";
+                        } else {
+                            alert("Có lỗi xảy ra khi tạo yêu cầu!");
+                        }
+                    })
+
+            });
+        }
+     
+    </script>
+    @* popup xem đơn hàng *@
+    <script>
+        let mapPopup; // Bản đồ trong popup theo dõi đơn hàng
+        let polyline;
+
+        // Icon tùy chỉnh cho điểm cuối
+        var truckIcon = L.icon({
+            iconUrl: '@Url.Content("~/img/truck.png")',
+            iconSize: [50, 50], // Điều chỉnh kích thước icon
+            iconAnchor: [25, 50], // Điểm neo của icon
+            popupAnchor: [0, -50] // Điều chỉnh vị trí popup
+        });
+
+        function openPopup(requestId) {
+            document.getElementById("mapPopup").style.display = "block";
+
+            if (!mapPopup) {
+                mapPopup = L.map('mapContainer').setView([10.7769, 106.7009], 12);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; OpenStreetMap contributors'
+                }).addTo(mapPopup);
+            } else {
+                // Xóa các tuyến đường và marker cũ trước khi vẽ lại
+                mapPopup.eachLayer(layer => {
+                    if (layer instanceof L.Marker || layer instanceof L.Polyline) {
+                        mapPopup.removeLayer(layer);
+                    }
+                });
+            }
+
+            fetch(`/ShippingRequests/RealtimeTruck/${requestId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (!data || data.length === 0) {
+                        alert("Không có dữ liệu vị trí.");
+                        return;
+                    }
+
+                    let coordinates = data.map(item => [item.lat, item.lng]);
+
+                    // Vẽ tuyến đường
+                    polyline = L.polyline(coordinates, { color: 'blue', weight: 4 }).addTo(mapPopup);
+                    mapPopup.fitBounds(polyline.getBounds());
+
+                    // Thêm marker mặc định cho điểm bắt đầu
+                    let startPos = coordinates[0];
+                    L.marker(startPos).addTo(mapPopup).bindPopup("Bắt đầu").openPopup();
+
+                    // Thêm marker tùy chỉnh cho điểm cuối
+                    let lastPos = coordinates[coordinates.length - 1];
+                    L.marker(lastPos, { icon: truckIcon }).addTo(mapPopup).bindPopup("Vị trí hiện tại");
+                })
+                .catch(error => {
+                    console.error("Lỗi khi tải dữ liệu:", error);
+                    alert("Lỗi khi tải dữ liệu.");
+                });
+        }
+
+        function closePopup() {
+            document.getElementById("mapPopup").style.display = "none";
+        }
         // Hàm tính chi phí vận chuyển
         function getShip() {
             // Lấy giá trị từ các ô input `#distance` và `#Weight`
             var distance = parseFloat(document.getElementById("distance").value);
             var weight = parseFloat(document.getElementById("Weight").value);
-            var productType = parseFloat(document.getElementById("ProductTypeId").value);
+
+            let productTypeId = document.getElementById("productTypeDropdown").value;
+           
             // Kiểm tra nếu cả khoảng cách và trọng lượng đều đã được nhập
             if (!isNaN(distance) && !isNaN(weight)) {
                 $.ajax({
-                    url: '/ShippingRequests/CalculateShippingCost', // Đường dẫn tới API hoặc action trên server
+                    url: 'api/ShippingRequestAPI/CalculateShippingCost', // Đường dẫn tới API hoặc action trên server
                     method: 'POST',
                     data: {
                         distance: distance,
                         weight: weight,
-                        productType: productType
+                        productTypeId: productTypeId
                     },
                     // Xử lý khi yêu cầu thành công
                     success: function (data) {
@@ -331,6 +612,8 @@
                 alert('Vui lòng điền đầy đủ thông tin!');
             }
         }
-    </script>
 
+    </script>
+  
+   
 }

@@ -1,51 +1,100 @@
-﻿@model IEnumerable<Transportation.Application.DTO.WarehouseDto>
+﻿@model IEnumerable<BusinessLogic.DTOs.WarehouseDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div>
+    <div class="row">
+        <div class="card">
+
+            <!-- Tabs dưới dạng liên kết -->
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link @(ViewData["ActiveTab"] as string == "Home" ? "active" : "")" asp-controller="ShippingRequests" asp-action="Index"><strong>Yêu cầu vận chuyển</strong></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link @(ViewData["ActiveTab"] as string == "Profile" ? "active" : "")" asp-controller="Warehouse" asp-action="Index"><strong>Kho Hàng</strong></a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</div>
+
 <div class="row">
-    <div class="col-md-7">
-        <h5 class="card-title">Thông tin kho hàng</h5>
 
-        <a href="~/Warehouse/Create">Thêm mới</a>
+    <div id="map" style="height: 400px;"></div>
 
-        <table class="table table-striped">
+</div>
+
+<div class="row">
+
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <h5 class="card-title">Thông tin kho hàng</h5>
+            <a href="~/Warehouse/Create" class="btn btn-primary" style="margin-top: 10px;">
+                <i class="fas fa-plus"></i> Thêm mới
+            </a>
+        </div>
+
+        <form method="post" enctype="multipart/form-data" action="/Warehouse/UploadExcel">
+            <div class="d-flex align-items-center gap-2">
+                <input type="file" name="file" id="file" accept=".xlsx, .xls" required />
+                <button type="submit" class="btn btn-dark">Tải lên file Excel</button>
+            </div>
+        </form>
+    </div>
+
+        <table class="table table-striped" id="myTable">
             <thead>
                 <tr>
                     <th scope="col">STT</th>
                     <th scope="col">Tên kho</th>
                     <th scope="col">Địa chỉ</th>
-                    <th scope="col">Tải trọng (tấn)</th>
+                    <th scope="col">Tải trọng(kg)</th>
                     <th scope="col">Tình trạng</th>
                     <th scope="col">Giờ mở cửa</th>
                     <th scope="col">Giờ đóng cửa</th>
                     <th scope="col">Lựa chọn</th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <th scope="row">@item.WarehouseId</th>
-                        <td>@item.Name</td>
-                        <td>@item.Address</td>
-                        <td>@item.Capacity</td>
-                        <td>@item.IsActive</td>
-                        <td>@item.OpeningTime</td>
-                        <td>@item.ClosingTime</td>
-                        <td>Xóa/Sửa</td>
-                    </tr>
-                }
+            <tbody id="warehouseList">
+           
             </tbody>
         </table>
     </div>
-    <div class="col-md-5">
-        <div id="map" style="height: 500px;"></div>
+
+
+<!-- Popup xác nhận xóa -->
+<div id="deleteModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xác nhận xóa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn xóa kho này không?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-danger " id="confirmDelete"><i class="fas fa-trash"></i>Xóa</button>
+            </div>
+        </div>
     </div>
 </div>
 
+
+
+@section Scripts {
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+   let table = new DataTable('#myTable');
+</script>
 <script>
     // Khởi tạo bản đồ
     var map = L.map('map').setView([21.027266, 105.855453], 11);
@@ -67,3 +116,84 @@
         }
     });
 </script>
+    <script>
+        $(document).ready(function () {
+            var warehouseIdToDelete = 0; // Lưu ID kho cần xóa
+
+            // Khi nhấn nút Xóa -> Hiện popup
+            $('.btn-delete').click(function () {
+                warehouseIdToDelete = $(this).data('id'); // Lấy ID
+                $('#deleteModal').modal('show'); // Mở popup
+            });
+
+            // Khi nhấn Xác nhận xóa
+            $('#confirmDelete').click(function () {
+                if (warehouseIdToDelete === 0) return;
+
+                $.ajax({
+                    url: '/Warehouse/Delete/' + warehouseIdToDelete,
+                    type: 'POST',
+                    success: function (response) {
+                        if (response.success) {
+                            alert('Xóa thành công!');
+                            location.reload();
+                        } else {
+                            alert('Xóa thất bại: ' + response.errorMessage);
+                        }
+                    },
+                    error: function () {
+                        alert('Có lỗi xảy ra!');
+                    }
+                });
+
+                $('#deleteModal').modal('hide'); // Đóng popup sau khi gửi request
+            });
+
+            // Khi nhấn nút Hủy, đóng popup
+            $('.modal-footer .btn-secondary, .modal-header .close').click(function () {
+                $('#deleteModal').modal('hide'); // Đóng popup
+            });
+        });
+    </script>
+    <script>
+        document.querySelector("form").addEventListener("submit", function (e) {
+            var fileInput = document.getElementById("file");
+            if (!fileInput.files.length) {
+                alert("Vui lòng chọn file trước khi tải lên!");
+                e.preventDefault();
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            //Dùng fetch API để tự động gửi token trong tất cả các request.
+
+           
+
+            fetch("/api/WarehouseAPI/Index")
+                .then(response => response.json())
+                .then(data => {
+                    console.log("data", data);
+                    let rows = data.map(warehouse => `
+                                    <tr>
+                                              <th scope="row">${warehouse.WarehouseId}</th>
+                                        <td>${warehouse.Name}</td>
+                                        <td>${warehouse.Address}</td>
+                                <td>${warehouse.Capacity}</td>
+                                <td>${warehouse.IsActive   }
+                                </td>
+                                <td>${warehouse.OpeningTime}</td>
+                                <td>${warehouse.ClosingTime}</td>
+                                         <td>
+                                        <button class="btn btn-danger btn-delete" data-id="${warehouse.WarehouseId}">Xóa</button>
+                            </td>
+                                    </tr>
+                                `).join("");
+
+                    document.getElementById("warehouseList").innerHTML = rows;
+                })
+                .catch(error => console.error("Lỗi:", error));
+        });
+    </script>
+
+}

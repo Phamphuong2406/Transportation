@@ -1,9 +1,11 @@
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Transportation.Models;
 
 namespace Transportation.Controllers
 {
+   
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -12,11 +14,13 @@ namespace Transportation.Controllers
         {
             _logger = logger;
         }
-
-        public IActionResult Index()
+       
+        public IActionResult Index(string id) // id ở đây là UserId
         {
+            ViewBag.UserId = id; // Truyền UserId sang Razor View
             return View();
         }
+
 
         public IActionResult Privacy()
         {

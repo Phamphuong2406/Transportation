@@ -17,155 +17,175 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Transportation
 build_property.RootNamespace = Transportation
-build_property.ProjectDir = C:\Users\Admin\source\repos\Transportation\Transportation\
+build_property.ProjectDir = C:\Users\Admin\source\repos\Transportation\Transportation\Transportation\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Admin\source\repos\Transportation\Transportation
+build_property.MSBuildProjectDirectory = C:\Users\Admin\source\repos\Transportation\Transportation\Transportation
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Areas/Admin/Views/Dispatchers/Index.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Admin/Views/Dispatchers/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGlzcGF0Y2hlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Areas/Admin/Views/Drivers/Index.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Admin/Views/Drivers/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRHJpdmVyc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Areas/Admin/Views/HomeAdmin/Index.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Admin/Views/HomeAdmin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Areas/Admin/Views/Trucks/Index.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Admin/Views/Shifts/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hpZnRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Admin/Views/Trucks/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVHJ1Y2tzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Areas/Admin/Views/Trucks/RegisterTruck.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Admin/Views/Trucks/RegisterTruck.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVHJ1Y2tzXFJlZ2lzdGVyVHJ1Y2suY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Areas/Coordinator/Views/Coordination/Detail.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Admin/Views/Users/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Coordinator/Views/Coordination/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29vcmRpbmF0b3JcVmlld3NcQ29vcmRpbmF0aW9uXERldGFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Areas/Coordinator/Views/Coordination/Index.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Coordinator/Views/Coordination/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29vcmRpbmF0b3JcVmlld3NcQ29vcmRpbmF0aW9uXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Areas/Coordinator/Views/Coordination/indexx.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Coordinator/Views/Coordination/indexx.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29vcmRpbmF0b3JcVmlld3NcQ29vcmRpbmF0aW9uXGluZGV4eC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Areas/Coordinator/Views/Home/Index.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Coordinator/Views/Coordination/ListCoordination.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29vcmRpbmF0b3JcVmlld3NcQ29vcmRpbmF0aW9uXExpc3RDb29yZGluYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Coordinator/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29vcmRpbmF0b3JcVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Areas/Coordinator/Views/Journey/Detail.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Coordinator/Views/Journey/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29vcmRpbmF0b3JcVmlld3NcSm91cm5leVxEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Areas/Coordinator/Views/Journey/Index.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Coordinator/Views/Journey/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29vcmRpbmF0b3JcVmlld3NcSm91cm5leVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Areas/Coordinator/Views/Journey/Realtime.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Coordinator/Views/Journey/Realtime.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29vcmRpbmF0b3JcVmlld3NcSm91cm5leVxSZWFsdGltZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Areas/Coordinator/Views/Order/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29vcmRpbmF0b3JcVmlld3NcT3JkZXJcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Admin/source/repos/Transportation/Transportation/Areas/Coordinator/Views/Shared/_LayoutCoordinator.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Coordinator/Views/Shared/_LayoutCoordinator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29vcmRpbmF0b3JcVmlld3NcU2hhcmVkXF9MYXlvdXRDb29yZGluYXRvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Areas/Drivers/Views/HomeDriver/Detail.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Coordinator/Views/Trip/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29vcmRpbmF0b3JcVmlld3NcVHJpcFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Drivers/Views/HomeDriver/CurrentLocation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRHJpdmVyc1xWaWV3c1xIb21lRHJpdmVyXEN1cnJlbnRMb2NhdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Drivers/Views/HomeDriver/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRHJpdmVyc1xWaWV3c1xIb21lRHJpdmVyXERldGFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Areas/Drivers/Views/HomeDriver/Index.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Drivers/Views/HomeDriver/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRHJpdmVyc1xWaWV3c1xIb21lRHJpdmVyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Areas/Drivers/Views/HomeDriver/Realtime.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Drivers/Views/HomeDriver/Realtime.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRHJpdmVyc1xWaWV3c1xIb21lRHJpdmVyXFJlYWx0aW1lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Views/Home/Index.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Views/Account/LogIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dJbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Views/Home/Privacy.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Views/Shared/Components/DispartchList/Default.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Views/Shared/Components/DispartchList/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcRGlzcGFydGNoTGlzdFxEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Views/Shared/Components/OrderList/Default.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Views/Shared/Components/OrderList/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcT3JkZXJMaXN0XERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Views/Shared/Error.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Views/Shared/Components/TripList/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVHJpcExpc3RcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Views/ShippingRequests/Create.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Views/ShippingRequests/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hpcHBpbmdSZXF1ZXN0c1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Views/ShippingRequests/Index.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Views/ShippingRequests/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hpcHBpbmdSZXF1ZXN0c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Views/User/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMb2dpbi5jc2h0bWw=
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Views/ShippingRequests/RealtimeTruck.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hpcHBpbmdSZXF1ZXN0c1xSZWFsdGltZVRydWNrLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Views/User/Profile.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxQcm9maWxlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Admin/source/repos/Transportation/Transportation/Views/User/Register.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxSZWdpc3Rlci5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Admin/source/repos/Transportation/Transportation/Views/Warehouse/Create.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Views/Warehouse/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2FyZWhvdXNlXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Views/Warehouse/Index.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Views/Warehouse/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2FyZWhvdXNlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Views/Warehouse/_WarehouseListPartial.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Views/Warehouse/_WarehouseListPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2FyZWhvdXNlXF9XYXJlaG91c2VMaXN0UGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Views/_ViewImports.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Views/_ViewStart.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Areas/Drivers/Views/Shared/_LayoutDriver.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Drivers/Views/Shared/_LayoutDriver.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRHJpdmVyc1xWaWV3c1xTaGFyZWRcX0xheW91dERyaXZlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-gtt2700xv9
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Views/Shared/_Layout.cshtml]
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-s8h0wafuug

@@ -5,61 +5,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Transportation</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Transportation.styles.css" asp-append-version="true" />
+    <link href="~/assets/css/main.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css" />
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.3.4/leaflet-routing-machine.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    
     @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Transportation</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="HomeAdmin" asp-action="Index">Admin</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Coordinator" asp-controller="Home" asp-action="Index">NV điều phối</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Drivers" asp-controller="HomeDriver" asp-action="Index">Lái xe</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="ShippingRequests" asp-action="index">Đặt hàng</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+<body class="index-page">
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            
+            <a href="index.html" class="logo d-flex align-items-center me-auto">
+                <!-- Uncomment the line below if you also wish to use an image logo -->
+                 <img src="assets/img/logo.png" alt="">
+                <h1 class="sitename">P-Logis</h1>
+               
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li class="nav-item">
+                        <a class="nav-link "  asp-controller="Home" asp-action="Index">Trang chủ</a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link " asp-controller="ShippingRequests" asp-action="index">Đặt hàng</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#"><span>Tính năng khác</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li><a class="nav-link " asp-area="Admin" asp-controller="HomeAdmin" asp-action="Index">Admin</a></li>
+                          
+                            <li>  <a class="nav-link" asp-area="Coordinator" asp-controller="Home" asp-action="Index">NV điều phối</a></li>
+                            <li><a class="nav-link" asp-area="Drivers" asp-controller="HomeDriver" asp-action="Index">Lái xe</a></li>
+                            <li><a href="~/User/Logout">Đăng xuất</a></li>
+                            </ul>
+                    </li>
+                   
+                      
+                    </li>
+                   
+                    </ul>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+
         </div>
-    </footer>
+    </header>
+    <main class="main">
+
+       
+        <section style="margin-top: 80px;">
+            <div class="container">
+            @RenderBody()
+            </div>
+        </section>
+     
+        </main>
+   
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/assets/vendor/php-email-form/validate.js"></script>
+    <script src="~/assets/vendor/aos/aos.js"></script>
+    <script src="~/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="~/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/assets/js/main.js"></script>
+    <script src="//cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
+
+       @*  <script>
+            //Nếu localStorage có access_token, nó sẽ được gửi trong header.
+            $(document).ready(function () {
+                $.ajaxSetup({
+                    beforeSend: function (xhr) {
+                        let token = localStorage.getItem("access_token");
+                        if (token) {
+                            xhr.setRequestHeader("Authorization", "Bearer " + token);
+                        }
+                    }
+                });
+            });
+            //Nếu localStorage không có access_token, người dùng sẽ bị chuyển hướng về trang đăng nhập /account/login.
+      /*      document.addEventListener("DOMContentLoaded", function () {
+                let token = localStorage.getItem("access_token");
+                if (!token) {
+                    window.location.href = "/account/login"; // Chuyển về trang đăng nhập nếu chưa đăng nhập
+                }
+            });*/
+            //Dùng fetch API để tự động gửi token trong tất cả các request.
+            function fetchWithAuth(url, options = {}) {
+                let token = localStorage.getItem("access_token");
+                let headers = new Headers({
+                    "Content-Type": "application/json",
+                    ...options.headers
+                });
+
+                if (token) {
+                    headers.append("Authorization", "Bearer " + token);
+                }
+
+                return fetch(url, { ...options, headers });
+            }
+        </script> *@
+    
+
 </body>
 </html>

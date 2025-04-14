@@ -1,0 +1,41 @@
+﻿@model IEnumerable<DataAccess.Entity.Trip>
+
+<table class="table table-striped" id="myTable">
+    <thead>
+        <tr>
+            <th scope="col">Mã Chuyến</th>
+            <th scope="col">
+                Ca làm
+            </th>
+            <th scope="col">Xe v/c</th>
+            <th scope="col">Ngày thực hiện</th>
+
+            <th scope="col">Trạng thái</th>
+            <th scope="col">Tùy chọn</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var truck in Model)
+        {
+            <tr>
+                <td>@truck.TripId</td>
+                <td>@truck.ShiftId</td>
+                <td>@truck.TruckId</td>
+                <td>@truck.AssignedDate</td>
+                <td>@truck.Status </td>
+                <td>
+                    <a class="btn btn-warning btn-circle"><i class="fas fa-pen"></i></a>
+                    <a class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let table = new DataTable('#myTable');
+        });
+    </script>
+}

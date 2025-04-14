@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Transportation.Infrastructure.Data.Truck>
+﻿@model IEnumerable<DataAccess.Entity.Truck>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Coordinator/Views/Shared/_LayoutCoordinator.cshtml";
@@ -6,7 +6,7 @@
  @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <div>
-    <h5 class="card-title">đơn hàng vận chuyển</h5>
+    <h5 class="card-title">Hành trình thực của xe</h5>
 
     <!-- Table with stripped rows -->
 
@@ -19,7 +19,7 @@
                 <th scope="col">Loại nhiên liệu</th>
                 <th scope="col">Điểm đỗ xe</th>
                 <th scope="col">Lộ trình thực tế</th>
-                
+
             </tr>
         </thead>
         <tbody>
@@ -31,7 +31,7 @@
                     <td>@item.Capacity</td>
                     <td>@item.FuelType</td>
                     <td>@item.ParkingLocation</td>
-                   
+
                     <td>
                         <a asp-area="Coordinator" asp-controller="Journey" class="btn btn-warning btn-sm" asp-action="RealTime" asp-route-Id="@item.TruckId">Xem đường</a>
                     </td>
@@ -43,5 +43,4 @@
         </tbody>
     </table>
 </div>
-
 

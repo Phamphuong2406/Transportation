@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataAccess.DataContext;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Transportation.Infrastructure.Data;
+
 
 namespace Transportation.ViewComponents
 {

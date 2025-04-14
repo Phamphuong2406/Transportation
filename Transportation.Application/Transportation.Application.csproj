@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Transportation.Domain\Transportation.Domain.csproj" />
-    <ProjectReference Include="..\Transportation.Infrastructure\Transportation.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
