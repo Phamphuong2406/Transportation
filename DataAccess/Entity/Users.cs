@@ -17,9 +17,6 @@ public partial class Users
     public bool? IsActive { get; set; }
 
     public string? PhoneNumber { get; set; } 
-
-    public string? RandomKey { get; set; } 
-
     public string? RefreshToken { get; set; }
 
     public DateTime? RefreshTokenExprired { get; set; }

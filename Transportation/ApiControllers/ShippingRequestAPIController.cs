@@ -92,6 +92,7 @@ namespace Transportation.ApiControllers
             return Ok(productTypes);
         }
         [HttpPost("CalculateShippingCost")]
+        [Consumes("multipart/form-data")]
         public decimal CalculateShippingCost([FromForm] float distance, [FromForm] float weight, [FromForm] int productTypeId)
         {
             // Bước 2: Đặt các thông số phí cơ bản

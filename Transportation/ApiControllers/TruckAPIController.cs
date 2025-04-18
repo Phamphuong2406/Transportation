@@ -48,6 +48,7 @@ namespace Transportation.ApiControllers
         }
 
         [HttpPost("CreateTruck")]
+        [Consumes("multipart/form-data")]
         public IActionResult CreateTruck([FromForm] TruckDTO model)
         {
             if (ModelState.IsValid)

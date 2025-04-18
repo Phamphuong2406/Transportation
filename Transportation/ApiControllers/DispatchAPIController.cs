@@ -90,7 +90,8 @@ namespace Transportation.ApiControllers
         }
 
         [HttpPost("UpdateStatus")]
-            public async Task<bool> UpdateStatus([FromForm] UpdateStatusRequest request)
+        [Consumes("multipart/form-data")]
+        public async Task<bool> UpdateStatus([FromForm] UpdateStatusRequest request)
             {
                 if (request != null)
                 {
@@ -196,7 +197,8 @@ namespace Transportation.ApiControllers
 
 
         }
-        [HttpPost("UploadImgAndStatus")]
+        /*[HttpPost("UploadImgAndStatus")]
+        [Consumes("multipart/form-data")]
         public async Task<IActionResult> UploadImgAndStatus([FromForm] int RequestId, [FromForm] IFormFile ImageUpload)
         {
             var result = await _dispatchService.UploadImageAndUpdateStatus(RequestId, ImageUpload);
@@ -208,8 +210,25 @@ namespace Transportation.ApiControllers
                
 
             return Ok(new { message = "Cập nhật thành công" });
-        }
+        }*/
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> UploadImgAndStatus([FromForm] UploadRequest model)
+        {
+            var result = await _dispatchService.UploadImageAndUpdateStatus(model.RequestId, model.ImageUpload);
 
+            if (result != "Cập nhật thành công")
+            {
+                return BadRequest();
+            }
+
+
+            return Ok(new { message = "Cập nhật thành công" });
+        }
+        public class UploadRequest
+        {
+            public int RequestId { get; set; }
+            public IFormFile ImageUpload { get; set; }
+        }
 
 
     }

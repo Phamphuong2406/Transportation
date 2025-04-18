@@ -1,10 +1,14 @@
-﻿using BusinessLogic.DTOs.Account;
+﻿using Azure.Core;
+using BusinessLogic.DTOs.Account;
+using BusinessLogic.DTOs.SendEmail;
 using BusinessLogic.Public;
+using BusinessLogic.Services;
 using BusinessLogic.Services.Account;
 using Google.Apis.Auth;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.IdentityModel.Tokens;
 using NuGet.Common;
 using System.IdentityModel.Tokens.Jwt;
@@ -21,13 +25,15 @@ namespace Transportation.ApiControllers
         private IConfiguration _configuration;  // configuration có sẵn được sử dụng để truy cập các cài đặt cấu hình, chẳng hạn như các chuỗi kết nối hoặc các khóa bảo mật
         private IAccountService _accountService;
         private IGooogleAuthorization _googleAuthorization;
+        private readonly IEmailSender _emailSender;
         // private ILoggerManager _loggerManager;
-        public AccountAPIController(IConfiguration configuration, IAccountService accountService, IGooogleAuthorization googleAuthorization/*Gọi API xác thực gg*/)//, ILoggerManager loggerManager)
+        public AccountAPIController(IConfiguration configuration, IAccountService accountService, IGooogleAuthorization googleAuthorization/*Gọi API xác thực gg*/, IEmailSender emailSender)//, ILoggerManager loggerManager)
         {
             _configuration = configuration;
             _accountService = accountService;
             _googleAuthorization = googleAuthorization;
-           // _loggerManager = loggerManager;
+            _emailSender = emailSender;
+            // _loggerManager = loggerManager;
         }
         [HttpPost("AccountRegister")]
         public async Task<ActionResult> AccountRegister(AccountRegisterRequestData registerRequestData)
@@ -59,6 +65,7 @@ namespace Transportation.ApiControllers
         }
 
         [HttpPost("DispatcherRegister")]
+        [Consumes("multipart/form-data")]
         public async Task<ActionResult> DispatcherRegister([FromForm] AccountRegisterRequestData registerRequestData)
         {
             var responseData = new Response();
@@ -69,7 +76,7 @@ namespace Transportation.ApiControllers
                 // Nếu user đã tồn tại hoặc có lỗi khi tạo
                 if (result == null)
                 {
-                    responseData.Status = "409"; 
+                    responseData.Status = "409";
                     responseData.Message = "Tài khoản đã tồn tại";
                     return Conflict(responseData);
                 }
@@ -81,12 +88,13 @@ namespace Transportation.ApiControllers
             }
             catch (Exception ex)
             {
-                responseData.Status = "500"; 
+                responseData.Status = "500";
                 responseData.Message = "Đã xảy ra lỗi: " + ex.Message;
                 return StatusCode(500, responseData);
             }
         }
         [HttpPost("DriverRegister")]
+        [Consumes("multipart/form-data")]
         public async Task<ActionResult> DriverRegister([FromForm] AccountRegisterRequestData registerRequestData)
         {
             var responseData = new Response();
@@ -103,13 +111,13 @@ namespace Transportation.ApiControllers
                 }
 
                 // Trả về thành công
-                responseData.Status = "201"; 
+                responseData.Status = "201";
                 responseData.Message = "Tạo tài khoản thành công";
                 return Ok();
             }
             catch (Exception ex)
             {
-                responseData.Status = "500"; 
+                responseData.Status = "500";
                 responseData.Message = "Đã xảy ra lỗi: " + ex.Message;
                 return StatusCode(500, responseData);
             }
@@ -176,12 +184,66 @@ namespace Transportation.ApiControllers
             }
         }
 
+        [HttpPost("Forgotpassword")]
 
+        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordDTO forgotPassword)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            var user = await _accountService.FindByEmailAsync(forgotPassword.Email);
+            if (user == null) {
+                return BadRequest("Invalid Request");
+            }
+            var authClaims = new List<Claim> { // tạo danh sách claim cho token 
+            new Claim(ClaimTypes.NameIdentifier, user.Username) ,
+            new Claim(ClaimTypes.PrimarySid, user.UserId.ToString()),
+            new Claim(ClaimTypes.GivenName, user.Email.ToString())   };
+            var newAccessToken = CreateToken(authClaims);//Gọi phương thức CreateToken để tạo JWT token.
+                                                         // tạo token
+            var token = new JwtSecurityTokenHandler().WriteToken(newAccessToken);
+            var param = new Dictionary<string, string>
+            {
+                {"token", token },
+                {"email", forgotPassword.Email}
+            };
+            var callback = QueryHelpers.AddQueryString(forgotPassword.ClientUri, param);
+            var message = new Message([user.Email], "Reset password token", callback);
+            await _emailSender.SendEmailAsync(message);
+            return Ok();
+        }
+
+        [HttpPost("ResetPassword")]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDTO resetPassword)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            var user = await _accountService.FindByEmailAsync(resetPassword.Email);
+            if (user == null) {
+                return BadRequest("Invalid Request");
+            }
+            var principal = GetPrincipalFromExpiredToken(resetPassword.Token);// giải mã token
+            if (principal == null)
+            {
+                return BadRequest();
+            }
+            // bước 3 ;lây user name từ claim trong token
+            string email = principal?.FindFirst(ClaimTypes.GivenName)?.Value;
+            var result = _accountService.UpdatePassword(email, resetPassword.Password);
+            if(result == "Người dùng không hợp lệ")
+            {
+                return BadRequest("Yêu cầu thất bại");
+            }
+            return Ok();
+        }
         [HttpGet("Authorize")] //Tạo URL xác thực Google.
         public IActionResult Authorize()
         {
             var returnData = _googleAuthorization.getAuthorizationUrl();
-            return Ok(new { redirectUrl  = returnData });// Khi gọi API này, nó sẽ trả về URL để người dùng đăng nhập Google.Khi người dùng truy cập URL này, họ sẽ được chuyển hướng đến trang đăng nhập của Google.
+            return Ok(new { redirectUrl = returnData });// Khi gọi API này, nó sẽ trả về URL để người dùng đăng nhập Google.Khi người dùng truy cập URL này, họ sẽ được chuyển hướng đến trang đăng nhập của Google.
         }
         [HttpGet("CallBack")]//Xử lý callback sau khi người dùng đăng nhập.
         public async Task<IActionResult> CallBack(string code)//Nhận mã code từ Google sau khi người dùng đăng nhập.
@@ -228,7 +290,7 @@ namespace Transportation.ApiControllers
 
         }
 
-       
+
         //  Phương thức này đảm bảo rằng các token đã hết hạn có thể được kiểm tra và làm mới một cách an toàn và hợp lệ.
         [HttpPost("RefreshToken")]
 
@@ -353,16 +415,16 @@ namespace Transportation.ApiControllers
         public IActionResult GetAllDispatcher()
         {
             var listdispatcher = _accountService.GetAllDispatcher();
-            return Ok(listdispatcher );
+            return Ok(listdispatcher);
         }
-        
+
         [HttpGet("GetAllDriver")]
         public IActionResult GetAllDriver()
         {
             var listdriver = _accountService.GetAllDriver();
-            return Ok(listdriver );
+            return Ok(listdriver);
         }
 
-        
+
     }
 }

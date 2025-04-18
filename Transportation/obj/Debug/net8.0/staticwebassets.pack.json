@@ -5,10 +5,6 @@
       "PackagePath": "staticwebassets\\Transportation.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\Uploads\\Warehouse.xlsx",
-      "PackagePath": "staticwebassets\\Uploads\\Warehouse.xlsx"
-    },
-    {
       "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\css\\main.css",
       "PackagePath": "staticwebassets\\assets\\css\\main.css"
     },
@@ -49,72 +45,8 @@
       "PackagePath": "staticwebassets\\assets\\img\\logo.png"
     },
     {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\messages-1.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\messages-1.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\messages-2.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\messages-2.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\messages-3.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\messages-3.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\nen.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\nen.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\news-1.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\news-1.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\news-2.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\news-2.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\news-3.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\news-3.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\news-4.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\news-4.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\news-5.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\news-5.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\not-found.svg",
-      "PackagePath": "staticwebassets\\assets\\img\\not-found.svg"
-    },
-    {
       "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\page-title-bg.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\page-title-bg.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\product-1.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\product-1.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\product-2.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\product-2.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\product-3.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\product-3.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\product-4.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\product-4.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\product-5.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\product-5.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\profile-img.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\profile-img.jpg"
     },
     {
       "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\service-1.jpg",
@@ -139,18 +71,6 @@
     {
       "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\service-6.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\service-6.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\slides-1.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\slides-1.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\slides-2.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\slides-2.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\slides-3.jpg",
-      "PackagePath": "staticwebassets\\assets\\img\\slides-3.jpg"
     },
     {
       "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\img\\vc.JPG",
@@ -2439,30 +2359,6 @@
     {
       "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\lib\\register.html",
       "PackagePath": "staticwebassets\\lib\\register.html"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\media\\ImgUpload\\0827cf16-3b70-4b88-862a-d2df20d0a17c.png",
-      "PackagePath": "staticwebassets\\media\\ImgUpload\\0827cf16-3b70-4b88-862a-d2df20d0a17c.png"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\media\\ImgUpload\\1ec9f141-654e-49aa-a83f-32db70ecc282.png",
-      "PackagePath": "staticwebassets\\media\\ImgUpload\\1ec9f141-654e-49aa-a83f-32db70ecc282.png"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\media\\ImgUpload\\620c039a-8bf0-4404-a061-c8a4eaf68675.png",
-      "PackagePath": "staticwebassets\\media\\ImgUpload\\620c039a-8bf0-4404-a061-c8a4eaf68675.png"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\media\\ImgUpload\\794c995d-d829-497a-9b1f-e39864b21e61.png",
-      "PackagePath": "staticwebassets\\media\\ImgUpload\\794c995d-d829-497a-9b1f-e39864b21e61.png"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\media\\ImgUpload\\f1db87bb-f9c9-49c4-9cdd-edccd6c47b39.png",
-      "PackagePath": "staticwebassets\\media\\ImgUpload\\f1db87bb-f9c9-49c4-9cdd-edccd6c47b39.png"
-    },
-    {
-      "Id": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\media\\ImgUpload\\f295cc1d-1bc0-496d-89fa-e153d1be2617.jpg",
-      "PackagePath": "staticwebassets\\media\\ImgUpload\\f295cc1d-1bc0-496d-89fa-e153d1be2617.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Transportation.Microsoft.AspNetCore.StaticWebAssets.props",

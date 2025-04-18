@@ -1,4 +1,5 @@
-﻿using BusinessLogic.Filter;
+﻿using BusinessLogic.DTOs.SendEmail;
+using BusinessLogic.Filter;
 using BusinessLogic.Interfaces;
 using BusinessLogic.Public;
 using BusinessLogic.Services;
@@ -29,7 +30,8 @@ builder.Services.AddControllersWithViews();
 {
     options.Filters.Add(typeof(DemoAuthorizeActionFilter));
 });*/
-
+var emailConfig = builder.Configuration.GetSection("EmailConfiguration")
+    .Get<EmailConfiguration>();
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -38,7 +40,26 @@ builder.Services.AddControllers()
     });
 // Thêm Swagger
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Transportation API", Version = "v1" });
+
+    // Support for file upload
+    options.MapType<IFormFile>(() => new OpenApiSchema
+    {
+        Type = "string",
+        Format = "binary"
+    });
+
+    // Nếu cần hỗ trợ form có nhiều file:
+    options.MapType<IFormFileCollection>(() => new OpenApiSchema
+    {
+        Type = "array",
+        Items = new OpenApiSchema { Type = "string", Format = "binary" }
+    });
+});
+;
+
 
 
 builder.Services.AddDbContext<MyDbContext>(options => {
@@ -109,7 +130,8 @@ builder.Services.AddScoped<IGooogleAuthorization, GoogleAuthorizationService>();
 });*/
 
 builder.Services.AddSignalR();
-
+builder.Services.AddSingleton(emailConfig);
+builder.Services.AddSingleton<IEmailSender, EmailSender>();
 builder.Services.AddTransient<IShiftRepository, ShiftRepository>();
 builder.Services.AddTransient<IShiftService, ShiftService>();
 builder.Services.AddTransient<IAccountService, AccountService>();

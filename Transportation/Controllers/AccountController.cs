@@ -17,5 +17,13 @@ namespace Transportation.Controllers
         public IActionResult Register() {
             return View();
         }
+        public IActionResult ForgetPassword()
+        {
+            return View();
+        }
+        public IActionResult ResetPassword()
+        {
+            return View();
+        }
     }
 }

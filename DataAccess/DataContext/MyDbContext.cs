@@ -278,10 +278,7 @@ public partial class MyDbContext : DbContext
                   .HasMaxLength(20)
                   .IsRequired(false); // Cho phép null
 
-            entity.Property(e => e.RandomKey)
-                  .HasMaxLength(50)
-                  .IsRequired(false); // Cho phép null
-
+          
             entity.Property(e => e.RefreshToken)
                   .HasMaxLength(200)
                   .IsRequired(false); // Cho phép null

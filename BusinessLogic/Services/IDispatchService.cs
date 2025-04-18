@@ -6,6 +6,7 @@ using DataAccess.DataContext;
 using DataAccess.Entity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using static BusinessLogic.Services.DispatchService;
 
@@ -19,6 +20,7 @@ namespace BusinessLogic.Services
         int UpdateStatusById(int? requestId);
         List<DispatchAssignmentDTO> getDispatByTripId(int tripId);
         Task<int> StartShipping(int? requestId);
+
         Task<string> UploadImageAndUpdateStatus(int requestId, IFormFile imageUpload);
     }
     public class DispatchService : IDispatchService

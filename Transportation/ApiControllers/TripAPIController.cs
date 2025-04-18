@@ -27,6 +27,7 @@ namespace Transportation.ApiControllers
             return Ok(trips);
         }
         [HttpPost("CreateTrip")]
+        [Consumes("multipart/form-data")]
         public IActionResult CreateTrip([FromForm] Trip model)
         {
             if (ModelState.IsValid)

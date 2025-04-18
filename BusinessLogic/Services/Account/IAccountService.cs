@@ -19,6 +19,7 @@ namespace BusinessLogic.Services.Account
         Task<Users> Login_Account(AccountLoginRequestData requestData);
         Task<int> AccountUpdateRefreshToken(AccountUpdateRefeshTokenRequestData tokenRequestData);
         Task<Users> Register_Account(AccountRegisterRequestData registerRequestData);
+        Task<Users> FindByEmailAsync(string email);
         Task<Users> Register_Dispatcher(AccountRegisterRequestData registerRequestData);
         Task<Users> Register_Driver(AccountRegisterRequestData registerRequestData);
         Task<Function> GetFunction(string FunctionCode);
@@ -29,6 +30,7 @@ namespace BusinessLogic.Services.Account
         List<Dispatcher> GetAllDispatcher();
         List<Driver> GetAllDriver();
         Driver GetDriverByUserId(int userId);
+        string UpdatePassword(string email, string password);
     }
     public class AccountService : IAccountService
     {
@@ -63,36 +65,51 @@ namespace BusinessLogic.Services.Account
             try
             {
                 //nếu tồn tại user
-                var user_db = _context.Users.Where(x => x.Username == requestData.UserName && x.PasswordHash == requestData.Password).FirstOrDefault();
+                var user_db = _context.Users.Where(x => x.Username == requestData.UserName).FirstOrDefault();
                 if (user_db == null)
                 {
-                    return user;
+                    return null;
+                }
+                bool isPasswordValid = BCrypt.Net.BCrypt.Verify(requestData.Password, user_db.PasswordHash);
+                if (isPasswordValid == false) {
+                    return null;
                 }
                 user.UserId = user_db.UserId;
                 user.Username = user_db.Username;
-                user.Email = user_db.Email;// thay fullname=email
-                //user. = user_db.FullName;
+                user.Email = user_db.Email;
                 return user;
             }
             catch (Exception)
             { throw; }
         }
+
+        public async Task<Users> FindByEmailAsync(string email)
+        {
+            var user = _context.Users.FirstOrDefault(x => x.Email == email);
+            if(user == null)
+            {
+                return null;
+            }
+            return user;
+        }
+
         public async Task<Users> Register_Account(AccountRegisterRequestData registerRequestData)
         {
-            //tạo tài khoản
-            var user = new Users();
-
             //nếu tồn tại user
             var user_db = _context.Users.Where(x => x.Username == registerRequestData.Username).FirstOrDefault();
             if (user_db != null)
             {
                 return null;
             }
+            // Mã hóa mật khẩu
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(registerRequestData.PasswordHash);
+            //tạo tài khoản
+            var user = new Users();
             user.Username = registerRequestData.Username;
             user.Email = registerRequestData.Email;
             user.PhoneNumber = registerRequestData.PhoneNumber;
-            user.RandomKey = Until.GenerateRandomkey();
-            user.PasswordHash = registerRequestData.PasswordHash;
+
+            user.PasswordHash = hashedPassword;
             user.IsActive = true;
             _context.Users.Add(user);
             _context.SaveChanges();
@@ -129,11 +146,11 @@ namespace BusinessLogic.Services.Account
             {
                 return null;
             }
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(registerRequestData.PasswordHash);
             user.Username = registerRequestData.Username;
             user.Email = registerRequestData.Email;
             user.PhoneNumber = registerRequestData.PhoneNumber;
-            user.RandomKey = Until.GenerateRandomkey();
-            user.PasswordHash = registerRequestData.PasswordHash;
+            user.PasswordHash = hashedPassword;
 
             user.IsActive = true;
             _context.Users.Add(user);
@@ -171,11 +188,11 @@ namespace BusinessLogic.Services.Account
             {
                 return null;
             }
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(registerRequestData.PasswordHash);
             user.Username = registerRequestData.Username;
             user.Email = registerRequestData.Email;
             user.PhoneNumber = registerRequestData.PhoneNumber;
-            user.RandomKey = Until.GenerateRandomkey();
-            user.PasswordHash = registerRequestData.PasswordHash;
+            user.PasswordHash = hashedPassword;
             user.IsActive = true;
             _context.Users.Add(user);
             _context.SaveChanges();
@@ -281,5 +298,18 @@ namespace BusinessLogic.Services.Account
             }
             return driver;
         }
+        public string UpdatePassword(string email, string password)
+        {
+            var user = _context.Users.FirstOrDefault(x => x.Email  == email);
+            if(user == null)
+            {
+                return "Người dùng không hợp lệ";
+            }
+            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(password);
+            _context.SaveChanges();
+            return "Cập nhật thành công";
+        }
+
     }
+       
 }
