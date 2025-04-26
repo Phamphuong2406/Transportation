@@ -142,7 +142,7 @@
 
             <li class="nav-item">
 
-                <a class="nav-link collapsed" href="~/Coordinator/Home/Index">
+                <a class="nav-link collapsed" href="~/Coordinator/HomeCoordinator/Index">
                     <i class="bi bi-bar-chart"></i>
                     <span>Thống kê</span>
                 </a>
@@ -179,12 +179,9 @@
             </li><!-- End Dashboard Nav -->
 
         
-
-           
-
             <li class="nav-item">
 
-                <a class="nav-link collapsed" href="~/User/Logout">
+                <a class="nav-link collapsed" href="#" onclick="logout()" style="display:inline;">
                     <i class="bi bi-box-arrow-right"></i>
                     <span>Đăng xuất</span>
                 </a>
@@ -230,40 +227,26 @@
     <script src="~/assets/js/main.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 
-        <script>
-            //Nếu localStorage có access_token, nó sẽ được gửi trong header.
-            $(document).ready(function () {
-                $.ajaxSetup({
-                    beforeSend: function (xhr) {
-                        let token = localStorage.getItem("access_token");
-                        if (token) {
-                            xhr.setRequestHeader("Authorization", "Bearer " + token);
-                        }
+    <script>
+        async function logout() {
+            try {
+                const response = await fetch('/api/AccountAPI/Logout', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
                     }
                 });
-            });
-            //Nếu localStorage không có access_token, người dùng sẽ bị chuyển hướng về trang đăng nhập /account/login.
-            document.addEventListener("DOMContentLoaded", function () {
-                let token = localStorage.getItem("access_token");
-                if (!token) {
-                    window.location.href = "/account/login"; // Chuyển về trang đăng nhập nếu chưa đăng nhập
-                }
-            });
-            //Dùng fetch API để tự động gửi token trong tất cả các request.
-            function fetchWithAuth(url, options = {}) {
-                let token = localStorage.getItem("access_token");
-                let headers = new Headers({
-                    "Content-Type": "application/json",
-                    ...options.headers
-                });
 
-                if (token) {
-                    headers.append("Authorization", "Bearer " + token);
+                if (response.ok) {
+                    window.location.href = '/Account/LogIn';
+                } else {
+                    alert('Đăng xuất thất bại.');
                 }
-
-                return fetch(url, { ...options, headers });
+            } catch (error) {
+                console.error('Lỗi khi đăng xuất:', error);
             }
-       </script>
+        }
+    </script>
     
 </body>
 

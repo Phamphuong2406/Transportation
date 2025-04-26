@@ -19,4 +19,22 @@
 
         public string? LicensePlate { get; set; }
     }
+    public class TruckOrderStatisticDTO
+    {
+        public int? TruckId { get; set; }
+        public int TotalOrders { get; set; }
+    }
+    public class DriverPerformanceDTO
+    {
+        public string DriverName { get; set; }
+        public int TotalTrips { get; set; }
+        public int TotalOrders { get; set; }
+        public double OnTimeRate { get; set; }
+    }
+    public class TruckLoadDistributionDTO
+    {
+        public int? TruckId { get; set; }
+        public int? UsedLoad { get; set; }
+        public int MaxLoad { get; set; }
+    }
 }

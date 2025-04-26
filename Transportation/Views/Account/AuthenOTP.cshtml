@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewData["Title"] = "AuthenOTP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+
+                    <div class="card mb-3">
+
+                        <div class="card-body">
+
+                            <div class="pt-4 pb-2">
+                                <h5 class="card-title text-center pb-0 fs-4">Xác thực OPT để hoàn thành đăng ký</h5>
+                                <p class="text-center small">Nhập mã OTP đã được gửi tới email của bạn</p>
+                            </div>
+
+                            <form id="SendOTPForm" class="row g-3 needs-validation" novalidate>
+
+                                <div class="col-12 mb-3">
+                                    <input type="text" id="otp" class="form-control form-control-lg rounded-3 shadow-sm" placeholder="mã OTP của bạn" required />
+                                </div>
+                                <input type="hidden" id="email" value="@ViewData["Email"]" />
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100" type="submit">Xác nhận</button>
+                                </div>
+
+                              
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</div>
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let loginForm = document.getElementById("SendOTPForm");
+            if (loginForm) {
+                loginForm.addEventListener("submit", function (event) {
+                    event.preventDefault();
+
+                    let otp = document.getElementById("otp").value;
+                    let email = document.getElementById("email").value; // nhớ có input hidden hoặc visible
+                    console.log("email", email);
+                    fetch("/api/AccountAPI/OTPAuthenticationAndAccountCreation", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ email: email, otp: otp })
+                    })
+                        .then(response => {
+                            if (!response.ok) throw new Error("Network response was not ok.");
+                            return response.json();
+                        })
+                        .then(data => {
+                            if (data.success) {
+                                alert("Đăng ký thành công!");
+                                window.location.href = "/Account/LogIn";
+                            } else {
+                                alert("OTP không chính xác hoặc đã hết hạn!");
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Lỗi:", error);
+                            alert("Đã xảy ra lỗi. Vui lòng thử lại.");
+                        });
+                });
+            }
+        });
+    </script>
+}

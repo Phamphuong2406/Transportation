@@ -3,6 +3,7 @@ using BusinessLogic.DTOs;
 using BusinessLogic.Services.Account;
 using DataAccess.DataContext;
 using DataAccess.Entity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,8 @@ namespace BusinessLogic.Services
         int Create(TruckDTO model);
         int Detele(int? Truckid);
         TruckDTO GettruckIdByuserId(int userId);
+        List<TruckOrderStatisticDTO> GetTruckOrderStatistics(int year, int month);
+        List<DriverPerformanceDTO> GetDriverPerformanceData();
     }
     public class TruckService : ITruckService
     {
@@ -76,6 +79,43 @@ namespace BusinessLogic.Services
             }
             return null;
         }
+        public List<TruckOrderStatisticDTO> GetTruckOrderStatistics(int year, int month)
+        {
+            var query = _context.DispatchAssignments
+             .Where(d => d.AssignedDate.Year == year && d.AssignedDate.Month == month);
 
+            var orderData = query
+                .GroupBy(d => d.Trip.TruckId)
+                .Select(g => new TruckOrderStatisticDTO
+                {
+                    TruckId = g.Key,
+                    TotalOrders = g.Count() // Tổng số đơn hàng mỗi xe tải
+                })
+                .ToList();
+          
+            return orderData;
+        }
+        public List<DriverPerformanceDTO> GetDriverPerformanceData()
+        {
+            var driverPerformance = _context.Trucks
+                  .Include(x => x.Trips).ThenInclude(t => t.DispatchAssignments)
+                  .Include(x => x.Driver)
+                  .AsEnumerable()
+                  .Where(t => t.Driver != null) // Đảm bảo có tài xế
+                  .Select(d => new DriverPerformanceDTO
+                  {
+                      DriverName = d.Driver.FullName ?? "Không có tài xế",
+                      TotalTrips = d.Trips.Count(x => x.Status == "Hoàn thành"),
+                      TotalOrders = d.Trips.Sum(t => t.DispatchAssignments.Count(u => u.Status == "Đã giao hàng")),
+                      // ct: ontimerate = ( số đơn hàng giao đúng hạn / tổng số đơn hàng) * 100
+                      OnTimeRate = d.Trips.Sum(t => t.DispatchAssignments.Count(u => u.Status == "Đã giao hàng")) > 0
+                          ? (double)d.Trips.Sum(t => t.DispatchAssignments.Count(o => o.Deliverydate.HasValue
+                              && o.Deliverydate.Value.TimeOfDay <= t.EndTime.GetValueOrDefault().ToTimeSpan()))
+                            / d.Trips.Sum(t => t.DispatchAssignments.Count(u => u.Status == "Đã giao hàng")) * 100
+                          : 0
+                  })
+                  .ToList();
+            return driverPerformance;
+        }
     }
 }

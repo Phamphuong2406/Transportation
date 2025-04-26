@@ -104,7 +104,7 @@
 
                     data.forEach(item => {
                         let statusHtml = "";
-                        if (item.Status === "Đã Hoàn Thành") {
+                        if (item.Status === "Hoàn thành") {
                             statusHtml = '<button class="btn btn-secondary">Đã kết thúc ca</button>';
                         } else {
                             statusHtml = `<button class="btn btn-success start-shift-btn" data-tripid="${item.TripId}">Bắt đầu ca làm</button>`;
@@ -187,7 +187,15 @@
                 .catch(error => console.log('Error:', error));
         }
 
-        // ✅ Event delegation: xử lý khi click vào .table-row, kể cả khi tạo động
+        document.getElementById("data-list").addEventListener("click", function (event) {
+            const button = event.target.closest(".start-shift-btn");
+            if (button) {
+                let tripId = button.getAttribute("data-tripid");
+                startTracking(tripId, button);
+            }
+        });
+
+        // Event delegation: xử lý khi click vào .table-row, kể cả khi tạo động
         document.getElementById('data-list')?.addEventListener('click', function (e) {
             const clickedRow = e.target.closest('.table-row');
             if (clickedRow && !e.target.closest('button')) {
@@ -221,7 +229,6 @@
                     // Lỗi dữ liệu không hợp lệ
                     alert(result.message || "Dữ liệu không hợp lệ. Vui lòng kiểm tra lại.");
                 } else {
-                    // Lỗi khác
                     alert("Đã xảy ra lỗi: " + (result.message || "Không xác định."));
                 }
             })
@@ -233,7 +240,6 @@
 
     function getRequestId(requestId) {
         document.getElementById('requestId').value = requestId;
-        // Gửi AJAX đến endpoint
         $.ajax({
                 url: '/api/DispatchAPI/StartShippingRequest',
             method: 'PUT',
@@ -244,7 +250,7 @@
 
                 // Thay đổi nút thành thẻ <h> với nội dung "Đã giao"
 
-                location.reload(); // Load lại trang nếu cần
+                location.reload(); 
             },
             error: function (xhr) {
                 alert('Có lỗi xảy ra: ' + xhr.responseJSON?.message || 'Không thể cập nhật trạng thái.');
@@ -366,14 +372,7 @@
            
         }
 
-
-        // Gán sự kiện cho tất cả nút "Bắt đầu ca làm"
-        document.querySelectorAll(".start-shift-btn").forEach(button => {
-            button.addEventListener("click", function () {
-                let tripId = this.getAttribute("data-tripid");
-                startTracking(tripId, this);
-            });
-        });
+        
 
 </script>
 }

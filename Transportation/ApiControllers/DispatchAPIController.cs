@@ -197,20 +197,8 @@ namespace Transportation.ApiControllers
 
 
         }
-        /*[HttpPost("UploadImgAndStatus")]
-        [Consumes("multipart/form-data")]
-        public async Task<IActionResult> UploadImgAndStatus([FromForm] int RequestId, [FromForm] IFormFile ImageUpload)
-        {
-            var result = await _dispatchService.UploadImageAndUpdateStatus(RequestId, ImageUpload);
-
-            if (result != "Cập nhật thành công")
-            {
-                return BadRequest();
-            }
-               
-
-            return Ok(new { message = "Cập nhật thành công" });
-        }*/
+       
+        [HttpPost("UploadImgAndStatus")]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> UploadImgAndStatus([FromForm] UploadRequest model)
         {

@@ -10,6 +10,7 @@ namespace DataAccess.IRepositories
 {
     public interface IAccountRepo
     {
+       
         int CreateCustomer(Customer customer);
         int CreateUser(Users user);
         int CreateDriver(Driver driver);

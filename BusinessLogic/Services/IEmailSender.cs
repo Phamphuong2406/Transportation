@@ -1,7 +1,9 @@
-﻿using BusinessLogic.DTOs.SendEmail;
+﻿using BusinessLogic.DTOs.Account;
+using BusinessLogic.DTOs.SendEmail;
 using MailKit.Net.Smtp;
+using Microsoft.Extensions.Caching.Distributed;
 using MimeKit;
-
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,14 +16,18 @@ namespace BusinessLogic.Services
     {
         void SendEmail(Message email);
         Task SendEmailAsync(Message message);
+        Task<string> GenerateOtpForEmailAsync(AccountRegisterRequestData accountRegister);
+        Task<bool> VerifyOtpAsync(string inputOtp, string email);
     }
 
     public class EmailSender : IEmailSender
     {
         private readonly EmailConfiguration _emailConfig;
-        public EmailSender(EmailConfiguration emailConfig)
+        private readonly IDistributedCache _cache;
+        public EmailSender(EmailConfiguration emailConfig, IDistributedCache cache)
         {
             _emailConfig = emailConfig;
+            _cache = cache;
         }
         public void SendEmail(Message message)// phương thức này nhận vào một Message (thường chứa To, Subject, Content).
         {
@@ -43,7 +49,51 @@ namespace BusinessLogic.Services
 
             return emailMessage;
         }
-      //  Gửi email thực tế với Send
+        public async Task<string> GenerateOtpForEmailAsync(AccountRegisterRequestData accountRegister)
+        {
+            // Tạo OTP
+            var otp = new Random().Next(100000, 999999).ToString();
+
+            // Tạo key
+            var otpCacheKey = $"OTP_{accountRegister.Email}";
+            var accountCacheKey = $"ACCOUNT_REGISTER_{accountRegister.Email}";
+
+            // Serialize OTP
+           // var otpJson = JsonConvert.SerializeObject(otp);
+            var otpBytes = Encoding.UTF8.GetBytes(otp);
+
+            // Serialize Account Data
+            var accountJson = JsonConvert.SerializeObject(accountRegister);
+            var accountBytes = Encoding.UTF8.GetBytes(accountJson);
+
+            // Cấu hình thời gian sống của cache
+            var options = new DistributedCacheEntryOptions()
+                .SetAbsoluteExpiration(DateTime.Now.AddMinutes(5))
+                .SetSlidingExpiration(TimeSpan.FromSeconds(50));
+
+            // Lưu OTP và thông tin đăng ký vào Redis
+            await _cache.SetAsync(otpCacheKey, otpBytes, options);
+            await _cache.SetAsync(accountCacheKey, accountBytes, options);
+
+            return otp;
+        }
+
+        public async Task<bool> VerifyOtpAsync(string inputOtp,string email)
+        {
+            var cacheKey = $"OTP_{email}";
+            var cachedData = await _cache.GetAsync(cacheKey);
+
+            if (cachedData == null)
+                return false; 
+            var otp = Encoding.UTF8.GetString(cachedData); // OTP là chuỗi, không cần Deserialize
+            //"\"461338\""
+            if (otp != inputOtp)
+                return false; 
+            await _cache.RemoveAsync(cacheKey);
+
+            return true;
+        }
+
         private void Send(MimeMessage mailMessage)
         {
             using (var client = new SmtpClient())

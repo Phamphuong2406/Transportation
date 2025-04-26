@@ -4,12 +4,14 @@ using BusinessLogic.DTOs.SendEmail;
 using BusinessLogic.Public;
 using BusinessLogic.Services;
 using BusinessLogic.Services.Account;
+using DataAccess.Entity;
 using Google.Apis.Auth;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 using NuGet.Common;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -35,24 +37,30 @@ namespace Transportation.ApiControllers
             _emailSender = emailSender;
             // _loggerManager = loggerManager;
         }
-        [HttpPost("AccountRegister")]
-        public async Task<ActionResult> AccountRegister(AccountRegisterRequestData registerRequestData)
+        [HttpPost("OTPAuthenticationAndAccountCreation")]
+        public async Task<ActionResult> OTPAuthenticationAndAccountCreation([FromBody] AuthenOtpDTO authenOtp)
         {
             var responseData = new Response();
+          
             try
             {
-                var result = await _accountService.Register_Account(registerRequestData);
+                //xác thực otp
+                var data = await _emailSender.VerifyOtpAsync(authenOtp.Otp, authenOtp.Email);
+                if(data == false)
+                {
+                    return BadRequest("Xác thực OTP thất bại");
+                }
+                var result = await _accountService.Register_Account(authenOtp.Email);
 
                 // Nếu user đã tồn tại hoặc có lỗi khi tạo
                 if (result == null)
                 {
-                    responseData.Status = "409"; // 409 Conflict (User đã tồn tại)
+                    responseData.Status = "409"; 
                     responseData.Message = "Tài khoản đã tồn tại";
                     return Conflict(responseData);
                 }
 
-                // Trả về thành công
-                responseData.Status = "201"; // 201 Created
+                responseData.Status = "201";
                 responseData.Message = "Tạo tài khoản thành công";
                 return Ok();
             }
@@ -63,6 +71,16 @@ namespace Transportation.ApiControllers
                 return StatusCode(500, responseData);
             }
         }
+        [HttpPost("SendOTP")]
+        public async Task<ActionResult> SendOTP(AccountRegisterRequestData registerRequestData)
+        {
+            
+            var otp =await  _emailSender.GenerateOtpForEmailAsync(registerRequestData);
+            var message = new Message([registerRequestData.Email], "OTP của banj là ", otp);
+            await _emailSender.SendEmailAsync(message);
+            return Ok();
+        }
+   
 
         [HttpPost("DispatcherRegister")]
         [Consumes("multipart/form-data")]
@@ -109,8 +127,6 @@ namespace Transportation.ApiControllers
                     responseData.Message = "Tài khoản đã tồn tại";
                     return Conflict(responseData);
                 }
-
-                // Trả về thành công
                 responseData.Status = "201";
                 responseData.Message = "Tạo tài khoản thành công";
                 return Ok();
@@ -137,24 +153,21 @@ namespace Transportation.ApiControllers
                 { return BadRequest("Yêu cầu không hơpj lệ "); }
                 //Bước 2: xác nhận thông tin đăng nhập
                 var useLogin = await _accountService.Login_Account(requestData);// login user với hàm User_Login để xác thực thông tin đăng nhập
-                if (useLogin == null || useLogin.UserId <= 0) // <=0 là k tìm thấy id nào mong muốn
+                if (useLogin == null || useLogin.UserId <= 0)
                 {
                     returnData.ResponseCode = -1;
                     returnData.ResponseMessage = "Đăng nhập thất bại ";
                     return Ok(returnData);
                 }
                 //Bước 3: Tạo token và refresh token
-                var authClaims = new List<Claim> { // tạo danh sách claim cho token 
+                var authClaims = new List<Claim> { 
             new Claim(ClaimTypes.NameIdentifier, useLogin.Username) ,
             new Claim(ClaimTypes.PrimarySid, useLogin.UserId.ToString()),
             new Claim(ClaimTypes.GivenName, useLogin.Email.ToString())   };
-                var newAccessToken = CreateToken(authClaims);//Gọi phương thức CreateToken để tạo JWT token.
-                                                             // tạo token
+                var newAccessToken = CreateToken(authClaims);
                 var token = new JwtSecurityTokenHandler().WriteToken(newAccessToken);
-                var refreshToken = GenerateRefreshToken();//Tạo refresh token bằng phương thức GenerateRefreshToken.
-                                                          //Bước 4: update refeshToken vào db
+                var refreshToken = GenerateRefreshToken();
                 var expired = _configuration["JWT:RefeshTokenValidityInDays"] ?? "";
-                //Cập nhật refresh token và ngày hết hạn vào cơ sở dữ liệu.
                 var result_update = _accountService.AccountUpdateRefreshToken(new AccountUpdateRefeshTokenRequestData
                 {
                     Id = useLogin.UserId,
@@ -169,11 +182,10 @@ namespace Transportation.ApiControllers
                     SameSite = SameSiteMode.Strict, // Ngăn chặn CSRF
                     Expires = DateTime.UtcNow.AddHours(1) // Hết hạn sau 1 giờ
                 });
-                //Bước 5: Trả về token và refresh token cho người dùng.
                 returnData.ResponseCode = 1;
                 returnData.ResponseMessage = "Đăng nhập thành công";
-                returnData.token = token;// trả về access token 
-                returnData.refeshToken = refreshToken;//Trả về refresh token cho người dùng.
+                returnData.token = token;
+                returnData.refeshToken = refreshToken;
                 return Ok(returnData);
             }
             catch (Exception ex)
@@ -183,6 +195,15 @@ namespace Transportation.ApiControllers
                 return Ok(returnData);
             }
         }
+
+        [HttpPost("Logout")]
+        public IActionResult Logout()
+        {
+            // Xóa token trong cookie
+            Response.Cookies.Delete("AuthToken");
+            return RedirectToAction("Login", "Account");
+        }
+
 
         [HttpPost("Forgotpassword")]
 
@@ -200,8 +221,7 @@ namespace Transportation.ApiControllers
             new Claim(ClaimTypes.NameIdentifier, user.Username) ,
             new Claim(ClaimTypes.PrimarySid, user.UserId.ToString()),
             new Claim(ClaimTypes.GivenName, user.Email.ToString())   };
-            var newAccessToken = CreateToken(authClaims);//Gọi phương thức CreateToken để tạo JWT token.
-                                                         // tạo token
+            var newAccessToken = CreateToken(authClaims);
             var token = new JwtSecurityTokenHandler().WriteToken(newAccessToken);
             var param = new Dictionary<string, string>
             {
@@ -211,7 +231,7 @@ namespace Transportation.ApiControllers
             var callback = QueryHelpers.AddQueryString(forgotPassword.ClientUri, param);
             var message = new Message([user.Email], "Reset password token", callback);
             await _emailSender.SendEmailAsync(message);
-            return Ok();
+            return Ok(token);
         }
 
         [HttpPost("ResetPassword")]
@@ -245,7 +265,7 @@ namespace Transportation.ApiControllers
             var returnData = _googleAuthorization.getAuthorizationUrl();
             return Ok(new { redirectUrl = returnData });// Khi gọi API này, nó sẽ trả về URL để người dùng đăng nhập Google.Khi người dùng truy cập URL này, họ sẽ được chuyển hướng đến trang đăng nhập của Google.
         }
-        [HttpGet("CallBack")]//Xử lý callback sau khi người dùng đăng nhập.
+        [HttpGet("CallBack")]
         public async Task<IActionResult> CallBack(string code)//Nhận mã code từ Google sau khi người dùng đăng nhập.
         {
             var returnData = new ReturnData();
@@ -254,17 +274,15 @@ namespace Transportation.ApiControllers
             //
             var credential = await _accountService.GetByGoogleId(payload.Subject);
             //Bước 3: Tạo token và refresh token
-            var authClaims = new List<Claim> { // tạo danh sách claim cho token 
+            var authClaims = new List<Claim> { 
             new Claim(ClaimTypes.NameIdentifier, credential.Username) ,
             new Claim(ClaimTypes.PrimarySid, credential.UserId.ToString()),
             new Claim(ClaimTypes.GivenName, credential.Email.ToString())   };
-            var newAccessToken = CreateToken(authClaims);//Gọi phương thức CreateToken để tạo JWT token.
-                                                         // tạo token
+            var newAccessToken = CreateToken(authClaims);
             var token = new JwtSecurityTokenHandler().WriteToken(newAccessToken);
-            var refreshToken = GenerateRefreshToken();//Tạo refresh token bằng phương thức GenerateRefreshToken.
-                                                      //Bước 4: update refeshToken vào db
+            var refreshToken = GenerateRefreshToken();
+                                                      
             var expired = _configuration["JWT:RefeshTokenValidityInDays"] ?? "";
-            //Cập nhật refresh token và ngày hết hạn vào cơ sở dữ liệu.
             var result_update = _accountService.AccountUpdateRefreshToken(new AccountUpdateRefeshTokenRequestData
             {
                 Id = credential.UserId,
@@ -283,17 +301,13 @@ namespace Transportation.ApiControllers
             //Bước 5: Trả về token và refresh token cho người dùng.
             returnData.ResponseCode = 1;
             returnData.ResponseMessage = "Đăng nhập thành công";
-            returnData.token = token;// trả về access token 
-            returnData.refeshToken = refreshToken;//Trả về refresh token cho người dùng.
+            returnData.token = token;
+            returnData.refeshToken = refreshToken;
             return Ok(returnData);
-            //    return Redirect($"https://localhost:7033/Home/{_credential!.UserId}");
-
+            
         }
 
-
-        //  Phương thức này đảm bảo rằng các token đã hết hạn có thể được kiểm tra và làm mới một cách an toàn và hợp lệ.
         [HttpPost("RefreshToken")]
-
         public async Task<ActionResult> RefreshToken()
         {
             var returnData = new ReturnData();//Lớp để ánh xạ cấu hình JWT từ appsettings.json.
@@ -309,16 +323,15 @@ namespace Transportation.ApiControllers
                 var jwtSecuriryToken = new JwtSecurityToken(accessToken);
                 var validTo = jwtSecuriryToken.ValidTo.AddHours(7);
 
-                if (validTo <= DateTime.Now) // nếu token hết hạn
+                if (validTo <= DateTime.Now) 
                 {
                     //Bước 2: giải mã token dựa vào secretkey đã config trước đó để lấy thông tin người dùng
 
-                    var principal = GetPrincipalFromExpiredToken(accessToken);// giải mã token
+                    var principal = GetPrincipalFromExpiredToken(accessToken);
                     if (principal == null)
                     {
                         return BadRequest();
                     }
-                    // bước 3 ;lây user name từ claim trong token
                     string username = principal?.Claims.ToList()[0].ToString()?.Split(' ')[1];
                     // bước 4: Kiểm tra xem refreshtoken đã hết hạn chưa 
                     var user_db = _accountService.GetAll().Result.Where(s => s.Username == username).FirstOrDefault();
@@ -326,36 +339,28 @@ namespace Transportation.ApiControllers
                     {
                         return BadRequest("refresh token hết hạn. Vui lòng đăng nhập lại");
                     }
-                    // Tạo token mới( giống login)
-                    //Bước 3: Tạo token và refresh token
-                    var authClaims = new List<Claim> { // tạo danh sách claim cho token 
+                    var authClaims = new List<Claim> {
             new Claim(ClaimTypes.NameIdentifier, user_db.Username) ,
             new Claim(ClaimTypes.PrimarySid, user_db.UserId.ToString()),
             new Claim(ClaimTypes.GivenName, user_db.Email.ToString())   };
-                    var newAccessToken = CreateToken(authClaims);//Gọi phương thức CreateToken để tạo JWT token.
-                                                                 // tạo token
+                    var newAccessToken = CreateToken(authClaims);
                     var token = new JwtSecurityTokenHandler().WriteToken(newAccessToken);
-                    var refreshToken = GenerateRefreshToken();//Tạo refresh token bằng phương thức GenerateRefreshToken.
-                                                              //Bước 4: update refeshToken vào db
+                    var refreshToken = GenerateRefreshToken();
                     var expired = _configuration["JWT:RefeshTokenValidityInDays"] ?? "";
-                    //Cập nhật refresh token và ngày hết hạn vào cơ sở dữ liệu.
                     var result_update = _accountService.AccountUpdateRefreshToken(new AccountUpdateRefeshTokenRequestData
                     {
                         Id = user_db.UserId,
                         RefreshToken = refreshToken,
                         RefreshTokenExprired = DateTime.Now.AddDays(Convert.ToInt32(expired))
                     });
-                    //Bước 5: Trả về token và refresh token cho người dùng.
                     returnData.ResponseCode = 1;
                     returnData.ResponseMessage = "Đăng nhập thành công";
-                    returnData.token = token;// trả về access token 
-                    returnData.refeshToken = refreshToken;//Trả về refresh token cho người dùng.
+                    returnData.token = token;
+                    returnData.refeshToken = refreshToken;
                     return Ok(returnData);
 
                 }
 
-
-                // Nếu mọi thứ hợp lệ, trả về access token
                 return Ok(accessToken);
             }
             catch (Exception)
@@ -365,7 +370,7 @@ namespace Transportation.ApiControllers
             }
             return Ok();
         }
-        // Phương thức để giải mã token và lấy thông tin principal
+     
         private ClaimsPrincipal? GetPrincipalFromExpiredToken(string? token)
         {
             var TokenValidationParameters = new TokenValidationParameters // Dùng TokenValidationParameters để thiết lập các tham số xác thực token.

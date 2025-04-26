@@ -22,4 +22,9 @@ namespace BusinessLogic.DTOs.Account
         public string Status { get; set; }
         public string Message { get; set; }
     }
+    public class AuthenOtpDTO
+    {
+        public string Otp { get; set; }
+        public string Email { get; set; }
+    }
 }

@@ -2489,6 +2489,7 @@
           "Microsoft.AspNetCore.Mvc.Formatters.Json": "2.3.0",
           "Microsoft.EntityFrameworkCore": "8.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0",
+          "Microsoft.Extensions.Caching.StackExchangeRedis": "8.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
           "NETCore.MailKit": "2.1.0"
         },

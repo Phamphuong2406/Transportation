@@ -17,7 +17,7 @@ namespace Transportation.Areas.Coordinator.Controllers
             _context = context;
         }
         //Hôm có danh sách các xe
-        public IActionResult Index()
+        public IActionResult Index()//chi tiết đơn hàng 
         {
             var userName = User.Identity.IsAuthenticated ? User.Identity.Name : "Khách";
             ViewData["UserName"] = userName;

@@ -4,8 +4,6 @@ using BusinessLogic.Interfaces;
 using BusinessLogic.Public;
 using BusinessLogic.Services;
 using BusinessLogic.Services.Account;
-
-using BusinessLogic.Services.WareHouse;
 using DataAccess.DataContext;
 using DataAccess.IRepositories;
 
@@ -15,21 +13,29 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Configuration;
 using System.Text;
 using Transportation.Hubs;
 
 
 var builder = WebApplication.CreateBuilder(args);
-
+var configuration = builder.Configuration;
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 /*services.AddControllers(options =>
 {
     options.Filters.Add(typeof(DemoAuthorizeActionFilter));
 });*/
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNameCaseInsensitive = true; 
+    });
+
 var emailConfig = builder.Configuration.GetSection("EmailConfiguration")
     .Get<EmailConfiguration>();
 builder.Services.AddControllers()
@@ -66,28 +72,18 @@ builder.Services.AddDbContext<MyDbContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Mydb"));
   
 });
-
+builder.Services.AddStackExchangeRedisCache(options => { options.Configuration = configuration["RedisCacheUrl"]; });
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 // Thêm dịch vụ Session
 builder.Services.AddDistributedMemoryCache(); // Sử dụng bộ nhớ trong để lưu session
-/*builder.Services.AddSession(options =>
+builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(30); // Thời gian hết hạn Session (30 phút)
     options.Cookie.HttpOnly = true; // Chỉ cho phép truy cập qua HTTP, tăng bảo mật
     options.Cookie.IsEssential = true; // Session hoạt động ngay cả khi người dùng từ chối cookie
-});*/
+});
 
-/*builder.Services.AddAuthentication
-    (CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options
-    =>
-    {
-        options.LoginPath = "/User/Login";
-        options.AccessDeniedPath = "/";
-        options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // Chỉ gửi cookie qua HTTPS
-        options.Cookie.SameSite = SameSiteMode.Lax; // Đặt SameSite
-        options.ExpireTimeSpan = TimeSpan.FromMinutes(30); // Thời gian hết hạn
-        options.SlidingExpiration = true; // Gia hạn thời gian đăng nhập nếu người dùng hoạt động
-    });*/
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
     options.Events = new JwtBearerEvents
@@ -136,7 +132,7 @@ builder.Services.AddTransient<IShiftRepository, ShiftRepository>();
 builder.Services.AddTransient<IShiftService, ShiftService>();
 builder.Services.AddTransient<IAccountService, AccountService>();
 builder.Services.AddTransient<IAccountRepo, AccountRepo>(); 
-    builder.Services.AddTransient<IShippingRequestService, ShippingRequestService>(); 
+builder.Services.AddTransient<IShippingRequestService, ShippingRequestService>(); 
  builder.Services.AddTransient<IWarehouseService, WarehouseService>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ITripService, TripService>();

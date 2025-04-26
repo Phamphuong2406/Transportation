@@ -1,15 +1,20 @@
 ﻿using AutoMapper;
+using BusinessLogic.DTOs;
 using BusinessLogic.DTOs.Account;
 using BusinessLogic.Public;
 using DataAccess.DataContext;
 using DataAccess.Entity;
 using DataAccess.IRepositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.VisualBasic;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UserRole = DataAccess.Entity.UserRole;
 
 namespace BusinessLogic.Services.Account
 {
@@ -18,13 +23,13 @@ namespace BusinessLogic.Services.Account
         Task<List<Users>> GetAll();
         Task<Users> Login_Account(AccountLoginRequestData requestData);
         Task<int> AccountUpdateRefreshToken(AccountUpdateRefeshTokenRequestData tokenRequestData);
-        Task<Users> Register_Account(AccountRegisterRequestData registerRequestData);
+        Task<Users> Register_Account(string email);
         Task<Users> FindByEmailAsync(string email);
         Task<Users> Register_Dispatcher(AccountRegisterRequestData registerRequestData);
         Task<Users> Register_Driver(AccountRegisterRequestData registerRequestData);
         Task<Function> GetFunction(string FunctionCode);
         Task<UserFunction> GetUserFunction(int UserId, int FunctionId, string PermisstionName);
-       Task<Role> GetRole(string RoleName);
+        Task<Role> GetRole(string RoleName);
         Task<UserRole> GetUserRole(int UserId, int RoleId);
         Task<Users> GetByGoogleId(string GoogleId);
         List<Dispatcher> GetAllDispatcher();
@@ -36,12 +41,16 @@ namespace BusinessLogic.Services.Account
     {
         private MyDbContext _context;
         private IAccountRepo _accountRepo;
+        private IEmailSender _emailSender;
+        private readonly IDistributedCache _cache;
         private readonly IMapper _mapper;
-        public AccountService(MyDbContext context, IAccountRepo accountRepo, IMapper mapper)
+        public AccountService(MyDbContext context, IAccountRepo accountRepo, IEmailSender emailSender, IMapper mapper, IDistributedCache cache)
         {
             _context = context;
             _accountRepo = accountRepo;
+            _emailSender = emailSender;
             _mapper = mapper;
+            _cache = cache;
         }
 
         public async Task<List<Users>> GetAll()
@@ -71,7 +80,8 @@ namespace BusinessLogic.Services.Account
                     return null;
                 }
                 bool isPasswordValid = BCrypt.Net.BCrypt.Verify(requestData.Password, user_db.PasswordHash);
-                if (isPasswordValid == false) {
+                if (isPasswordValid == false)
+                {
                     return null;
                 }
                 user.UserId = user_db.UserId;
@@ -86,59 +96,62 @@ namespace BusinessLogic.Services.Account
         public async Task<Users> FindByEmailAsync(string email)
         {
             var user = _context.Users.FirstOrDefault(x => x.Email == email);
-            if(user == null)
+            if (user == null)
             {
                 return null;
             }
             return user;
         }
 
-        public async Task<Users> Register_Account(AccountRegisterRequestData registerRequestData)
+        public async Task<Users?> Register_Account(string email)
         {
-            //nếu tồn tại user
-            var user_db = _context.Users.Where(x => x.Username == registerRequestData.Username).FirstOrDefault();
-            if (user_db != null)
-            {
-                return null;
-            }
-            // Mã hóa mật khẩu
-            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(registerRequestData.PasswordHash);
-            //tạo tài khoản
-            var user = new Users();
-            user.Username = registerRequestData.Username;
-            user.Email = registerRequestData.Email;
-            user.PhoneNumber = registerRequestData.PhoneNumber;
+            var accountCacheKey = $"ACCOUNT_REGISTER_{email}";
+            var cachedData = await _cache.GetAsync(accountCacheKey);
+            if (cachedData == null) return null;
 
-            user.PasswordHash = hashedPassword;
-            user.IsActive = true;
+            var registrationInfo = JsonConvert.DeserializeObject<AccountRegisterRequestData>(
+                Encoding.UTF8.GetString(cachedData)
+            );
+
+            var existingUser = await _context.Users
+                .FirstOrDefaultAsync(x => x.Username == registrationInfo.Username);
+
+            if (existingUser != null) return null;
+
+            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(registrationInfo.PasswordHash);
+
+            var user = new Users
+            {
+                Username = registrationInfo.Username,
+                Email = registrationInfo.Email,
+                PhoneNumber = registrationInfo.PhoneNumber,
+                PasswordHash = hashedPassword,
+                IsActive = true
+            };
+
+            var customer = new Customer
+            {
+                FullName = registrationInfo.FullName,
+                Address = registrationInfo.Address,
+                User = user
+            };
+
+            var userRole = new UserRole
+            {
+                RoleId = 2,
+                User = user
+            };
+
             _context.Users.Add(user);
-            _context.SaveChanges();
-            //Tạo khách hàng
-            var Customer = new Customer
-            {
-                UserId = user.UserId,
-                FullName = registerRequestData.FullName,
-                Address = registerRequestData.Address,
-            };
-            _context.Customers.Add(Customer);
-            //tạo role
-            var UserRole = new UserRole
-            {
-                UserId = user.UserId,
-                RoleId = 2
-            };
+            _context.Customers.Add(customer);
+            _context.UserRoles.Add(userRole);
 
-            _context.UserRoles.Add(UserRole);
-
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return user;
-
         }
-
         public async Task<Users> Register_Dispatcher(AccountRegisterRequestData registerRequestData)
         {
-            //tạo tài khoản
-            var user = new Users();
+
 
             //nếu tồn tại user
             var user_db = _context.Users.Where(x => x.Username == registerRequestData.Username).FirstOrDefault();
@@ -146,6 +159,8 @@ namespace BusinessLogic.Services.Account
             {
                 return null;
             }
+            //tạo tài khoản
+            var user = new Users();
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(registerRequestData.PasswordHash);
             user.Username = registerRequestData.Username;
             user.Email = registerRequestData.Email;
@@ -300,8 +315,8 @@ namespace BusinessLogic.Services.Account
         }
         public string UpdatePassword(string email, string password)
         {
-            var user = _context.Users.FirstOrDefault(x => x.Email  == email);
-            if(user == null)
+            var user = _context.Users.FirstOrDefault(x => x.Email == email);
+            if (user == null)
             {
                 return "Người dùng không hợp lệ";
             }
@@ -311,5 +326,5 @@ namespace BusinessLogic.Services.Account
         }
 
     }
-       
+
 }

@@ -74,8 +74,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29vcmRpbmF0b3JcVmlld3NcQ29vcmRpbmF0aW9uXExpc3RDb29yZGluYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Coordinator/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29vcmRpbmF0b3JcVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Coordinator/Views/HomeCoordinator/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29vcmRpbmF0b3JcVmlld3NcSG9tZUNvb3JkaW5hdG9yXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Coordinator/Views/Journey/Detail.cshtml]
@@ -110,8 +110,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRHJpdmVyc1xWaWV3c1xIb21lRHJpdmVyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Areas/Drivers/Views/HomeDriver/Realtime.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRHJpdmVyc1xWaWV3c1xIb21lRHJpdmVyXFJlYWx0aW1lLmNzaHRtbA==
+[C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Views/Account/AuthenOTP.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBdXRoZW5PVFAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Admin/source/repos/Transportation/Transportation/Transportation/Views/Account/ForgetPassword.cshtml]

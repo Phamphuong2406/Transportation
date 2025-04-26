@@ -3,12 +3,243 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\services\\iemailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\iemailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\apicontrollers\\accountapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\apicontrollers\\accountapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\services\\account\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\account\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\dtos\\account\\responsedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\dtos\\account\\responsedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\views\\account\\authenotp.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\views\\account\\authenotp.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB193ED6-B96C-464C-9DD5-796E67518F27}|DataAccess\\DataAccess.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\dataaccess\\datacontext\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB193ED6-B96C-464C-9DD5-796E67518F27}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\datacontext\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\apicontrollers\\shiftapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\apicontrollers\\shiftapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\admin\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\admin\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\services\\ishiftservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\ishiftservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\views\\account\\forgetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\views\\account\\forgetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB193ED6-B96C-464C-9DD5-796E67518F27}|DataAccess\\DataAccess.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\dataaccess\\repositories\\accountrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB193ED6-B96C-464C-9DD5-796E67518F27}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repositories\\accountrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\dtos\\sendemail\\emailconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\dtos\\sendemail\\emailconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\apicontrollers\\chartapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\apicontrollers\\chartapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\dtos\\truckdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\dtos\\truckdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\services\\itruckservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\itruckservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\services\\idispatchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\idispatchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\views\\homecoordinator\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\coordinator\\views\\homecoordinator\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\controllers\\homecoordinatorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\coordinator\\controllers\\homecoordinatorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\admin\\views\\homeadmin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\admin\\views\\homeadmin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\admin\\controllers\\homeadmincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\admin\\controllers\\homeadmincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\admin\\controllers\\driverscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\admin\\controllers\\driverscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\businesslogic.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\businesslogic.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\services\\itripservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\itripservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\controllers\\tripcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\coordinator\\controllers\\tripcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\hubs\\locationhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\hubs\\locationhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\drivers\\views\\homedriver\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\drivers\\views\\homedriver\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\apicontrollers\\truckapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\apicontrollers\\truckapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\drivers\\controllers\\homedrivercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\drivers\\controllers\\homedrivercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\drivers\\views\\shared\\_layoutdriver.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\drivers\\views\\shared\\_layoutdriver.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\admin\\views\\shared\\_layoutadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\admin\\views\\shared\\_layoutadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\views\\shared\\_layoutcoordinator.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\coordinator\\views\\shared\\_layoutcoordinator.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\dtos\\dispatchassignmentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\dtos\\dispatchassignmentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\dtos\\dispatcherdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\dtos\\dispatcherdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\apicontrollers\\dispatchapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\apicontrollers\\dispatchapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\apicontrollers\\shippingrequestapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\apicontrollers\\shippingrequestapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\services\\ishippingrequestservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\ishippingrequestservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\controllers\\journeycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\coordinator\\controllers\\journeycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\views\\journey\\realtime.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\coordinator\\views\\journey\\realtime.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\views\\coordination\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\coordinator\\views\\coordination\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\views\\coordination\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\coordinator\\views\\coordination\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\views\\journey\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\coordinator\\views\\journey\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\views\\journey\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\coordinator\\views\\journey\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\coordinator\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\apicontrollers\\tripapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\apicontrollers\\tripapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\apicontrollers\\warehouseapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\apicontrollers\\warehouseapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\controllers\\shippingrequestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\controllers\\shippingrequestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\drivers\\views\\homedriver\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\drivers\\views\\homedriver\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\services\\ifileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\ifileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\services\\iwarehouseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\iwarehouseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\services\\dapper\\baseapplicationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\dapper\\baseapplicationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\AppData\\Local\\SourceServer\\eca3fa410814db2d0690fef43c4b15e40241c82b1e0fb59aba21da35d067df8d\\Transportation\\Areas\\Coordinator\\Controllers\\CoordinationController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\views\\account\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -23,80 +254,20 @@
       "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\dtos\\account\\forgotpassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\dtos\\account\\forgotpassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\services\\account\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\account\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FB193ED6-B96C-464C-9DD5-796E67518F27}|DataAccess\\DataAccess.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\dataaccess\\entity\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FB193ED6-B96C-464C-9DD5-796E67518F27}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\entity\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FB193ED6-B96C-464C-9DD5-796E67518F27}|DataAccess\\DataAccess.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\dataaccess\\repositories\\accountrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FB193ED6-B96C-464C-9DD5-796E67518F27}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repositories\\accountrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\services\\iemailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\iemailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\apicontrollers\\sendemailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\apicontrollers\\sendemailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\apicontrollers\\dispatchapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\apicontrollers\\dispatchapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\scaffoldingreadme.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\scaffoldingreadme.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\apicontrollers\\tripapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\apicontrollers\\tripapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\apicontrollers\\truckapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\apicontrollers\\truckapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\apicontrollers\\usermanagementapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\apicontrollers\\usermanagementapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\apicontrollers\\warehouseapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\apicontrollers\\warehouseapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\apicontrollers\\shippingrequestapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\apicontrollers\\shippingrequestapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\apicontrollers\\shiftapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\apicontrollers\\shiftapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\services\\idispatchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\idispatchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\services\\account\\igooogleauthorization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -107,40 +278,12 @@
       "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\account\\igoogleauthhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\services\\ifileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\ifileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\businesslogic.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\businesslogic.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\dtos\\sendemail\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\dtos\\sendemail\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\dtos\\sendemail\\emailconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\dtos\\sendemail\\emailconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FB193ED6-B96C-464C-9DD5-796E67518F27}|DataAccess\\DataAccess.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\dataaccess\\datacontext\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FB193ED6-B96C-464C-9DD5-796E67518F27}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\datacontext\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\dtos\\account\\responsedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\dtos\\account\\responsedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\dtos\\account\\googledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\dtos\\account\\googledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\dtos\\account\\requestdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\dtos\\account\\requestdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\dtos\\registermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -179,38 +322,6 @@
       "RelativeMoniker": "D:0:0:{9493315F-0A06-481D-8A6E-56D233006665}|Solution Items{9493315F-0A06-481D-8A6E-56D233006665}|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\drivers\\controllers\\homedrivercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\drivers\\controllers\\homedrivercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\drivers\\views\\homedriver\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\drivers\\views\\homedriver\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\views\\coordination\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\coordinator\\views\\coordination\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\controllers\\coordinationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\coordinator\\controllers\\coordinationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\drivers\\views\\homedriver\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\drivers\\views\\homedriver\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\services\\itruckservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\itruckservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\drivers\\views\\shared\\_layoutdriver.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\drivers\\views\\shared\\_layoutdriver.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\drivers\\views\\homedriver\\realtime.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\drivers\\views\\homedriver\\realtime.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -219,63 +330,20 @@
       "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\admin\\controllers\\truckscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\coordinator\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\controllers\\journeycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\coordinator\\controllers\\journeycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\controllers\\shippingrequestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\controllers\\shippingrequestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\views\\shippingrequests\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\views\\shippingrequests\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\views\\coordination\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\coordinator\\views\\coordination\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\AppData\\Local\\SourceServer\\eca3fa410814db2d0690fef43c4b15e40241c82b1e0fb59aba21da35d067df8d\\Transportation\\Areas\\Coordinator\\Controllers\\CoordinationController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FB193ED6-B96C-464C-9DD5-796E67518F27}|DataAccess\\DataAccess.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\dataaccess\\irepositories\\ishippingrequestrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FB193ED6-B96C-464C-9DD5-796E67518F27}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\irepositories\\ishippingrequestrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\views\\journey\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\coordinator\\views\\journey\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\views\\journey\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\coordinator\\views\\journey\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\views\\journey\\realtime.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\coordinator\\views\\journey\\realtime.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{FB193ED6-B96C-464C-9DD5-796E67518F27}|DataAccess\\DataAccess.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\dataaccess\\irepositories\\idispatchrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FB193ED6-B96C-464C-9DD5-796E67518F27}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\irepositories\\idispatchrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\wwwroot\\assets\\css\\main.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\wwwroot\\assets\\css\\main.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FB193ED6-B96C-464C-9DD5-796E67518F27}|DataAccess\\DataAccess.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\dataaccess\\irepositories\\itriprepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -290,14 +358,6 @@
       "RelativeMoniker": "D:0:0:{FB193ED6-B96C-464C-9DD5-796E67518F27}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repositories\\shiftrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\services\\itripservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\itripservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\services\\ishippingrequestservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\ishippingrequestservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\views\\trip\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\coordinator\\views\\trip\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -308,10 +368,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\admin\\views\\trucks\\registertruck.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\admin\\views\\trucks\\registertruck.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\dtos\\truckdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\dtos\\truckdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\views\\coordination\\listcoordination.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -338,24 +394,12 @@
       "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\admin\\views\\shifts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\admin\\controllers\\driverscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\admin\\controllers\\driverscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\admin\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\admin\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\admin\\views\\drivers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\admin\\views\\drivers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\admin\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\admin\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\businesslogic\\services\\ishiftservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F5F7778-67E2-463A-B1AC-CA9D728E1077}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\ishiftservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\admin\\controllers\\shiftscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -396,14 +440,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\views\\coordination\\indexx.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\coordinator\\views\\coordination\\indexx.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\coordinator\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\coordinator\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|c:\\users\\admin\\source\\repos\\transportation\\transportation\\transportation\\areas\\admin\\controllers\\homeadmincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3AD3A5EF-CB33-4C72-B499-5100DE47ECB6}|Transportation\\Transportation.csproj|solutionrelative:transportation\\areas\\admin\\controllers\\homeadmincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -413,37 +449,183 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "Transportation\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Properties\\launchSettings.json",
-              "RelativeToolTip": "Transportation\\Properties\\launchSettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAvAAAA",
+              "Title": "ResponseData.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\Account\\ResponseData.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\DTOs\\Account\\ResponseData.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\Account\\ResponseData.cs",
+              "RelativeToolTip": "BusinessLogic\\DTOs\\Account\\ResponseData.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAswBUAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T15:35:13.818Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Program.cs",
+              "RelativeDocumentMoniker": "Transportation\\Program.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Program.cs",
+              "RelativeToolTip": "Transportation\\Program.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAjwCMAAABKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-12T15:52:49.246Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\appsettings.json",
+              "RelativeDocumentMoniker": "Transportation\\appsettings.json",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\appsettings.json",
+              "RelativeToolTip": "Transportation\\appsettings.json",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAACAAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-18T03:27:23.364Z",
+              "WhenOpened": "2025-04-16T02:27:01.336Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AccountAPIController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\AccountAPIController.cs",
+              "RelativeDocumentMoniker": "Transportation\\ApiControllers\\AccountAPIController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\AccountAPIController.cs",
+              "RelativeToolTip": "Transportation\\ApiControllers\\AccountAPIController.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAjwC8AAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-12T09:56:33.035Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ResetPassword.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Account\\ResetPassword.cshtml",
-              "RelativeDocumentMoniker": "Transportation\\Views\\Account\\ResetPassword.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Account\\ResetPassword.cshtml",
-              "RelativeToolTip": "Transportation\\Views\\Account\\ResetPassword.cshtml",
-              "ViewState": "AQIAAEUAAAAAAAAAAAAIwFkAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-18T03:21:44.418Z",
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Transportation\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Transportation\\Controllers\\AccountController.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAjwBMAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T09:39:03.09Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 9,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "Transportation\\Views\\Account\\Register.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Account\\Register.cshtml",
+              "RelativeToolTip": "Transportation\\Views\\Account\\Register.cshtml",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAAAF8AAAA/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-24T14:53:34.599Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IEmailSender.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IEmailSender.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\Services\\IEmailSender.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IEmailSender.cs",
+              "RelativeToolTip": "BusinessLogic\\Services\\IEmailSender.cs",
+              "ViewState": "AQIAAEoAAAAAAAAAAAAewFcAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T11:17:07.608Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IAccountService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\Account\\IAccountService.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\Services\\Account\\IAccountService.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\Account\\IAccountService.cs",
+              "RelativeToolTip": "BusinessLogic\\Services\\Account\\IAccountService.cs",
+              "ViewState": "AQIAAFUAAAAAAAAAAAAkwG8AAABdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T01:08:34.703Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AuthenOTP.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Account\\AuthenOTP.cshtml",
+              "RelativeDocumentMoniker": "Transportation\\Views\\Account\\AuthenOTP.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Account\\AuthenOTP.cshtml",
+              "RelativeToolTip": "Transportation\\Views\\Account\\AuthenOTP.cshtml",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAAD4AAABIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-25T15:07:43.891Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MyDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\DataAccess\\DataContext\\MyDbContext.cs",
+              "RelativeDocumentMoniker": "DataAccess\\DataContext\\MyDbContext.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\DataAccess\\DataContext\\MyDbContext.cs",
+              "RelativeToolTip": "DataAccess\\DataContext\\MyDbContext.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAWwBAAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T02:57:26.691Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ShiftAPIController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\ShiftAPIController.cs",
+              "RelativeDocumentMoniker": "Transportation\\ApiControllers\\ShiftAPIController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\ShiftAPIController.cs",
+              "RelativeToolTip": "Transportation\\ApiControllers\\ShiftAPIController.cs",
+              "ViewState": "AQIAABwAAAAAAAAAAAAQwCMAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-13T16:17:36.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Transportation\\Areas\\Admin\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Transportation\\Areas\\Admin\\Controllers\\UsersController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T15:12:42.472Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IShiftService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IShiftService.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\Services\\IShiftService.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IShiftService.cs",
+              "RelativeToolTip": "BusinessLogic\\Services\\IShiftService.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAADwv0YAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T06:08:06.913Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "LogIn.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Account\\LogIn.cshtml",
+              "RelativeDocumentMoniker": "Transportation\\Views\\Account\\LogIn.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Account\\LogIn.cshtml",
+              "RelativeToolTip": "Transportation\\Views\\Account\\LogIn.cshtml",
+              "ViewState": "AQIAAEYAAAAAAAAAAEBVwF8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-18T02:45:35.06Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "ForgetPassword.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Account\\ForgetPassword.cshtml",
               "RelativeDocumentMoniker": "Transportation\\Views\\Account\\ForgetPassword.cshtml",
@@ -451,38 +633,568 @@
               "RelativeToolTip": "Transportation\\Views\\Account\\ForgetPassword.cshtml",
               "ViewState": "AQIAADAAAAAAAAAAAAAIwEoAAABEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-18T03:08:45.767Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-18T03:08:45.767Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ForgotPasswordDTO.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\Account\\ForgotPasswordDTO.cs",
-              "RelativeDocumentMoniker": "BusinessLogic\\DTOs\\Account\\ForgotPasswordDTO.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\Account\\ForgotPasswordDTO.cs",
-              "RelativeToolTip": "BusinessLogic\\DTOs\\Account\\ForgotPasswordDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAgAAAA",
+              "DocumentIndex": 16,
+              "Title": "IUnitOfWork.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Interfaces\\IUnitOfWork.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\Interfaces\\IUnitOfWork.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Interfaces\\IUnitOfWork.cs",
+              "RelativeToolTip": "BusinessLogic\\Interfaces\\IUnitOfWork.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAkwAwAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-17T14:21:29.789Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-13T04:41:06.511Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AccountAPIController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\AccountAPIController.cs",
-              "RelativeDocumentMoniker": "Transportation\\ApiControllers\\AccountAPIController.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\AccountAPIController.cs",
-              "RelativeToolTip": "Transportation\\ApiControllers\\AccountAPIController.cs",
-              "ViewState": "AQIAAJEBAAAAAAAAAAAawKABAABEAAAA",
+              "DocumentIndex": 15,
+              "Title": "AccountRepo.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\DataAccess\\Repositories\\AccountRepo.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Repositories\\AccountRepo.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\DataAccess\\Repositories\\AccountRepo.cs",
+              "RelativeToolTip": "DataAccess\\Repositories\\AccountRepo.cs",
+              "ViewState": "AQIAADQAAAAAAAAAAAAkwE4AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T09:56:33.035Z",
+              "WhenOpened": "2025-04-13T04:17:32.716Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "EmailConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\SendEmail\\EmailConfiguration.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\DTOs\\SendEmail\\EmailConfiguration.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\SendEmail\\EmailConfiguration.cs",
+              "RelativeToolTip": "BusinessLogic\\DTOs\\SendEmail\\EmailConfiguration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T02:25:29.028Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ChartAPIController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\ChartAPIController.cs",
+              "RelativeDocumentMoniker": "Transportation\\ApiControllers\\ChartAPIController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\ChartAPIController.cs",
+              "RelativeToolTip": "Transportation\\ApiControllers\\ChartAPIController.cs",
+              "ViewState": "AQIAACsAAAAAAAAAAAAkwEgAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T13:55:34.96Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ITruckService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\ITruckService.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\Services\\ITruckService.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\ITruckService.cs",
+              "RelativeToolTip": "BusinessLogic\\Services\\ITruckService.cs",
+              "ViewState": "AQIAAEEAAAAAAAAAAIBJwGAAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T14:19:01.693Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "TruckDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\TruckDTO.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\DTOs\\TruckDTO.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\TruckDTO.cs",
+              "RelativeToolTip": "BusinessLogic\\DTOs\\TruckDTO.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAewBcAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T13:38:11.199Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "IDispatchService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IDispatchService.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\Services\\IDispatchService.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IDispatchService.cs",
+              "RelativeToolTip": "BusinessLogic\\Services\\IDispatchService.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAAywNkAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T16:33:25.19Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "BusinessLogic.csproj",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\BusinessLogic.csproj",
+              "RelativeDocumentMoniker": "BusinessLogic\\BusinessLogic.csproj",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\BusinessLogic.csproj",
+              "RelativeToolTip": "BusinessLogic\\BusinessLogic.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-09T09:25:14.353Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Views\\HomeAdmin\\Index.cshtml",
+              "RelativeDocumentMoniker": "Transportation\\Areas\\Admin\\Views\\HomeAdmin\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Views\\HomeAdmin\\Index.cshtml",
+              "RelativeToolTip": "Transportation\\Areas\\Admin\\Views\\HomeAdmin\\Index.cshtml",
+              "ViewState": "AQIAABEAAAAAAAAAAAAuwFIAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-21T17:00:01.523Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\HomeCoordinator\\Index.cshtml",
+              "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Views\\HomeCoordinator\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\HomeCoordinator\\Index.cshtml",
+              "RelativeToolTip": "Transportation\\Areas\\Coordinator\\Views\\HomeCoordinator\\Index.cshtml",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAqwBgBAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-07T21:37:11.237Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "HomeCoordinatorController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Controllers\\HomeCoordinatorController.cs",
+              "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Controllers\\HomeCoordinatorController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Controllers\\HomeCoordinatorController.cs",
+              "RelativeToolTip": "Transportation\\Areas\\Coordinator\\Controllers\\HomeCoordinatorController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAqwBIAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-20T16:07:33.13Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "DriversController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Controllers\\DriversController.cs",
+              "RelativeDocumentMoniker": "Transportation\\Areas\\Admin\\Controllers\\DriversController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Controllers\\DriversController.cs",
+              "RelativeToolTip": "Transportation\\Areas\\Admin\\Controllers\\DriversController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAIBJwBUAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T15:12:59.541Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "HomeAdminController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Controllers\\HomeAdminController.cs",
+              "RelativeDocumentMoniker": "Transportation\\Areas\\Admin\\Controllers\\HomeAdminController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Controllers\\HomeAdminController.cs",
+              "RelativeToolTip": "Transportation\\Areas\\Admin\\Controllers\\HomeAdminController.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAwBQAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T09:45:54.535Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "ITripService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\ITripService.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\Services\\ITripService.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\ITripService.cs",
+              "RelativeToolTip": "BusinessLogic\\Services\\ITripService.cs",
+              "ViewState": "AQIAAGMAAAAAAAAAAAAuwC4AAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-12T14:14:33.696Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "TripController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Controllers\\TripController.cs",
+              "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Controllers\\TripController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Controllers\\TripController.cs",
+              "RelativeToolTip": "Transportation\\Areas\\Coordinator\\Controllers\\TripController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAIBJwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-20T16:09:06.914Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "LocationHub.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Hubs\\LocationHub.cs",
+              "RelativeDocumentMoniker": "Transportation\\Hubs\\LocationHub.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Hubs\\LocationHub.cs",
+              "RelativeToolTip": "Transportation\\Hubs\\LocationHub.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAjwBYAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-18T15:34:42.807Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 32,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Transportation\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Transportation\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAFsAAAAAAAAAAAAAwDgAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-13T13:44:56.772Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Drivers\\Views\\HomeDriver\\Index.cshtml",
+              "RelativeDocumentMoniker": "Transportation\\Areas\\Drivers\\Views\\HomeDriver\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Drivers\\Views\\HomeDriver\\Index.cshtml",
+              "RelativeToolTip": "Transportation\\Areas\\Drivers\\Views\\HomeDriver\\Index.cshtml",
+              "ViewState": "AQIAAFAAAAAAAAAAAAAAwMQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-14T10:33:30.511Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "TruckAPIController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\TruckAPIController.cs",
+              "RelativeDocumentMoniker": "Transportation\\ApiControllers\\TruckAPIController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\TruckAPIController.cs",
+              "RelativeToolTip": "Transportation\\ApiControllers\\TruckAPIController.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAewBwAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T13:54:48.14Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "HomeDriverController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Drivers\\Controllers\\HomeDriverController.cs",
+              "RelativeDocumentMoniker": "Transportation\\Areas\\Drivers\\Controllers\\HomeDriverController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Drivers\\Controllers\\HomeDriverController.cs",
+              "RelativeToolTip": "Transportation\\Areas\\Drivers\\Controllers\\HomeDriverController.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAjwDEAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T09:40:14.832Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "_LayoutDriver.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Drivers\\Views\\Shared\\_LayoutDriver.cshtml",
+              "RelativeDocumentMoniker": "Transportation\\Areas\\Drivers\\Views\\Shared\\_LayoutDriver.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Drivers\\Views\\Shared\\_LayoutDriver.cshtml",
+              "RelativeToolTip": "Transportation\\Areas\\Drivers\\Views\\Shared\\_LayoutDriver.cshtml",
+              "ViewState": "AQIAAL0AAAAAAAAAAIBJwDoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-14T01:56:56.663Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "_LayoutCoordinator.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Shared\\_LayoutCoordinator.cshtml",
+              "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Views\\Shared\\_LayoutCoordinator.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Shared\\_LayoutCoordinator.cshtml",
+              "RelativeToolTip": "Transportation\\Areas\\Coordinator\\Views\\Shared\\_LayoutCoordinator.cshtml",
+              "ViewState": "AQIAAOIAAAAAAAAAAIBJwPgAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-21T17:25:17.398Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "DispatchAssignmentDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\DispatchAssignmentDTO.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\DTOs\\DispatchAssignmentDTO.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\DispatchAssignmentDTO.cs",
+              "RelativeToolTip": "BusinessLogic\\DTOs\\DispatchAssignmentDTO.cs",
+              "ViewState": "AQIAAFYAAAAAAAAAAAA2wGgAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T15:09:37.999Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "_LayoutAdmin.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "RelativeDocumentMoniker": "Transportation\\Areas\\Admin\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "RelativeToolTip": "Transportation\\Areas\\Admin\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "ViewState": "AQIAAJ4AAAAAAAAAAIBJwNwAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-22T16:35:54.163Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "DispatcherDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\DispatcherDTO.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\DTOs\\DispatcherDTO.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\DispatcherDTO.cs",
+              "RelativeToolTip": "BusinessLogic\\DTOs\\DispatcherDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T17:05:03.601Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "DispatchAPIController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\DispatchAPIController.cs",
+              "RelativeDocumentMoniker": "Transportation\\ApiControllers\\DispatchAPIController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\DispatchAPIController.cs",
+              "RelativeToolTip": "Transportation\\ApiControllers\\DispatchAPIController.cs",
+              "ViewState": "AQIAAF8AAAAAAAAAAAAewG0AAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T14:58:46.452Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "ShippingRequestAPIController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\ShippingRequestAPIController.cs",
+              "RelativeDocumentMoniker": "Transportation\\ApiControllers\\ShippingRequestAPIController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\ShippingRequestAPIController.cs",
+              "RelativeToolTip": "Transportation\\ApiControllers\\ShippingRequestAPIController.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAAAlwDUAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T01:04:40.785Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "IShippingRequestService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IShippingRequestService.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\Services\\IShippingRequestService.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IShippingRequestService.cs",
+              "RelativeToolTip": "BusinessLogic\\Services\\IShippingRequestService.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAIA2wC4AAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T02:19:37.65Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Coordination\\Index.cshtml",
+              "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Views\\Coordination\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Coordination\\Index.cshtml",
+              "RelativeToolTip": "Transportation\\Areas\\Coordinator\\Views\\Coordination\\Index.cshtml",
+              "ViewState": "AQIAAEwAAAAAAAAAAEBVwDgBAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-10T03:35:42.342Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Journey\\Index.cshtml",
+              "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Views\\Journey\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Journey\\Index.cshtml",
+              "RelativeToolTip": "Transportation\\Areas\\Coordinator\\Views\\Journey\\Index.cshtml",
+              "ViewState": "AQIAAAkAAAAAAAAAAIBJwAoAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-07T21:36:47.954Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "Detail.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Coordination\\Detail.cshtml",
+              "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Views\\Coordination\\Detail.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Coordination\\Detail.cshtml",
+              "RelativeToolTip": "Transportation\\Areas\\Coordinator\\Views\\Coordination\\Detail.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-07T21:37:23.725Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "Realtime.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Journey\\Realtime.cshtml",
+              "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Views\\Journey\\Realtime.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Journey\\Realtime.cshtml",
+              "RelativeToolTip": "Transportation\\Areas\\Coordinator\\Views\\Journey\\Realtime.cshtml",
+              "ViewState": "AQIAAEsAAAAAAAAAAIBJwFsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-13T16:15:21.663Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "Detail.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Journey\\Detail.cshtml",
+              "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Views\\Journey\\Detail.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Journey\\Detail.cshtml",
+              "RelativeToolTip": "Transportation\\Areas\\Coordinator\\Views\\Journey\\Detail.cshtml",
+              "ViewState": "AQIAAAMAAAAAAAAAAIBJwBYAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-13T16:15:14.302Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "JourneyController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Controllers\\JourneyController.cs",
+              "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Controllers\\JourneyController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Controllers\\JourneyController.cs",
+              "RelativeToolTip": "Transportation\\Areas\\Coordinator\\Controllers\\JourneyController.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAzwCUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T13:55:12.348Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Controllers\\OrderController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "Transportation\\Areas\\Coordinator\\Controllers\\OrderController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-13T16:17:59.836Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "TripAPIController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\TripAPIController.cs",
+              "RelativeDocumentMoniker": "Transportation\\ApiControllers\\TripAPIController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\TripAPIController.cs",
+              "RelativeToolTip": "Transportation\\ApiControllers\\TripAPIController.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAvwB0AAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-12T14:13:04.193Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "WarehouseAPIController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\WarehouseAPIController.cs",
+              "RelativeDocumentMoniker": "Transportation\\ApiControllers\\WarehouseAPIController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\WarehouseAPIController.cs",
+              "RelativeToolTip": "Transportation\\ApiControllers\\WarehouseAPIController.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAYwCAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T02:20:18.228Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "ShippingRequestsController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Controllers\\ShippingRequestsController.cs",
+              "RelativeDocumentMoniker": "Transportation\\Controllers\\ShippingRequestsController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Controllers\\ShippingRequestsController.cs",
+              "RelativeToolTip": "Transportation\\Controllers\\ShippingRequestsController.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAxwA8AAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T14:50:29.292Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Transportation\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Transportation\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAADYAAAAAAAAAAIBJwBQAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-13T13:44:46.759Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Transportation\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Transportation\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T09:39:04.553Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "Detail.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Drivers\\Views\\HomeDriver\\Detail.cshtml",
+              "RelativeDocumentMoniker": "Transportation\\Areas\\Drivers\\Views\\HomeDriver\\Detail.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Drivers\\Views\\HomeDriver\\Detail.cshtml",
+              "RelativeToolTip": "Transportation\\Areas\\Drivers\\Views\\HomeDriver\\Detail.cshtml",
+              "ViewState": "AQIAAGAAAAAAAAAAAIBJwDkAAABHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-14T01:23:05.03Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "IFileService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IFileService.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\Services\\IFileService.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IFileService.cs",
+              "RelativeToolTip": "BusinessLogic\\Services\\IFileService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T09:49:22.111Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "IWarehouseService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IWarehouseService.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\Services\\IWarehouseService.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IWarehouseService.cs",
+              "RelativeToolTip": "BusinessLogic\\Services\\IWarehouseService.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAcwDEAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-18T15:31:59.07Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "BaseApplicationService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\Dapper\\BaseApplicationService.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\Services\\Dapper\\BaseApplicationService.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\Dapper\\BaseApplicationService.cs",
+              "RelativeToolTip": "BusinessLogic\\Services\\Dapper\\BaseApplicationService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-18T15:31:40.253Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "CoordinationController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\AppData\\Local\\SourceServer\\eca3fa410814db2d0690fef43c4b15e40241c82b1e0fb59aba21da35d067df8d\\Transportation\\Areas\\Coordinator\\Controllers\\CoordinationController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\SourceServer\\eca3fa410814db2d0690fef43c4b15e40241c82b1e0fb59aba21da35d067df8d\\Transportation\\Areas\\Coordinator\\Controllers\\CoordinationController.cs",
+              "ToolTip": "C:\\Users\\Admin\\AppData\\Local\\SourceServer\\eca3fa410814db2d0690fef43c4b15e40241c82b1e0fb59aba21da35d067df8d\\Transportation\\Areas\\Coordinator\\Controllers\\CoordinationController.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\SourceServer\\eca3fa410814db2d0690fef43c4b15e40241c82b1e0fb59aba21da35d067df8d\\Transportation\\Areas\\Coordinator\\Controllers\\CoordinationController.cs",
+              "ViewState": "AQIAAF0AAAAAAAAAAAAawGgAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-13T17:08:43.699Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Transportation\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Transportation\\Properties\\launchSettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-18T03:27:23.364Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
               "Title": "ResetPasswordDTO.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\SendEmail\\ResetPasswordDTO.cs",
               "RelativeDocumentMoniker": "BusinessLogic\\DTOs\\SendEmail\\ResetPasswordDTO.cs",
@@ -490,87 +1202,35 @@
               "RelativeToolTip": "BusinessLogic\\DTOs\\SendEmail\\ResetPasswordDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwA4AAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-17T16:06:49.39Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-17T16:06:49.39Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "LogIn.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Account\\LogIn.cshtml",
-              "RelativeDocumentMoniker": "Transportation\\Views\\Account\\LogIn.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Account\\LogIn.cshtml",
-              "RelativeToolTip": "Transportation\\Views\\Account\\LogIn.cshtml",
-              "ViewState": "AQIAAF0AAAAAAAAAAAAAAGAAAAAMAAAA",
+              "DocumentIndex": 63,
+              "Title": "ForgotPasswordDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\Account\\ForgotPasswordDTO.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\DTOs\\Account\\ForgotPasswordDTO.cs",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\Account\\ForgotPasswordDTO.cs",
+              "RelativeToolTip": "BusinessLogic\\DTOs\\Account\\ForgotPasswordDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T14:21:29.789Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "ResetPassword.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Account\\ResetPassword.cshtml",
+              "RelativeDocumentMoniker": "Transportation\\Views\\Account\\ResetPassword.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Account\\ResetPassword.cshtml",
+              "RelativeToolTip": "Transportation\\Views\\Account\\ResetPassword.cshtml",
+              "ViewState": "AQIAAEUAAAAAAAAAAAAIwFkAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-18T02:45:35.06Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-18T03:21:44.418Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Transportation\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Transportation\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAABsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-13T13:44:56.772Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "IEmailSender.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IEmailSender.cs",
-              "RelativeDocumentMoniker": "BusinessLogic\\Services\\IEmailSender.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IEmailSender.cs",
-              "RelativeToolTip": "BusinessLogic\\Services\\IEmailSender.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAA0wC0AAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T11:17:07.608Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Transportation\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Transportation\\Controllers\\AccountController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T09:39:03.09Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "AccountRepo.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\DataAccess\\Repositories\\AccountRepo.cs",
-              "RelativeDocumentMoniker": "DataAccess\\Repositories\\AccountRepo.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\DataAccess\\Repositories\\AccountRepo.cs",
-              "RelativeToolTip": "DataAccess\\Repositories\\AccountRepo.cs",
-              "ViewState": "AQIAADoAAAAAAAAAAAAkwE4AAAACAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-13T04:17:32.716Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "IAccountService.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\Account\\IAccountService.cs",
-              "RelativeDocumentMoniker": "BusinessLogic\\Services\\Account\\IAccountService.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\Account\\IAccountService.cs",
-              "RelativeToolTip": "BusinessLogic\\Services\\Account\\IAccountService.cs",
-              "ViewState": "AQIAAEQAAAAAAAAAAAAjwFMAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-14T01:08:34.703Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 64,
               "Title": "Users.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\DataAccess\\Entity\\Users.cs",
               "RelativeDocumentMoniker": "DataAccess\\Entity\\Users.cs",
@@ -582,57 +1242,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "SendEmailController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\SendEmailController.cs",
-              "RelativeDocumentMoniker": "Transportation\\ApiControllers\\SendEmailController.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\SendEmailController.cs",
-              "RelativeToolTip": "Transportation\\ApiControllers\\SendEmailController.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAAwBUAAAAYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T14:53:03.518Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "TruckAPIController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\TruckAPIController.cs",
-              "RelativeDocumentMoniker": "Transportation\\ApiControllers\\TruckAPIController.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\TruckAPIController.cs",
-              "RelativeToolTip": "Transportation\\ApiControllers\\TruckAPIController.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAIAwwDkAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T13:54:48.14Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Program.cs",
-              "RelativeDocumentMoniker": "Transportation\\Program.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Program.cs",
-              "RelativeToolTip": "Transportation\\Program.cs",
-              "ViewState": "AQIAACAAAAAAAAAAAAAIwDwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T15:52:49.246Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "DispatchAPIController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\DispatchAPIController.cs",
-              "RelativeDocumentMoniker": "Transportation\\ApiControllers\\DispatchAPIController.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\DispatchAPIController.cs",
-              "RelativeToolTip": "Transportation\\ApiControllers\\DispatchAPIController.cs",
-              "ViewState": "AQIAANQAAAAAAAAAAADwv9wAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-17T14:58:46.452Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 65,
               "Title": "ScaffoldingReadMe.txt",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ScaffoldingReadMe.txt",
               "RelativeDocumentMoniker": "Transportation\\ScaffoldingReadMe.txt",
@@ -644,19 +1254,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "TripAPIController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\TripAPIController.cs",
-              "RelativeDocumentMoniker": "Transportation\\ApiControllers\\TripAPIController.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\TripAPIController.cs",
-              "RelativeToolTip": "Transportation\\ApiControllers\\TripAPIController.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAswBgAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T14:13:04.193Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 66,
               "Title": "UserManagementAPIController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\UserManagementAPIController.cs",
               "RelativeDocumentMoniker": "Transportation\\ApiControllers\\UserManagementAPIController.cs",
@@ -668,57 +1266,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "WarehouseAPIController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\WarehouseAPIController.cs",
-              "RelativeDocumentMoniker": "Transportation\\ApiControllers\\WarehouseAPIController.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\WarehouseAPIController.cs",
-              "RelativeToolTip": "Transportation\\ApiControllers\\WarehouseAPIController.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAACAAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T02:20:18.228Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "ShippingRequestAPIController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\ShippingRequestAPIController.cs",
-              "RelativeDocumentMoniker": "Transportation\\ApiControllers\\ShippingRequestAPIController.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\ShippingRequestAPIController.cs",
-              "RelativeToolTip": "Transportation\\ApiControllers\\ShippingRequestAPIController.cs",
-              "ViewState": "AQIAAE4AAAAAAAAAAAAtwF8AAABrAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-14T01:04:40.785Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "ShiftAPIController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\ShiftAPIController.cs",
-              "RelativeDocumentMoniker": "Transportation\\ApiControllers\\ShiftAPIController.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ApiControllers\\ShiftAPIController.cs",
-              "RelativeToolTip": "Transportation\\ApiControllers\\ShiftAPIController.cs",
-              "ViewState": "AQIAAE0AAAAAAAAAAAA5wF4AAABBAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-13T16:17:36.743Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "IDispatchService.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IDispatchService.cs",
-              "RelativeDocumentMoniker": "BusinessLogic\\Services\\IDispatchService.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IDispatchService.cs",
-              "RelativeToolTip": "BusinessLogic\\Services\\IDispatchService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T16:33:25.19Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 67,
               "Title": "IGooogleAuthorization.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\Account\\IGooogleAuthorization.cs",
               "RelativeDocumentMoniker": "BusinessLogic\\Services\\Account\\IGooogleAuthorization.cs",
@@ -731,43 +1279,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 68,
               "Title": "IGoogleAuthHelper.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\Account\\IGoogleAuthHelper.cs",
               "RelativeDocumentMoniker": "BusinessLogic\\Services\\Account\\IGoogleAuthHelper.cs",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\Account\\IGoogleAuthHelper.cs",
               "RelativeToolTip": "BusinessLogic\\Services\\Account\\IGoogleAuthHelper.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAA7wAAAAAAAAAAA",
+              "ViewState": "AQIAABYAAAAAAAAAAAAkwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-17T15:32:08.778Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "IFileService.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IFileService.cs",
-              "RelativeDocumentMoniker": "BusinessLogic\\Services\\IFileService.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IFileService.cs",
-              "RelativeToolTip": "BusinessLogic\\Services\\IFileService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwBcAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T09:49:22.111Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "BusinessLogic.csproj",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\BusinessLogic.csproj",
-              "RelativeDocumentMoniker": "BusinessLogic\\BusinessLogic.csproj",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\BusinessLogic.csproj",
-              "RelativeToolTip": "BusinessLogic\\BusinessLogic.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-04-09T09:25:14.353Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 69,
               "Title": "Message.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\SendEmail\\Message.cs",
               "RelativeDocumentMoniker": "BusinessLogic\\DTOs\\SendEmail\\Message.cs",
@@ -779,43 +1303,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\appsettings.json",
-              "RelativeDocumentMoniker": "Transportation\\appsettings.json",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\appsettings.json",
-              "RelativeToolTip": "Transportation\\appsettings.json",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAAB4AAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-16T02:27:01.336Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "EmailConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\SendEmail\\EmailConfiguration.cs",
-              "RelativeDocumentMoniker": "BusinessLogic\\DTOs\\SendEmail\\EmailConfiguration.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\SendEmail\\EmailConfiguration.cs",
-              "RelativeToolTip": "BusinessLogic\\DTOs\\SendEmail\\EmailConfiguration.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAgAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T02:25:29.028Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "ResponseData.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\Account\\ResponseData.cs",
-              "RelativeDocumentMoniker": "BusinessLogic\\DTOs\\Account\\ResponseData.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\Account\\ResponseData.cs",
-              "RelativeToolTip": "BusinessLogic\\DTOs\\Account\\ResponseData.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T02:15:54.949Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 70,
               "Title": "GoogleDTO.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\Account\\GoogleDTO.cs",
               "RelativeDocumentMoniker": "BusinessLogic\\DTOs\\Account\\GoogleDTO.cs",
@@ -827,7 +1315,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 71,
               "Title": "RegisterModel.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\RegisterModel.cs",
               "RelativeDocumentMoniker": "BusinessLogic\\DTOs\\RegisterModel.cs",
@@ -839,7 +1327,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 72,
               "Title": "20250331161253_Updatfg.Designer.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\DataAccess\\Migrations\\20250331161253_Updatfg.Designer.cs",
               "RelativeDocumentMoniker": "DataAccess\\Migrations\\20250331161253_Updatfg.Designer.cs",
@@ -851,19 +1339,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "MyDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\DataAccess\\DataContext\\MyDbContext.cs",
-              "RelativeDocumentMoniker": "DataAccess\\DataContext\\MyDbContext.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\DataAccess\\DataContext\\MyDbContext.cs",
-              "RelativeToolTip": "DataAccess\\DataContext\\MyDbContext.cs",
-              "ViewState": "AQIAACgBAAAAAAAAAADwv08BAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T02:57:26.691Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 73,
               "Title": "20250331155302_InitDatabase.Designer.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\DataAccess\\Migrations\\20250331155302_InitDatabase.Designer.cs",
               "RelativeDocumentMoniker": "DataAccess\\Migrations\\20250331155302_InitDatabase.Designer.cs",
@@ -875,7 +1351,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 74,
               "Title": "20250331155302_InitDatabase.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\DataAccess\\Migrations\\20250331155302_InitDatabase.cs",
               "RelativeDocumentMoniker": "DataAccess\\Migrations\\20250331155302_InitDatabase.cs",
@@ -887,7 +1363,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 75,
               "Title": "Until.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Public\\Until.cs",
               "RelativeDocumentMoniker": "BusinessLogic\\Public\\Until.cs",
@@ -899,19 +1375,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "RequestData.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\Account\\RequestData.cs",
-              "RelativeDocumentMoniker": "BusinessLogic\\DTOs\\Account\\RequestData.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\Account\\RequestData.cs",
-              "RelativeToolTip": "BusinessLogic\\DTOs\\Account\\RequestData.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T21:30:21.923Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 78,
               "Title": "libman.json",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\libman.json",
               "RelativeDocumentMoniker": "Transportation\\libman.json",
@@ -923,7 +1387,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 76,
               "Title": "DataEncryptionExtensions.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Public\\DataEncryptionExtensions.cs",
               "RelativeDocumentMoniker": "BusinessLogic\\Public\\DataEncryptionExtensions.cs",
@@ -935,7 +1399,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 77,
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Public\\MappingProfile.cs",
               "RelativeDocumentMoniker": "BusinessLogic\\Public\\MappingProfile.cs",
@@ -947,57 +1411,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
-              "Title": "Detail.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Coordination\\Detail.cshtml",
-              "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Views\\Coordination\\Detail.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Coordination\\Detail.cshtml",
-              "RelativeToolTip": "Transportation\\Areas\\Coordinator\\Views\\Coordination\\Detail.cshtml",
-              "ViewState": "AQIAADgAAAAAAAAAAADwvzUAAAAXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-07T21:37:23.725Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 47,
-              "Title": "CoordinationController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Controllers\\CoordinationController.cs",
-              "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Controllers\\CoordinationController.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Controllers\\CoordinationController.cs",
-              "RelativeToolTip": "Transportation\\Areas\\Coordinator\\Controllers\\CoordinationController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T12:24:55.967Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 45,
-              "Title": "Detail.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Drivers\\Views\\HomeDriver\\Detail.cshtml",
-              "RelativeDocumentMoniker": "Transportation\\Areas\\Drivers\\Views\\HomeDriver\\Detail.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Drivers\\Views\\HomeDriver\\Detail.cshtml",
-              "RelativeToolTip": "Transportation\\Areas\\Drivers\\Views\\HomeDriver\\Detail.cshtml",
-              "ViewState": "AQIAACEAAAAAAAAAACBjwDUAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-14T01:23:05.03Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 44,
-              "Title": "HomeDriverController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Drivers\\Controllers\\HomeDriverController.cs",
-              "RelativeDocumentMoniker": "Transportation\\Areas\\Drivers\\Controllers\\HomeDriverController.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Drivers\\Controllers\\HomeDriverController.cs",
-              "RelativeToolTip": "Transportation\\Areas\\Drivers\\Controllers\\HomeDriverController.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAArwAsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T09:40:14.832Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 79,
               "Title": ".gitignore",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\.gitignore",
               "RelativeDocumentMoniker": ".gitignore",
@@ -1009,55 +1423,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Drivers\\Views\\HomeDriver\\Index.cshtml",
-              "RelativeDocumentMoniker": "Transportation\\Areas\\Drivers\\Views\\HomeDriver\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Drivers\\Views\\HomeDriver\\Index.cshtml",
-              "RelativeToolTip": "Transportation\\Areas\\Drivers\\Views\\HomeDriver\\Index.cshtml",
-              "ViewState": "AQIAAJAAAAAAAAAAACBjwLEAAABLAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-14T10:33:30.511Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 50,
-              "Title": "_LayoutDriver.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Drivers\\Views\\Shared\\_LayoutDriver.cshtml",
-              "RelativeDocumentMoniker": "Transportation\\Areas\\Drivers\\Views\\Shared\\_LayoutDriver.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Drivers\\Views\\Shared\\_LayoutDriver.cshtml",
-              "RelativeToolTip": "Transportation\\Areas\\Drivers\\Views\\Shared\\_LayoutDriver.cshtml",
-              "ViewState": "AQIAADMAAAAAAAAAACBjwEYAAABGAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-14T01:56:56.663Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 49,
-              "Title": "ITruckService.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\ITruckService.cs",
-              "RelativeDocumentMoniker": "BusinessLogic\\Services\\ITruckService.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\ITruckService.cs",
-              "RelativeToolTip": "BusinessLogic\\Services\\ITruckService.cs",
-              "ViewState": "AQIAADQAAAAAAAAAAAAcwE4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T14:19:01.693Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 51,
-              "Title": "Realtime.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Drivers\\Views\\HomeDriver\\Realtime.cshtml",
-              "RelativeDocumentMoniker": "Transportation\\Areas\\Drivers\\Views\\HomeDriver\\Realtime.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Drivers\\Views\\HomeDriver\\Realtime.cshtml",
-              "RelativeToolTip": "Transportation\\Areas\\Drivers\\Views\\HomeDriver\\Realtime.cshtml",
-              "ViewState": "AQIAACQAAAAAAAAAACBjwGoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-12T09:05:29.231Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 80,
               "Title": "IUserService.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IUserService.cs",
               "RelativeDocumentMoniker": "BusinessLogic\\Services\\IUserService.cs",
@@ -1069,7 +1435,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 81,
               "Title": "TrucksController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Controllers\\TrucksController.cs",
               "RelativeDocumentMoniker": "Transportation\\Areas\\Admin\\Controllers\\TrucksController.cs",
@@ -1081,79 +1447,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
-              "Title": "OrderController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Controllers\\OrderController.cs",
-              "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Controllers\\OrderController.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Controllers\\OrderController.cs",
-              "RelativeToolTip": "Transportation\\Areas\\Coordinator\\Controllers\\OrderController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-13T16:17:59.836Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 55,
-              "Title": "JourneyController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Controllers\\JourneyController.cs",
-              "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Controllers\\JourneyController.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Controllers\\JourneyController.cs",
-              "RelativeToolTip": "Transportation\\Areas\\Coordinator\\Controllers\\JourneyController.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAYwCAAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T13:55:12.348Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 58,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Coordination\\Index.cshtml",
-              "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Views\\Coordination\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Coordination\\Index.cshtml",
-              "RelativeToolTip": "Transportation\\Areas\\Coordinator\\Views\\Coordination\\Index.cshtml",
-              "ViewState": "AQIAAEoAAAAAAAAAAKBrwGwAAAAvAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-10T03:35:42.342Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 82,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\ShippingRequests\\Index.cshtml",
               "RelativeDocumentMoniker": "Transportation\\Views\\ShippingRequests\\Index.cshtml",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\ShippingRequests\\Index.cshtml",
               "RelativeToolTip": "Transportation\\Views\\ShippingRequests\\Index.cshtml",
-              "ViewState": "AQIAAOIAAAAAAAAAACBjwF0BAAAeAAAA",
+              "ViewState": "AQIAAN8AAAAAAAAAAIBpwF0BAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-08T14:41:57.53Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
-              "Title": "ShippingRequestsController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Controllers\\ShippingRequestsController.cs",
-              "RelativeDocumentMoniker": "Transportation\\Controllers\\ShippingRequestsController.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Controllers\\ShippingRequestsController.cs",
-              "RelativeToolTip": "Transportation\\Controllers\\ShippingRequestsController.cs",
-              "ViewState": "AQIAACMAAAAAAAAAAAAgwA8AAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T14:50:29.292Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 59,
-              "Title": "CoordinationController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\AppData\\Local\\SourceServer\\eca3fa410814db2d0690fef43c4b15e40241c82b1e0fb59aba21da35d067df8d\\Transportation\\Areas\\Coordinator\\Controllers\\CoordinationController.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\SourceServer\\eca3fa410814db2d0690fef43c4b15e40241c82b1e0fb59aba21da35d067df8d\\Transportation\\Areas\\Coordinator\\Controllers\\CoordinationController.cs",
-              "ToolTip": "C:\\Users\\Admin\\AppData\\Local\\SourceServer\\eca3fa410814db2d0690fef43c4b15e40241c82b1e0fb59aba21da35d067df8d\\Transportation\\Areas\\Coordinator\\Controllers\\CoordinationController.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\SourceServer\\eca3fa410814db2d0690fef43c4b15e40241c82b1e0fb59aba21da35d067df8d\\Transportation\\Areas\\Coordinator\\Controllers\\CoordinationController.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAADgvyQAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-13T17:08:43.699Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 83,
               "Title": "IShippingRequestRepo.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\DataAccess\\IRepositories\\IShippingRequestRepo.cs",
               "RelativeDocumentMoniker": "DataAccess\\IRepositories\\IShippingRequestRepo.cs",
@@ -1165,43 +1471,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
-              "Title": "Detail.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Journey\\Detail.cshtml",
-              "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Views\\Journey\\Detail.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Journey\\Detail.cshtml",
-              "RelativeToolTip": "Transportation\\Areas\\Coordinator\\Views\\Journey\\Detail.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-13T16:15:14.302Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 62,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Journey\\Index.cshtml",
-              "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Views\\Journey\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Journey\\Index.cshtml",
-              "RelativeToolTip": "Transportation\\Areas\\Coordinator\\Views\\Journey\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-07T21:36:47.954Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 63,
-              "Title": "Realtime.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Journey\\Realtime.cshtml",
-              "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Views\\Journey\\Realtime.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Journey\\Realtime.cshtml",
-              "RelativeToolTip": "Transportation\\Areas\\Coordinator\\Views\\Journey\\Realtime.cshtml",
-              "ViewState": "AQIAADYAAAAAAAAAACBjwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-13T16:15:21.663Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 84,
               "Title": "IDispatchRepo.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\DataAccess\\IRepositories\\IDispatchRepo.cs",
               "RelativeDocumentMoniker": "DataAccess\\IRepositories\\IDispatchRepo.cs",
@@ -1213,19 +1483,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Transportation\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Transportation\\Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-13T13:44:46.759Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 85,
               "Title": "main.css",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\wwwroot\\assets\\css\\main.css",
               "RelativeDocumentMoniker": "Transportation\\wwwroot\\assets\\css\\main.css",
@@ -1237,7 +1495,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 69,
+              "DocumentIndex": 86,
               "Title": "ITripRepo.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\DataAccess\\IRepositories\\ITripRepo.cs",
               "RelativeDocumentMoniker": "DataAccess\\IRepositories\\ITripRepo.cs",
@@ -1249,31 +1507,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Transportation\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Transportation\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T09:39:04.553Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 68,
-              "Title": "IUnitOfWork.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Interfaces\\IUnitOfWork.cs",
-              "RelativeDocumentMoniker": "BusinessLogic\\Interfaces\\IUnitOfWork.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Interfaces\\IUnitOfWork.cs",
-              "RelativeToolTip": "BusinessLogic\\Interfaces\\IUnitOfWork.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAIBZwAwAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-13T04:41:06.511Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 70,
+              "DocumentIndex": 87,
               "Title": "IShiftRepository.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\DataAccess\\IRepositories\\IShiftRepository.cs",
               "RelativeDocumentMoniker": "DataAccess\\IRepositories\\IShiftRepository.cs",
@@ -1285,7 +1519,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 71,
+              "DocumentIndex": 88,
               "Title": "ShiftRepository.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\DataAccess\\Repositories\\ShiftRepository.cs",
               "RelativeDocumentMoniker": "DataAccess\\Repositories\\ShiftRepository.cs",
@@ -1297,31 +1531,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 72,
-              "Title": "ITripService.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\ITripService.cs",
-              "RelativeDocumentMoniker": "BusinessLogic\\Services\\ITripService.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\ITripService.cs",
-              "RelativeToolTip": "BusinessLogic\\Services\\ITripService.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAACBjwBcAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T14:14:33.696Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 73,
-              "Title": "IShippingRequestService.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IShippingRequestService.cs",
-              "RelativeDocumentMoniker": "BusinessLogic\\Services\\IShippingRequestService.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IShippingRequestService.cs",
-              "RelativeToolTip": "BusinessLogic\\Services\\IShippingRequestService.cs",
-              "ViewState": "AQIAAIEAAAAAAAAAAAAmwJ0AAAA7AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-10T02:19:37.65Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 74,
+              "DocumentIndex": 89,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Trip\\Index.cshtml",
               "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Views\\Trip\\Index.cshtml",
@@ -1333,19 +1543,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 75,
+              "DocumentIndex": 90,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Views\\Trucks\\Index.cshtml",
               "RelativeDocumentMoniker": "Transportation\\Areas\\Admin\\Views\\Trucks\\Index.cshtml",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Views\\Trucks\\Index.cshtml",
               "RelativeToolTip": "Transportation\\Areas\\Admin\\Views\\Trucks\\Index.cshtml",
-              "ViewState": "AQIAAFwAAAAAAAAAAKBrwL8AAAAAAAAA",
+              "ViewState": "AQIAAFcAAAAAAAAAACBzwL8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-09T13:26:18.259Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 76,
+              "DocumentIndex": 91,
               "Title": "RegisterTruck.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Views\\Trucks\\RegisterTruck.cshtml",
               "RelativeDocumentMoniker": "Transportation\\Areas\\Admin\\Views\\Trucks\\RegisterTruck.cshtml",
@@ -1357,19 +1567,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 77,
-              "Title": "TruckDTO.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\TruckDTO.cs",
-              "RelativeDocumentMoniker": "BusinessLogic\\DTOs\\TruckDTO.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\DTOs\\TruckDTO.cs",
-              "RelativeToolTip": "BusinessLogic\\DTOs\\TruckDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T13:38:11.199Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 78,
+              "DocumentIndex": 92,
               "Title": "ListCoordination.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Coordination\\ListCoordination.cshtml",
               "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Views\\Coordination\\ListCoordination.cshtml",
@@ -1381,7 +1579,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 79,
+              "DocumentIndex": 93,
               "Title": "ShippingRequest.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\DataAccess\\Entity\\ShippingRequest.cs",
               "RelativeDocumentMoniker": "DataAccess\\Entity\\ShippingRequest.cs",
@@ -1393,7 +1591,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 80,
+              "DocumentIndex": 94,
               "Title": "DispatchAssignment.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\DataAccess\\Entity\\DispatchAssignment.cs",
               "RelativeDocumentMoniker": "DataAccess\\Entity\\DispatchAssignment.cs",
@@ -1405,7 +1603,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 81,
+              "DocumentIndex": 95,
               "Title": "DispartchListViewComponent.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ViewComponents\\DispartchListViewComponent.cs",
               "RelativeDocumentMoniker": "Transportation\\ViewComponents\\DispartchListViewComponent.cs",
@@ -1417,7 +1615,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 82,
+              "DocumentIndex": 96,
               "Title": "Default.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Shared\\Components\\DispartchList\\Default.cshtml",
               "RelativeDocumentMoniker": "Transportation\\Views\\Shared\\Components\\DispartchList\\Default.cshtml",
@@ -1429,79 +1627,43 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 83,
+              "DocumentIndex": 97,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Views\\Shifts\\Index.cshtml",
               "RelativeDocumentMoniker": "Transportation\\Areas\\Admin\\Views\\Shifts\\Index.cshtml",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Views\\Shifts\\Index.cshtml",
               "RelativeToolTip": "Transportation\\Areas\\Admin\\Views\\Shifts\\Index.cshtml",
-              "ViewState": "AQIAAIEAAAAAAAAAACBjwDkAAAAGAAAA",
+              "ViewState": "AQIAAH4AAAAAAAAAAIBpwDkAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-07T21:05:31.636Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 84,
-              "Title": "DriversController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Controllers\\DriversController.cs",
-              "RelativeDocumentMoniker": "Transportation\\Areas\\Admin\\Controllers\\DriversController.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Controllers\\DriversController.cs",
-              "RelativeToolTip": "Transportation\\Areas\\Admin\\Controllers\\DriversController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAIBJwBUAAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T15:12:59.541Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 85,
+              "DocumentIndex": 98,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Views\\Users\\Index.cshtml",
               "RelativeDocumentMoniker": "Transportation\\Areas\\Admin\\Views\\Users\\Index.cshtml",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Views\\Users\\Index.cshtml",
               "RelativeToolTip": "Transportation\\Areas\\Admin\\Views\\Users\\Index.cshtml",
-              "ViewState": "AQIAABIAAAAAAAAAACBjwAAAAAAAAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAIBpwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-09T15:12:45.404Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 86,
+              "DocumentIndex": 99,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Views\\Drivers\\Index.cshtml",
               "RelativeDocumentMoniker": "Transportation\\Areas\\Admin\\Views\\Drivers\\Index.cshtml",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Views\\Drivers\\Index.cshtml",
               "RelativeToolTip": "Transportation\\Areas\\Admin\\Views\\Drivers\\Index.cshtml",
-              "ViewState": "AQIAABcAAAAAAAAAAKBrwJ4AAABCAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAACBzwJ4AAABCAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-08T02:19:27.512Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 87,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "Transportation\\Areas\\Admin\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "Transportation\\Areas\\Admin\\Controllers\\UsersController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T15:12:42.472Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 88,
-              "Title": "IShiftService.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IShiftService.cs",
-              "RelativeDocumentMoniker": "BusinessLogic\\Services\\IShiftService.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Services\\IShiftService.cs",
-              "RelativeToolTip": "BusinessLogic\\Services\\IShiftService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAArAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T06:08:06.913Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 89,
+              "DocumentIndex": 100,
               "Title": "ShiftsController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Controllers\\ShiftsController.cs",
               "RelativeDocumentMoniker": "Transportation\\Areas\\Admin\\Controllers\\ShiftsController.cs",
@@ -1513,7 +1675,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 90,
+              "DocumentIndex": 101,
               "Title": "Truck.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\DataAccess\\Entity\\Truck.cs",
               "RelativeDocumentMoniker": "DataAccess\\Entity\\Truck.cs",
@@ -1525,7 +1687,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 91,
+              "DocumentIndex": 102,
               "Title": "FileExtensionAttribute.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\BusinessLogic\\Filter\\FileExtensionAttribute.cs",
               "RelativeDocumentMoniker": "BusinessLogic\\Filter\\FileExtensionAttribute.cs",
@@ -1537,7 +1699,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 92,
+              "DocumentIndex": 103,
               "Title": "DataAccess.csproj",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\DataAccess\\DataAccess.csproj",
               "RelativeDocumentMoniker": "DataAccess\\DataAccess.csproj",
@@ -1549,31 +1711,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 93,
+              "DocumentIndex": 104,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Warehouse\\Index.cshtml",
               "RelativeDocumentMoniker": "Transportation\\Views\\Warehouse\\Index.cshtml",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Warehouse\\Index.cshtml",
               "RelativeToolTip": "Transportation\\Views\\Warehouse\\Index.cshtml",
-              "ViewState": "AQIAAAkAAAAAAAAAAIBpwAAAAAAAAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAOBvwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-08T14:41:13.397Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 94,
+              "DocumentIndex": 105,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Warehouse\\Create.cshtml",
               "RelativeDocumentMoniker": "Transportation\\Views\\Warehouse\\Create.cshtml",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Warehouse\\Create.cshtml",
               "RelativeToolTip": "Transportation\\Views\\Warehouse\\Create.cshtml",
-              "ViewState": "AQIAAAwAAAAAAAAAAIBpwDYAAAASAAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAOBvwDYAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-08T14:41:34.574Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 95,
+              "DocumentIndex": 106,
               "Title": "Default.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Views\\Shared\\Components\\TripList\\Default.cshtml",
               "RelativeDocumentMoniker": "Transportation\\Views\\Shared\\Components\\TripList\\Default.cshtml",
@@ -1585,7 +1747,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 96,
+              "DocumentIndex": 107,
               "Title": "TripListViewComponent.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\ViewComponents\\TripListViewComponent.cs",
               "RelativeDocumentMoniker": "Transportation\\ViewComponents\\TripListViewComponent.cs",
@@ -1597,7 +1759,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 97,
+              "DocumentIndex": 108,
               "Title": "Driver.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\DataAccess\\Entity\\Driver.cs",
               "RelativeDocumentMoniker": "DataAccess\\Entity\\Driver.cs",
@@ -1609,39 +1771,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 99,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Transportation\\Areas\\Coordinator\\Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAEIAAAAAAAAAAIBpwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-07T21:37:11.237Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 98,
+              "DocumentIndex": 109,
               "Title": "indexx.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Coordination\\indexx.cshtml",
               "RelativeDocumentMoniker": "Transportation\\Areas\\Coordinator\\Views\\Coordination\\indexx.cshtml",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Coordinator\\Views\\Coordination\\indexx.cshtml",
               "RelativeToolTip": "Transportation\\Areas\\Coordinator\\Views\\Coordination\\indexx.cshtml",
-              "ViewState": "AQIAAJwAAAAAAAAAAIBpwAAAAAAAAAAA",
+              "ViewState": "AQIAAJkAAAAAAAAAAOBvwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-07T21:37:41.064Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 100,
-              "Title": "HomeAdminController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Controllers\\HomeAdminController.cs",
-              "RelativeDocumentMoniker": "Transportation\\Areas\\Admin\\Controllers\\HomeAdminController.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\Transportation\\Transportation\\Transportation\\Areas\\Admin\\Controllers\\HomeAdminController.cs",
-              "RelativeToolTip": "Transportation\\Areas\\Admin\\Controllers\\HomeAdminController.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAgwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T09:45:54.535Z"
             }
           ]
         }

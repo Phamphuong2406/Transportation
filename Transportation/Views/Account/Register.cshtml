@@ -88,7 +88,7 @@
 </div>
 
 @section Scripts {
-
+    
     <script>
         document.getElementById("RegisForm").addEventListener("submit", function (event) {
             event.preventDefault();
@@ -99,19 +99,17 @@
             let FullName = document.getElementById("fullName").value;
             let Address = document.getElementById("address").value;
 
-            fetch("/api/AccountAPI/AccountRegister", {
+            fetch("/api/AccountAPI/SendOTP", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ Username, Email, PhoneNumber, PasswordHash, FullName, Address })
             })
                
                 .then(data => {
-                    console.log('token', data);
                     if (data.ok) {
-                        
-                        window.location.href = "/home/index"; // Chuyển hướng sau khi đăng nhập
+                        window.location.href = `/Account/AuthenOTP?email=${encodeURIComponent(Email)}`;
                     } else {
-                        alert("Sai tài khoản hoặc mật khẩu!");
+                        alert("Thông tin đăng nhập không hợp lệ!");
                     }
                 })
                 .catch(error => console.error("Lỗi:", error));

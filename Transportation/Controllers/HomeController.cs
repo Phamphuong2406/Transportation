@@ -15,7 +15,7 @@ namespace Transportation.Controllers
             _logger = logger;
         }
        
-        public IActionResult Index(string id) // id ở đây là UserId
+        public IActionResult Index(string id) 
         {
             ViewBag.UserId = id; // Truyền UserId sang Razor View
             return View();

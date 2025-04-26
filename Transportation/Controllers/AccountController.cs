@@ -17,6 +17,11 @@ namespace Transportation.Controllers
         public IActionResult Register() {
             return View();
         }
+        public IActionResult AuthenOTP(string email)
+        {
+            ViewData["Email"] = email;
+            return View();
+        }
         public IActionResult ForgetPassword()
         {
             return View();

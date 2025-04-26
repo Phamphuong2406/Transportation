@@ -74,8 +74,13 @@
 
         let chartInstance;
         const fetchData = (month = '') => {
-            fetch(`/Admin/HomeAdmin/Compareordersoftruck?month=${month}`)
-                .then(response => response.json())
+            fetch(`/api/ChartAPI/Compareordersoftruck?month=${month}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Lỗi API: ' + response.status);
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     const labels = data.map(item => `Xe tải ${item.truckid}`);
                     const totalOrders = data.map(item => item.totalProcessed);
@@ -120,8 +125,13 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // Gọi API lấy dữ liệu
-            fetch('/Admin/HomeAdmin/CompareRevenue')
-                .then(response => response.json())
+            fetch('/api/ChartAPI/CompareRevenue')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Lỗi API: ' + response.status);
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     console.log('Dữ liệu nhận được:', data);
                     // Xử lý dữ liệu từ API
@@ -162,8 +172,13 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            fetch('/Admin/HomeAdmin/Compareorders')
-                .then(response => response.json())
+            fetch('/api/ChartAPI/Compareorders')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Lỗi API: ' + response.status);
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     const labels = data.map(item => item.status);
                     const counts = data.map(item => item.count);
@@ -188,8 +203,13 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            fetch('/Admin/HomeAdmin/CargoWeightChart')
-                .then(response => response.json())
+            fetch('/api/ChartAPI/CargoWeightChart')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Lỗi API: ' + response.status);
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     console.log('Dữ liệu trả về tưf ', data);
                     const labels = data.map(item => item.date);

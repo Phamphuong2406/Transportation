@@ -41,26 +41,7 @@ namespace Transportation.Areas.Drivers.Controllers
             return View();
 
         }
-        public IActionResult Realtime()
-        {
-            // Tìm người dùng hiện tại
-            var userClaim = HttpContext.User.Claims.SingleOrDefault(x => x.Type == "UserID");
-            if (userClaim != null && long.TryParse(userClaim.Value, out long iduser))
-            {
-                var user = _context.Drivers.SingleOrDefault(x => x.UserId == (int)iduser);
-                if (user != null)
-                {
-                    var truck = _context.Trucks.FirstOrDefault(x => x.DriverId == user.DriverId);
-                    if (truck != null)
-                    {
-                        // gửi truckid sang view
-                        ViewBag.truckId = truck.TruckId;
-                    }
-                }
-            }
-
-            return View();
-        }
+     
      
 
         [HttpGet]

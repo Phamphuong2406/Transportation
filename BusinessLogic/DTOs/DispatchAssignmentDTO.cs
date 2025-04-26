@@ -51,7 +51,7 @@ namespace BusinessLogic.DTOs
         public string? Status { get; set; }
 
         public string? DeliveryImage { get; set; }
-   
+
         public IFormFile? ImageFile { get; set; }
 
         public DateTime? Pickupdate { get; set; }
@@ -75,5 +75,33 @@ namespace BusinessLogic.DTOs
     public class UpdateStatusRequest
     {
         public int RequestId { get; set; }
+    }
+    public class OrderStatusDTO
+    {
+        public string Status { get; set; }
+        public int Count { get; set; }
+
+    }
+    public class LateDeliveryDataDTO()
+    {
+        public int total { get; set; }
+        public int late { get; set; }
+        public int onTime { get; set; }
+    }
+    public class CompareordersoftruckDTO
+    {
+        public int? TruckId { get; set; }
+        public int TotalProcessed { get; set; }
+        public string Status { get; set; }
+    }
+    public class CompareRevenueDTO
+    {
+        public int Date { get; set; }
+        public int? Cost { get; set; }
+    }
+    public class CargoWeightChartDTO
+    {
+        public int Date { get; set; }
+        public int? TotalWeight { get; set; }
     }
 }

@@ -48,7 +48,9 @@
 
                             <li>  <a class="nav-link" asp-area="Coordinator" asp-controller="Home" asp-action="Index">NV điều phối</a></li>
                             <li><a class="nav-link" asp-area="Drivers" asp-controller="HomeDriver" asp-action="Index">Lái xe</a></li>
-                            <li><a href="~/User/Logout">Đăng xuất</a></li>
+                           <li>
+                                <a href="#" onclick="logout()" style="display:inline;">Đăng xuất</a>
+                           </li>
                         </ul>
                     </li>
 
@@ -180,5 +182,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        async function logout() {
+            try {
+                const response = await fetch('/api/AccountAPI/Logout', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    window.location.href = '/Account/LogIn';
+                } else {
+                    alert('Đăng xuất thất bại.');
+                }
+            } catch (error) {
+                console.error('Lỗi khi đăng xuất:', error);
+            }
+        }
+    </script>
 </body>
 </html>

@@ -19,8 +19,14 @@ namespace BusinessLogic.Services
         string AssignTrip(AssignTripRequestDTO assignrequest, int userId);
         int UpdateStatusById(int? requestId);
         List<DispatchAssignmentDTO> getDispatByTripId(int tripId);
+        List<OrderStatusDTO> GetOrderStatusStatistics(int year, int month);
+        LateDeliveryDataDTO GetLateDeliveryData();
+        List<TruckLoadDistributionDTO> GetTruckLoadDistribution(int year, int month);
+        IEnumerable<CompareordersoftruckDTO> GetCompareordersoftruck(int month);
+        IEnumerable<CompareRevenueDTO> GetCompareRevenue();
+        List<OrderStatusDTO> GetCompareorders();
+        List<CargoWeightChartDTO> GetCargoWeightChart();
         Task<int> StartShipping(int? requestId);
-
         Task<string> UploadImageAndUpdateStatus(int requestId, IFormFile imageUpload);
     }
     public class DispatchService : IDispatchService
@@ -85,6 +91,7 @@ namespace BusinessLogic.Services
             }
             return assignment;
         }
+
         public string AssignTrip(AssignTripRequestDTO assignrequest, int userId)
         {
             var trip = _tripService.GetTripById(assignrequest.TripId);
@@ -203,6 +210,110 @@ namespace BusinessLogic.Services
             return listdispatch;
         }
 
+       public List<OrderStatusDTO> GetOrderStatusStatistics(int year, int month)
+        {
+            var query = _context.DispatchAssignments
+               .Where(d => d.AssignedDate.Year == year && d.AssignedDate.Month == month);
+
+            var statusData = query
+                .GroupBy(d => d.Status)
+                .Select(g => new OrderStatusDTO
+                {
+                    Status = g.Key,
+                    Count = g.Count()
+                })
+                .ToList();
+            return statusData;
+        }
+        public LateDeliveryDataDTO GetLateDeliveryData()
+        {
+            var totalOrders = _context.DispatchAssignments.Count(a => a.Status == "Đã giao hàng"); // tổng đơn hàng
+
+
+            var lateOrders = _context.DispatchAssignments.Include(x => x.Trip)
+                .AsEnumerable().Count(o =>
+                                      o.Status == "Đã giao hàng" &&
+                                      o.Deliverydate.Value.TimeOfDay > o.Trip.EndTime.GetValueOrDefault().ToTimeSpan());
+            var data = new LateDeliveryDataDTO
+            {
+                total = totalOrders,
+                late = lateOrders,
+                onTime = totalOrders - lateOrders
+            };
+            return data;
+        }
+        public List<TruckLoadDistributionDTO> GetTruckLoadDistribution(int year, int month)
+        {
+            var query = _context.DispatchAssignments
+               .Where(d => d.AssignedDate.Year == year && d.AssignedDate.Month == month);
+            var loadData = query
+                .GroupBy(d => d.Trip.TruckId)
+                .Select(g => new TruckLoadDistributionDTO
+                {
+                    TruckId = g.Key,
+                    UsedLoad = g.Sum(d => d.Weight),  // Tổng tải trọng đã dùng
+                    MaxLoad = _context.Trucks.Where(t => t.TruckId == g.Key).Select(t => t.Capacity).FirstOrDefault() // Tải trọng tối đa
+                })
+                .ToList();
+            return loadData;
+        }
+        public IEnumerable<CompareordersoftruckDTO> GetCompareordersoftruck(int month)
+        {
+            var data = _context.DispatchAssignments.Where(t => t.RequestDate.Month == month).
+                Select(x => new CompareordersoftruckDTO
+                {
+                    TruckId = x.Trip.TruckId,
+                    Status = x.Status,
+
+                }).ToList();
+            var result = data.Where(x => x.Status == "Đã giao hàng")
+                .GroupBy(x => x.TruckId)
+                .Select(item => new CompareordersoftruckDTO
+                {
+                    TruckId = item.Key,
+                    TotalProcessed = item.Count()
+                });
+            return result;
+        }
+       public IEnumerable<CompareRevenueDTO> GetCompareRevenue()
+        {
+            var data = _context.DispatchAssignments.ToList();
+
+            var resultt = data.Where(x => x.Status == "Đã giao hàng")
+               .GroupBy(x => x.RequestDate.Month)
+               .Select(item => new CompareRevenueDTO
+               {
+                   Date = item.Key,
+                   Cost = item.Sum(x => x.ShippingCost)
+               });
+            return resultt;
+        }
+        public List<OrderStatusDTO> GetCompareorders()
+        {
+            var orderStatusCounts = _context.DispatchAssignments
+           .GroupBy(o => o.Status)
+           .Select(g => new OrderStatusDTO
+           {
+               Status = g.Key,
+               Count = g.Count()
+           })
+           .ToList();
+            return orderStatusCounts;
+        }
+        public List<CargoWeightChartDTO> GetCargoWeightChart()
+        {
+            var weightData = _context.DispatchAssignments
+                .Where(o => o.Status == "Đã giao hàng" || o.Status == "Đã nhận hàng") // Lọc theo trạng thái
+                .GroupBy(o => o.RequestDate.Month)  // Nhóm theo ngày
+                .Select(g => new CargoWeightChartDTO
+                {
+                    Date = g.Key,
+                    TotalWeight = g.Sum(o => o.Weight)
+                })
+
+                .ToList();
+            return weightData;
+        }
         public async Task<string> UploadImageAndUpdateStatus(int requestId, IFormFile imageUpload)
         {
             if (requestId <= 0 || imageUpload == null || imageUpload.Length == 0)
