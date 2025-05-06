@@ -1,4 +1,5 @@
-﻿using BusinessLogic.Services;
+﻿using BusinessLogic.Filter;
+using BusinessLogic.Services;
 using BusinessLogic.Services.Account;
 using DataAccess.Entity;
 using Microsoft.AspNetCore.Http;
@@ -11,6 +12,7 @@ namespace Transportation.ApiControllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize("Dispatcher")]
     public class TripAPIController : ControllerBase
     {
         private ITripService _tripService;

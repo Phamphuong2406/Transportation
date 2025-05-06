@@ -3,7 +3,7 @@
     Layout = "~/Areas/Drivers/Views/Shared/_LayoutDriver.cshtml";
 }
 
-<!-- Bản đồ -->
+
 <div id="map" style="height: 500px; width: 100%; margin-top: 20px;"></div>
 
 @section Scripts {
@@ -27,14 +27,13 @@
                     iconAnchor: [25, 25]
                 });
 
-                // Hàm lấy địa chỉ từ lat/lng
                 async function getAddressFromCoordinates(lat, lng) {
                     try {
                         let response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`);
                         let data = await response.json();
                         return data?.display_name || "Không tìm thấy địa chỉ";
                     } catch (error) {
-                        console.error("❌ Lỗi lấy địa chỉ:", error);
+                        console.error(" Lỗi lấy địa chỉ:", error);
                         return "Không thể lấy địa chỉ";
                     }
                 }
@@ -44,14 +43,12 @@
                     let lat = position.coords.latitude;
                     let lng = position.coords.longitude;
 
-                    console.log(`📍 Vị trí hiện tại: ${lat}, ${lng}`);
+                    console.log(` Vị trí hiện tại: ${lat}, ${lng}`);
 
-                    // Cập nhật popup ngay lập tức với thông báo "Đang tìm vị trí..."
                     if (truckMarker) {
-                        truckMarker.bindPopup(`🚛 Truck ID: ${truckId}<br>📍 Đang tìm vị trí...`).openPopup();
+                        truckMarker.bindPopup(` Truck ID: ${truckId}<br> Đang tìm vị trí...`).openPopup();
                     }
 
-                    // Lấy địa chỉ thực tế
                     let address = await getAddressFromCoordinates(lat, lng);
 
                     // Nếu bản đồ chưa được khởi tạo
@@ -61,15 +58,13 @@
                             attribution: '&copy; OpenStreetMap contributors'
                         }).addTo(map);
 
-                        // Thêm marker xe tải với popup ban đầu
                         truckMarker = L.marker([lat, lng], { icon: truckIcon })
                             .addTo(map)
-                            .bindPopup(`🚛 Truck ID: ${truckId}<br>📍 ${address}`)
+                            .bindPopup(`Truck ID: ${truckId}<br> ${address}`)
                             .openPopup();
                     } else {
-                        // Cập nhật vị trí xe tải và popup với địa chỉ thực tế
                         truckMarker.setLatLng([lat, lng])
-                            .bindPopup(`🚛 Truck ID: ${truckId}<br>📍 ${address}`)
+                            .bindPopup(`Truck ID: ${truckId}<br> ${address}`)
                             .openPopup();
                         map.setView([lat, lng], 15);
                     }
@@ -82,27 +77,24 @@
                         return;
                     }
 
-                    // Hiển thị "Đang tìm vị trí..." ban đầu
-                    map = L.map('map').setView([0, 0], 2); // Đặt tạm tọa độ 0,0 với zoom nhỏ
+                    map = L.map('map').setView([0, 0], 2); 
                     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                         attribution: '&copy; OpenStreetMap contributors'
                     }).addTo(map);
 
                     truckMarker = L.marker([0, 0], { icon: truckIcon })
                         .addTo(map)
-                        .bindPopup(`🚛 Truck ID: ${truckId}<br>📍 Đang tìm vị trí...`)
+                        .bindPopup(` Truck ID: ${truckId}<br> Đang tìm vị trí...`)
                         .openPopup();
 
-                    // Lắng nghe sự thay đổi vị trí
                     navigator.geolocation.watchPosition(updateLocation, (error) => {
-                        console.error("⚠ Lỗi khi lấy vị trí:", error);
+                        console.error(" Lỗi khi lấy vị trí:", error);
                     }, {
                         enableHighAccuracy: true,
                         maximumAge: 0
                     });
                 }
 
-                // Gọi ngay khi trang tải xong
                 shareLocation();
             });
     </script>

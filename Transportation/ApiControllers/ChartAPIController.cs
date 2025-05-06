@@ -1,4 +1,5 @@
-﻿using BusinessLogic.Services;
+﻿using BusinessLogic.Filter;
+using BusinessLogic.Services;
 using DataAccess.Entity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,6 +19,7 @@ namespace Transportation.ApiControllers
             _dispatchService = dispatchService;
         }
         [HttpGet("TruckOrderStatistics")]
+        [Authorize("Dispatcher")]
         public IActionResult TruckOrderStatistics(int year, int month) // tổng số đơn hàng của mỗi xe tải
         {
             var data = _truckService.GetTruckOrderStatistics(year, month);
@@ -25,6 +27,7 @@ namespace Transportation.ApiControllers
         }
 
         [HttpGet("OrderStatusStatistics")]
+        [Authorize("Dispatcher")]
         public IActionResult OrderStatusStatistics(int year, int month)
         {
             var data = _dispatchService.GetOrderStatusStatistics(year, month);
@@ -33,18 +36,20 @@ namespace Transportation.ApiControllers
         }
 
         [HttpGet("GetLateDeliveryData")]
-        public IActionResult GetLateDeliveryData() // thống kê đơn hàng trễ
+        [Authorize("Dispatcher")]
+        public IActionResult GetLateDeliveryData(int year, int month) // thống kê đơn hàng trễ
         {
-           var data = _dispatchService.GetLateDeliveryData();
+           var data = _dispatchService.GetLateDeliveryData(year, month);
             return Ok(data);
         }
 
         [HttpGet("DriverPerformanceData")]
-        public IActionResult DriverPerformanceData() // thống kê hiêju suất xe tải
+        [Authorize("Dispatcher")]
+        public IActionResult DriverPerformanceData(int year, int month) // thống kê hiêju suất xe tải
         {
             try
             {
-                var data = _truckService.GetDriverPerformanceData();
+                var data = _truckService.GetDriverPerformanceData(year,month);
 
                 if (!data.Any())
                 {
@@ -72,21 +77,7 @@ namespace Transportation.ApiControllers
              return Ok(data);
          }*/
 
-      /*  [HttpGet("")]
-        public IActionResult TruckLoadDistribution() // phân bổ trọng tải
-        {
-            var loadData = _context.Trucks
-                .Select(truck => new
-                {
-                    TruckId = truck.TruckId,
-
-                    UsedLoad = _context.DispatchAssignments.Where(d => d.Trip.TruckId == truck.TruckId).Sum(d => d.Weight), // Tải trọng đã sử dụng
-                    MaxLoad = truck.Capacity // Tải trọng tối đa
-                })
-                .ToList();
-
-            return Json(loadData);
-        }*/
+   
         [HttpGet("TruckLoadDistribution")]
         public IActionResult TruckLoadDistribution(int year, int month) // tổng trọng tải sưr dụng
         {
@@ -96,12 +87,14 @@ namespace Transportation.ApiControllers
         }
         // so sánh khối lượng đơn hàng của các xe
         [HttpGet("Compareordersoftruck")]
+        [Authorize("Admin")]
         public IActionResult Compareordersoftruck(int month)
         {
             var result = _dispatchService.GetCompareordersoftruck(month);
             return Ok(result);
         }
         [HttpGet("CompareRevenue")]
+        [Authorize("Admin")]
         // tổng doanh thu theo tháng
         public IActionResult CompareRevenue()
         {
@@ -110,6 +103,7 @@ namespace Transportation.ApiControllers
             return Ok(data);
         }
         [HttpGet("Compareorders")]
+        [Authorize("Admin")]
         //trạng thái đơn hàng
         public IActionResult Compareorders()
         {
@@ -117,6 +111,7 @@ namespace Transportation.ApiControllers
             return Ok(data);
         }
         [HttpGet("CargoWeightChart")]
+        [Authorize("Admin")]
         // Tổng khối lượng hàng hóa
         public IActionResult CargoWeightChart()
         {

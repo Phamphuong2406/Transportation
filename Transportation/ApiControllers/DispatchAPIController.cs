@@ -174,24 +174,15 @@ namespace Transportation.ApiControllers
             }
             try
             {
-                // Tìm Assignment theo RequestId
-                var assignment = await _dispatchService.StartShipping(request.RequestId);
-
-                if (assignment == -1)
+                var result = await _dispatchService.StartShipping(request.RequestId);
+                if(result == false)
                 {
-                    return NotFound(new { message = "Không tìm thấy đơn hàng với mã yêu cầu." });
+                    return BadRequest(new { message = "Cập nhật trạng thái thất bại" }); 
                 }
-                var shipping = await _RequestService.StartShipping(request.RequestId);
-                if (shipping == -1)
-                {
-                    return NotFound(new { message = "Không tìm thấy đơn hàng tương ứng" });
-                }
-                
                 return Ok(new { message = "Đã nhận hàng thành công." });
             }
             catch (Exception ex)
             {
-                // Log lỗi nếu cần
                 return StatusCode(500, new { message = "Đã xảy ra lỗi khi cập nhật trạng thái.", error = ex.Message });
             }
 

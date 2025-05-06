@@ -25,5 +25,16 @@ namespace DataAccess.IRepositories
             return await _context.Trips.FirstOrDefaultAsync(x => x.TripId == tripId);
 
         }
+        public async Task<int> UpdatePickupStatus(int requestId)
+        {
+            var assignment = await _context.ShippingRequests.FirstOrDefaultAsync(a => a.RequestId == requestId);
+            if (assignment == null)
+            {
+                return -1;
+            }
+            assignment.Status = "Đã lấy hàng";
+            assignment.Pickupdate = DateTime.Now;
+            return 1;
+        }
     }
 }

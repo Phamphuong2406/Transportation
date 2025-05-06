@@ -67,7 +67,7 @@
                             return response.json();
                         })
                         .then(data => {
-                            if (data.success) {
+                            if (data.ok) {
                                 alert("Đăng ký thành công!");
                                 window.location.href = "/Account/LogIn";
                             } else {

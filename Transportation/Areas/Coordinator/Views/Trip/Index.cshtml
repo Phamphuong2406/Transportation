@@ -153,6 +153,32 @@
             }
         });
 
+        $('#dropdownShift').on('change', function () {
+            const shiftId = $(this).val();
+            if (shiftId) {
+                $.ajax({
+                    url: `/api/ShiftAPI/GetShiftById?shiftId=${shiftId}`,
+                    type: "GET",
+                    success: function (data) {
+                        console.log('Thời gian ca làm:', data);
+                        $('#StartTime').val(data.StartTime);
+                        $('#EndTime').val(data.EndTime);
+                    },
+                    error: function (xhr) {
+                        if (xhr.status === 401) {
+                            window.location.href = '/Account/Login';
+                        } else {
+                            alert("Không thể lấy thời gian ca làm!");
+                        }
+                    }
+                });
+            } else {
+                // Nếu người dùng chưa chọn gì thì có thể xóa dữ liệu hiện tại
+                $('#shiftStartTime').text('');
+                $('#shiftEndTime').text('');
+            }
+        });
+
         // Gửi form bằng AJAX
         document.getElementById('createDispatcherForm').addEventListener('submit', function (e) {
             e.preventDefault();

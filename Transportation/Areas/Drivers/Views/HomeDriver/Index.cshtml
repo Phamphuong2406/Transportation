@@ -220,13 +220,11 @@
             .then(async (response) => {
                 const result = await response.json();
                 if (response.ok) {
-                    // Thành công
                     alert("Đã xác nhận giao hàng thành công!");
 
-                    location.reload(); // Load lại trang nếu cần
+                    location.reload(); 
 
                 } else if (response.status === 400) {
-                    // Lỗi dữ liệu không hợp lệ
                     alert(result.message || "Dữ liệu không hợp lệ. Vui lòng kiểm tra lại.");
                 } else {
                     alert("Đã xảy ra lỗi: " + (result.message || "Không xác định."));
@@ -248,7 +246,6 @@
             success: function (response) {
                 alert(response.message);
 
-                // Thay đổi nút thành thẻ <h> với nội dung "Đã giao"
 
                 location.reload(); 
             },
@@ -275,9 +272,9 @@
         async function startConnection() {
             try {
                 await connection.start();
-                console.log("✅ Kết nối đến LocationHub thành công!");
+                console.log(" Kết nối đến LocationHub thành công!");
             } catch (err) {
-                console.error("❌ Lỗi kết nối đến Hub:", err);
+                console.error("Lỗi kết nối đến Hub:", err);
                 setTimeout(startConnection, 5000); // Thử kết nối lại sau 5s nếu lỗi
             }
         }
@@ -291,13 +288,13 @@
         // Hàm bắt đầu chia sẻ vị trí (cập nhật mỗi 3 phút)
         function startTracking(tripId, button) {
             if (!navigator.geolocation) {
-                alert("❌ Trình duyệt không hỗ trợ định vị!");
+                alert(" Trình duyệt không hỗ trợ định vị!");
                 return;
             }
 
             if (!isValidTripId(tripId)) {
-                console.error("⚠ Lỗi: tripId không hợp lệ!", tripId);
-                alert("⚠ Lỗi: Không tìm thấy ID xe tải hợp lệ!");
+                console.error(" Lỗi: tripId không hợp lệ!", tripId);
+                alert(" Lỗi: Không tìm thấy ID xe tải hợp lệ!");
                 return;
             }
 
@@ -310,20 +307,20 @@
                 if (now - lastSentTime >= updateInterval) {
                     lastSentTime = now; // Cập nhật thời gian gửi cuối
 
-                    console.log(`📡 Gửi vị trí: Trip ${tripId} | Lat: ${lat} | Lng: ${lng}`);
+                    console.log(`Gửi vị trí: Trip ${tripId} | Lat: ${lat} | Lng: ${lng}`);
 
                     // Gửi dữ liệu đến SignalR Hub
                     connection.invoke("SendLocationUpdate", Number(tripId), lat, lng)
-                        .catch(err => console.error("❌ Lỗi gửi dữ liệu đến Hub:", err));
+                        .catch(err => console.error("Lỗi gửi dữ liệu đến Hub:", err));
                 }
             }, (error) => {
-                console.error("⚠ Lỗi khi lấy vị trí:", error);
+                console.error("Lỗi khi lấy vị trí:", error);
             }, {
                 enableHighAccuracy: true, // Độ chính xác cao
                 maximumAge: 0 // Luôn lấy vị trí mới nhất
             });
 
-            // Cập nhật giao diện
+            alert("Bạn đang chia sẻ vị trí");
             button.innerText = "Kết thúc ca làm";
             button.classList.remove("btn-success");
             button.classList.add("btn-danger");
@@ -337,7 +334,7 @@
                 watchId = null;
             }
 
-            console.log("🚫 Đã dừng chia sẻ vị trí");
+            console.log("Đã dừng chia sẻ vị trí");
 
             // Gửi yêu cầu đến API StopSharing
             fetch("/api/TripAPI/StopSharing", {
@@ -350,9 +347,10 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        console.log("✅ Cập nhật trạng thái thành công:", data);
+                        console.log("Cập nhật trạng thái thành công:", data);
 
                         // Chỉ cập nhật giao diện khi API phản hồi thành công
+                        alert("Bạn đã ngừng chia sẻ vị trí");
                         button.innerText = "Đã kết thúc ca";
                         button.classList.remove("btn-danger");
                         button.classList.add("btn-secondary");
@@ -363,11 +361,11 @@
                             location.reload();
                         }, 1000);
                     } else {
-                        console.error("⚠ API trả về lỗi:", data.message);
-                        alert("⚠ Không thể kết thúc ca làm. Hãy thử lại!");
+                        console.error(" API trả về lỗi:", data.message);
+                        alert("Không thể kết thúc ca làm. Hãy thử lại!");
                     }
                 })
-                .catch(error => console.error("❌ Lỗi khi gửi StopSharing:", error));
+                .catch(error => console.error(" Lỗi khi gửi StopSharing:", error));
 
            
         }

@@ -15,6 +15,7 @@ namespace Transportation.ApiControllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize("Admin")]
     public class ShiftAPIController : ControllerBase
     {
         private readonly IDistributedCache _cache;

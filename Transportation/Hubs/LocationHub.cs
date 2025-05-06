@@ -30,7 +30,6 @@ namespace Transportation.Hubs
                 {
                     await Clients.All.SendAsync("ReceiveLocation", trip.TruckId, latitude, longitude);
 
-                    // Kiểm tra vị trí trước khi lưu (giảm tải database)
                     var lastLocation = await _context.RealTimeTrackings
                         .Where(l => l.TruckId == trip.TruckId)
                         .OrderByDescending(l => l.Timestamp)
@@ -44,7 +43,7 @@ namespace Transportation.Hubs
                             TruckId = (int)trip.TruckId,
                             CurrentLat = latitude,
                             CurrentLng = longitude,
-                            Timestamp = DateTime.Now // Nên dùng UTC để tránh lỗi timezone
+                            Timestamp = DateTime.Now 
                         };
 
                         _context.RealTimeTrackings.Add(location);
@@ -54,7 +53,7 @@ namespace Transportation.Hubs
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"⚠ Lỗi lưu vị trí: {ex.Message}");
+                Debug.WriteLine($" Lỗi lưu vị trí: {ex.Message}");
             }
         }
 

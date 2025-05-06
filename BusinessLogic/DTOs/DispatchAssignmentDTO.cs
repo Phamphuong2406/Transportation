@@ -91,8 +91,8 @@ namespace BusinessLogic.DTOs
     public class CompareordersoftruckDTO
     {
         public int? TruckId { get; set; }
-        public int TotalProcessed { get; set; }
-        public string Status { get; set; }
+        public int? TotalProcessed { get; set; }
+        public string? Status { get; set; }
     }
     public class CompareRevenueDTO
     {

@@ -21,7 +21,7 @@ namespace BusinessLogic.Services
         int Detele(int? Truckid);
         TruckDTO GettruckIdByuserId(int userId);
         List<TruckOrderStatisticDTO> GetTruckOrderStatistics(int year, int month);
-        List<DriverPerformanceDTO> GetDriverPerformanceData();
+        List<DriverPerformanceDTO> GetDriverPerformanceData(int year, int month);
     }
     public class TruckService : ITruckService
     {
@@ -95,7 +95,7 @@ namespace BusinessLogic.Services
           
             return orderData;
         }
-        public List<DriverPerformanceDTO> GetDriverPerformanceData()
+        public List<DriverPerformanceDTO> GetDriverPerformanceData(int year, int month)
         {
             var driverPerformance = _context.Trucks
                   .Include(x => x.Trips).ThenInclude(t => t.DispatchAssignments)

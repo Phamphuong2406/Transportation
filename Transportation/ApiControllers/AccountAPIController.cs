@@ -1,6 +1,7 @@
 ﻿using Azure.Core;
 using BusinessLogic.DTOs.Account;
 using BusinessLogic.DTOs.SendEmail;
+using BusinessLogic.Filter;
 using BusinessLogic.Public;
 using BusinessLogic.Services;
 using BusinessLogic.Services.Account;
@@ -84,6 +85,7 @@ namespace Transportation.ApiControllers
 
         [HttpPost("DispatcherRegister")]
         [Consumes("multipart/form-data")]
+        [Authorize("Admin")]
         public async Task<ActionResult> DispatcherRegister([FromForm] AccountRegisterRequestData registerRequestData)
         {
             var responseData = new Response();
@@ -113,6 +115,7 @@ namespace Transportation.ApiControllers
         }
         [HttpPost("DriverRegister")]
         [Consumes("multipart/form-data")]
+        [Authorize("Admin")]
         public async Task<ActionResult> DriverRegister([FromForm] AccountRegisterRequestData registerRequestData)
         {
             var responseData = new Response();
@@ -204,9 +207,7 @@ namespace Transportation.ApiControllers
             return RedirectToAction("Login", "Account");
         }
 
-
         [HttpPost("Forgotpassword")]
-
         public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordDTO forgotPassword)
         {
             if (!ModelState.IsValid)

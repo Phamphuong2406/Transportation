@@ -1,4 +1,5 @@
 ﻿using DataAccess.DataContext;
+using DataAccess.Entity;
 using DataAccess.IRepositories;
 using System;
 using System.Collections.Generic;
@@ -10,24 +11,24 @@ namespace BusinessLogic.Interfaces
 {
     public interface IUnitOfWork
     {
-        IAssignmentRepo Assignments { get; }
-        IShippingRequestRepo ShippingRequests { get; }
-        ITripRepo Trips { get; }
+        IAssignmentRepo assignments { get; }
+        IShippingRequestRepo shippingRequests { get; }
+        ITripRepo trips { get; }
         Task<int> SaveAsync();
     }
     public class UnitOfWork:IUnitOfWork
     {
         private readonly MyDbContext _context;
-        public IAssignmentRepo Assignments { get; private set; }
-        public IShippingRequestRepo ShippingRequests { get; private set; }
-        public ITripRepo Trips { get; private set; }
+        public IAssignmentRepo assignments { get; private set; }
+        public IShippingRequestRepo shippingRequests { get; private set; }
+        public ITripRepo trips { get; private set; }
 
-        public UnitOfWork(MyDbContext context)
+        public UnitOfWork(MyDbContext context, IAssignmentRepo Assignments, IShippingRequestRepo ShippingRequests, ITripRepo Trips)
         {
             _context = context;
-            Assignments = new AssignmentRepo(_context);
-            ShippingRequests = new ShippingRequestRepo(_context);
-            Trips = new TripRepo(_context);
+            assignments = Assignments;
+            shippingRequests = ShippingRequests;
+            trips = Trips;
         }
 
         public Task<int> SaveAsync()

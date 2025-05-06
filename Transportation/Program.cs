@@ -128,7 +128,8 @@ builder.Services.AddScoped<IGooogleAuthorization, GoogleAuthorizationService>();
 builder.Services.AddSignalR();
 builder.Services.AddSingleton(emailConfig);
 builder.Services.AddSingleton<IEmailSender, EmailSender>();
-builder.Services.AddTransient<IShiftRepository, ShiftRepository>();
+builder.Services.AddScoped<IShiftRepository, ShiftRepository>();
+builder.Services.AddScoped<IAssignmentRepo, AssignmentRepo>();
 builder.Services.AddTransient<IShiftService, ShiftService>();
 builder.Services.AddTransient<IAccountService, AccountService>();
 builder.Services.AddTransient<IAccountRepo, AccountRepo>(); 
@@ -138,10 +139,10 @@ builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ITripService, TripService>();
 builder.Services.AddTransient<IFileService, FileService>();
 builder.Services.AddTransient<ITruckService, TruckService>();
-builder.Services.AddTransient<IDispatchService, DispatchService>();
-builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
-
-
+builder.Services.AddScoped<IDispatchService, DispatchService>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IShippingRequestRepo, ShippingRequestRepo>();
+builder.Services.AddScoped<ITripRepo, TripRepo>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -186,12 +187,10 @@ app.MapControllerRoute(
     name: "api",
     pattern: "api/{area=}/{controller}/{action?}/{id?}");
 
-// Định tuyến cho MVC với Areas
 app.MapControllerRoute(
     name: "areas",
     pattern: "{area:exists}/{controller}/{action=Index}/{id?}");
 
-// Định tuyến mặc định cho MVC (không có area)
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
@@ -200,7 +199,4 @@ app.MapControllerRoute(
 app.MapControllers();
 
 app.Run();
-
-/*Add-Migration Updatfg -Project DataAccess -StartupProject Transportation
-Update-Database -Project DataAccess -StartupProject Transportation*/
 

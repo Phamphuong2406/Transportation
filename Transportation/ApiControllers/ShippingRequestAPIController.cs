@@ -38,7 +38,6 @@ namespace Transportation.ApiControllers
                     // Lấy danh sách kho của customer này
                     var warehouse = _shippingRequestService.GetWarehouseByCutomerId(customer.CustomerId);
 
-
                     return Ok(warehouse);
                 }
             }

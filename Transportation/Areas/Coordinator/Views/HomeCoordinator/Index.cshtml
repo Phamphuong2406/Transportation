@@ -4,7 +4,6 @@
     ViewData["Title"] = "biểu đồ tỉ lệ đơn hàng giao trễ";
     Layout = "~/Areas/Coordinator/Views/Shared/_LayoutCoordinator.cshtml";
 }
-
 <section class="section">
     <label for="monthSelect">Chọn tháng:</label>
     <select id="monthSelect">
@@ -22,13 +21,12 @@
         <option value="12">Tháng 12</option>
     </select>
     <div class="row">
-        @* Thống kê đơn hàng của xe  *@
+        <!-- Các biểu đồ -->
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
                     <canvas width="800" height="400" id="orderChart"></canvas>
                     <h6>Thống kê tổng số đơn hàng của xe tải đã thực hiện</h6>
-
                 </div>
             </div>
         </div>
@@ -36,13 +34,12 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
-
                     <canvas id="driverPerformanceChart" width="800" height="400"></canvas>
                     <h6> Biểu đồ hiệu suất tài xế</h6>
                 </div>
             </div>
         </div>
-        @*   tỉ lệ giao trễ *@
+
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
@@ -52,11 +49,9 @@
             </div>
         </div>
 
-        @* Trạng thái đơn hàng *@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
-
                     <canvas id="orderStatusChart" width="800" height="400"></canvas>
                     <h6> Biểu đồ trạng thái đơn hàng</h6>
                 </div>
@@ -66,7 +61,6 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
-
                     <label for="daySelect">Chọn ngày:</label>
                     <select id="daySelect">
                         <option value="0">Toàn tháng</option>
@@ -76,9 +70,9 @@
                 </div>
             </div>
         </div>
-
     </div>
 </section>
+
 @section Scripts {
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -89,16 +83,18 @@
 
             let orderChart, orderStatusChart, lateDeliveryChart, driverPerformanceChart;
 
-            // ===== BIỂU ĐỒ 1: SỐ ĐƠN HÀNG CỦA XE =====
             function loadOrderChart(month) {
                 fetch(`/api/ChartAPI/TruckOrderStatistics?year=${year}&month=${month}`)
                     .then(response => {
-                        if (!response.ok) throw new Error('Lỗi API: ' + response.status);
+                        if (response.status === 401) {
+                            window.location.href = "/Account/Login";
+                        }
+
                         return response.json();
                     })
                     .then(data => {
-                        const truckId = data.map(truck => truck.truckId);
-                        const totalOrders = data.map(truck => truck.totalOrders);
+                        const truckId = data.map(truck => truck.TruckId);
+                        const totalOrders = data.map(truck => truck.TotalOrders);
                         const ctx = document.getElementById('orderChart').getContext('2d');
 
                         if (orderChart) {
@@ -132,20 +128,21 @@
                     })
                     .catch(err => {
                         console.error("Lỗi khi tải biểu đồ đơn hàng:", err);
-                        alert("Không thể tải biểu đồ đơn hàng.");
                     });
             }
 
-            // ===== BIỂU ĐỒ 2: TRẠNG THÁI ĐƠN HÀNG =====
             function loadOrderStatusChart(month) {
                 fetch(`/api/ChartAPI/OrderStatusStatistics?year=${year}&month=${month}`)
                     .then(response => {
-                        if (!response.ok) throw new Error('Lỗi API: ' + response.status);
+                        if (response.status === 401) {
+                            window.location.href = "/Account/Login";
+                        }
+
                         return response.json();
                     })
                     .then(data => {
-                        const counts = data.map(order => order.count);
-                        const statuses = data.map(order => `${order.status} (${order.count})`);
+                        const statuses = data.map(order => `${order.Status} (${order.Count})`);
+                        const counts = data.map(order => order.Count);
                         const baseColors = ['#36a2eb', '#ff6384', '#ffcd56', '#4bc0c0', '#9966ff'];
                         const colors = statuses.map((_, i) => baseColors[i % baseColors.length]);
                         const ctx = document.getElementById('orderStatusChart').getContext('2d');
@@ -157,7 +154,6 @@
                             data: {
                                 labels: statuses,
                                 datasets: [{
-                                    label: 'Số lượng đơn hàng',
                                     data: counts,
                                     backgroundColor: colors
                                 }]
@@ -172,20 +168,20 @@
                     })
                     .catch(err => {
                         console.error("Lỗi khi tải biểu đồ trạng thái:", err);
-                        alert("Không thể tải biểu đồ trạng thái đơn hàng.");
                     });
             }
 
-            // ===== BIỂU ĐỒ 3: TỶ LỆ GIAO TRỄ =====
             function loadLateDeliveryChart(month) {
                 fetch(`/api/ChartAPI/GetLateDeliveryData?year=${year}&month=${month}`)
                     .then(response => {
-                        if (!response.ok) throw new Error('Lỗi API: ' + response.status);
+                        if (response.status === 401) {
+                            window.location.href = "/Account/Login";
+                        }
+
                         return response.json();
                     })
                     .then(data => {
                         const ctx = document.getElementById('lateDeliveryChart').getContext('2d');
-
                         if (lateDeliveryChart) lateDeliveryChart.destroy();
 
                         lateDeliveryChart = new Chart(ctx, {
@@ -207,20 +203,20 @@
                     })
                     .catch(err => {
                         console.error("Lỗi khi tải biểu đồ giao trễ:", err);
-                        alert("Không thể tải biểu đồ giao trễ.");
                     });
             }
 
-            // ===== BIỂU ĐỒ 4: HIỆU SUẤT TÀI XẾ =====
             function loadDriverPerformanceChart(month) {
                 fetch(`/api/ChartAPI/DriverPerformanceData?year=${year}&month=${month}`)
                     .then(response => {
-                        if (!response.ok) throw new Error('Lỗi API: ' + response.status);
+                        if (response.status === 401) {
+                            window.location.href = "/Account/Login";
+                        }
+                      
                         return response.json();
                     })
                     .then(data => {
                         const ctx = document.getElementById('driverPerformanceChart').getContext('2d');
-
                         if (driverPerformanceChart) driverPerformanceChart.destroy();
 
                         driverPerformanceChart = new Chart(ctx, {
@@ -255,11 +251,9 @@
                     })
                     .catch(err => {
                         console.error("Lỗi khi tải biểu đồ hiệu suất tài xế:", err);
-                        alert("Không thể tải biểu đồ hiệu suất tài xế.");
                     });
             }
 
-            // Gọi tất cả biểu đồ
             function loadAllCharts(month) {
                 loadOrderChart(month);
                 loadOrderStatusChart(month);
@@ -267,18 +261,14 @@
                 loadDriverPerformanceChart(month);
             }
 
-            // Sự kiện chọn tháng
             monthSelect.addEventListener('change', function () {
-                const selectedMonth = this.value;
-                loadAllCharts(selectedMonth);
+                loadAllCharts(this.value);
             });
 
-            // Load mặc định
             loadAllCharts(currentMonth);
         });
     </script>
 }
-
 
 
 

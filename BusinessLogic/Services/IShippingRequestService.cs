@@ -23,7 +23,7 @@ namespace BusinessLogic.Services
         void Create(ShippingRequetsDTO model, int userId);
         ShippingRequest getRequestById(int requestId);
         List<ShippingRequest> getRequestBydate(DateOnly keyword);
-        Task<int> StartShipping(int? requestId);
+      
     }
     public class ShippingRequestService : IShippingRequestService
     {
@@ -149,18 +149,7 @@ namespace BusinessLogic.Services
             }
             return null;
         }
-        public async Task<int> StartShipping(int? requestId)
-        {
-            var requestt = await _context.ShippingRequests.FirstOrDefaultAsync(a => a.RequestId == requestId);
-            if (requestt != null)
-            {
-                requestt.Status = "Đang giao hàng";
-                _context.ShippingRequests.Update(requestt);
-                _context.SaveChanges();
-                return 1;
-            }
-            return -1;
-        }
+      
 
 
     }

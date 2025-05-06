@@ -7,8 +7,8 @@ using Microsoft.EntityFrameworkCore;
 namespace Transportation.Areas.Coordinator.Controllers
 {
     [Area("Coordinator")]
-
-    [Authorize(Roles = "Dispatcher")]
+/*
+    [Authorize(Roles = "Dispatcher")]*/
     public class JourneyController : Controller
     {
         private MyDbContext _context;

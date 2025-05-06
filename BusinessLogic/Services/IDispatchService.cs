@@ -4,6 +4,7 @@ using BusinessLogic.DTOs.Account;
 using BusinessLogic.Interfaces;
 using DataAccess.DataContext;
 using DataAccess.Entity;
+using DataAccess.IRepositories;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,13 +21,13 @@ namespace BusinessLogic.Services
         int UpdateStatusById(int? requestId);
         List<DispatchAssignmentDTO> getDispatByTripId(int tripId);
         List<OrderStatusDTO> GetOrderStatusStatistics(int year, int month);
-        LateDeliveryDataDTO GetLateDeliveryData();
+        LateDeliveryDataDTO GetLateDeliveryData(int year, int month);
         List<TruckLoadDistributionDTO> GetTruckLoadDistribution(int year, int month);
         IEnumerable<CompareordersoftruckDTO> GetCompareordersoftruck(int month);
         IEnumerable<CompareRevenueDTO> GetCompareRevenue();
         List<OrderStatusDTO> GetCompareorders();
         List<CargoWeightChartDTO> GetCargoWeightChart();
-        Task<int> StartShipping(int? requestId);
+        Task<bool> StartShipping(int requestId);
         Task<string> UploadImageAndUpdateStatus(int requestId, IFormFile imageUpload);
     }
     public class DispatchService : IDispatchService
@@ -37,7 +38,8 @@ namespace BusinessLogic.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWebHostEnvironment _env;
         private IFileService _fileService;
-        public DispatchService(MyDbContext context, IShippingRequestService requestService, ITripService tripService, IUnitOfWork unitOfWork, IWebHostEnvironment env, IFileService fileService)
+        private IAssignmentRepo _assignmentRepo;
+        public DispatchService(MyDbContext context, IShippingRequestService requestService, IAssignmentRepo assignmentRepo, ITripService tripService, IUnitOfWork unitOfWork, IWebHostEnvironment env, IFileService fileService)
         {
             _context = context;
             _RequestService = requestService;
@@ -45,6 +47,7 @@ namespace BusinessLogic.Services
             _env = env;
             _unitOfWork = unitOfWork;
             _fileService = fileService;
+            _assignmentRepo = assignmentRepo;
         }
         public List<ShippingRequetsDTO> GetUnassignedRequests()
         {
@@ -160,21 +163,27 @@ namespace BusinessLogic.Services
             }
             return -1;
         }
-        public async Task<int> StartShipping(int? requestId)
+        public async Task<bool> StartShipping(int requestId)
         {
-            var assignment = await _context.DispatchAssignments.FirstOrDefaultAsync(a => a.RequestId == requestId);
-
-            if (assignment != null)
+            try
             {
-                assignment.Status = "Đã lấy hàng";
-                assignment.Pickupdate = DateTime.Now;
-                _context.DispatchAssignments.Update(assignment);
-                _context.SaveChanges();
-                _tripService.StartShipping(assignment.TripId);
-                return 1;
+                var shippingResult = await _unitOfWork.shippingRequests.UpdatePickupStatus(requestId);
+                var assignmentResult = await _unitOfWork.assignments.UpdatePickupStatus(requestId);
+
+                if (shippingResult != 1 || assignmentResult != 1)
+                {
+                    return false;
+                }
+
+                await _unitOfWork.SaveAsync();
+                return true;
             }
-            return -1;
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
+
         public async Task<int> EndShipping(int? requestId)
         {
             var assignment = await _context.DispatchAssignments.FirstOrDefaultAsync(a => a.RequestId == requestId);
@@ -210,7 +219,7 @@ namespace BusinessLogic.Services
             return listdispatch;
         }
 
-       public List<OrderStatusDTO> GetOrderStatusStatistics(int year, int month)
+        public List<OrderStatusDTO> GetOrderStatusStatistics(int year, int month)
         {
             var query = _context.DispatchAssignments
                .Where(d => d.AssignedDate.Year == year && d.AssignedDate.Month == month);
@@ -225,9 +234,9 @@ namespace BusinessLogic.Services
                 .ToList();
             return statusData;
         }
-        public LateDeliveryDataDTO GetLateDeliveryData()
+        public LateDeliveryDataDTO GetLateDeliveryData(int year, int month)
         {
-            var totalOrders = _context.DispatchAssignments.Count(a => a.Status == "Đã giao hàng"); // tổng đơn hàng
+            var totalOrders = _context.DispatchAssignments.Where(d => d.AssignedDate.Year == year && d.AssignedDate.Month == month).Count(a => a.Status == "Đã giao hàng"); // tổng đơn hàng
 
 
             var lateOrders = _context.DispatchAssignments.Include(x => x.Trip)
@@ -259,23 +268,33 @@ namespace BusinessLogic.Services
         }
         public IEnumerable<CompareordersoftruckDTO> GetCompareordersoftruck(int month)
         {
-            var data = _context.DispatchAssignments.Where(t => t.RequestDate.Month == month).
-                Select(x => new CompareordersoftruckDTO
-                {
-                    TruckId = x.Trip.TruckId,
-                    Status = x.Status,
+            /* var data = _context.DispatchAssignments.Where(t => t.RequestDate.Month == month).
+                 Select(x => new CompareordersoftruckDTO
+                 {
+                     TruckId = x.Trip.TruckId,
+                     Status = x.Status,
 
-                }).ToList();
-            var result = data.Where(x => x.Status == "Đã giao hàng")
-                .GroupBy(x => x.TruckId)
-                .Select(item => new CompareordersoftruckDTO
-                {
-                    TruckId = item.Key,
-                    TotalProcessed = item.Count()
-                });
+                 }).ToList();
+             var result = data.Where(x => x.Status == "Đã giao hàng")
+                 .GroupBy(x => x.TruckId)
+                 .Select(item => new CompareordersoftruckDTO
+                 {
+                     TruckId = item.Key,
+                     TotalProcessed = item.Count()
+                 });*/
+            var result = _context.DispatchAssignments
+     .Where(t => t.RequestDate.Month == month && t.Status == "Đã giao hàng")
+     .GroupBy(t => t.Trip.TruckId)
+     .Select(g => new CompareordersoftruckDTO
+     {
+         TruckId = g.Key,
+         TotalProcessed = g.Count()
+     })
+     .ToList();
+
             return result;
         }
-       public IEnumerable<CompareRevenueDTO> GetCompareRevenue()
+        public IEnumerable<CompareRevenueDTO> GetCompareRevenue()
         {
             var data = _context.DispatchAssignments.ToList();
 
@@ -322,14 +341,14 @@ namespace BusinessLogic.Services
             }
 
             // Tìm assignment theo RequestId
-            var assignment = await _unitOfWork.Assignments.GetByRequestId(requestId);
+            var assignment = await _unitOfWork.assignments.GetByRequestId(requestId);
 
             if (assignment == null)
             {
                 return "Không tìm thấy đơn hàng !";
             }
 
-            var shipping = await _unitOfWork.ShippingRequests.GetByRequestId(requestId);
+            var shipping = await _unitOfWork.shippingRequests.GetByRequestId(requestId);
 
             if (shipping == null)
             {
